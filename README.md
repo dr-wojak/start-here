@@ -67,7 +67,7 @@ It documents:
 
 This repository establishes that the failure was **institutional**, not intellectual.
 
-[Access](https://github.com/dr-wojak/governmentality-2025)
+[Ethical and Ficuciary Breach of Conduct + Nineteen Years of Clear Evasion](https://github.com/dr-wojak/governmentality-2025)
 
 ---
 
@@ -94,7 +94,7 @@ If the State claims it did not understand, these materials show:
 * publicly,  
 * and repeatedly.
 
-[Access](https://github.com/dr-wojak/public-relations)
+[This is a Civic Signal](https://github.com/dr-wojak/public-relations)
 
 ---
 
@@ -116,7 +116,7 @@ They are designed so that an independent journalist can verify, reconstruct, and
 
 *We provide the data. You provide the scrutiny.*
 
-[Access](https://github.com/dr-wojak/press)
+[Access Press Portal](https://github.com/dr-wojak/press)
 
 ---
 
@@ -144,7 +144,7 @@ This repository asserts — with legal instruments — that:
 * administrative silence can constitute **fiduciary breach**,  
 * and failure to reason is justiciable.
 
-[Access](https://github.com/dr-wojak/legal)
+[Legal Constitutional, Statutory](https://github.com/dr-wojak/legal)
 
 ---
 
@@ -164,7 +164,7 @@ Each layer exists because the previous one failed to produce action.
 
 None can be dismissed without confronting the others.
 
-[Access](https://github.com/redundancy-awareness)
+[Redundancy Awareness](https://github.com/redundancy-awareness)
 
 ---
 
@@ -182,7 +182,7 @@ This project exists so that future inquiries, courts, journalists, and citizens 
 
 The record is already assembled.
 
-[Access](https://github.com/public-relations)
+[Redundancy Awareness Podcasts](https://github.com/dr-wojak/redundancy-awareness-podcasts)
 
 ---
 
