@@ -145,6 +145,7 @@ This repository asserts — with legal instruments — that:
 * and failure to reason is justiciable.
 
 [Legal, Constitutional, and Statutory Considerations](https://github.com/dr-wojak/legal)
+
 [EU & UK Extra Jurisdictional Abeyance](https://github.com/dr-wojak/legal?tab=readme-ov-file#07-eu--uk-extra-jurisdictional-abeyance)
 
 
