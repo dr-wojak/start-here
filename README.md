@@ -130,7 +130,7 @@ It functions as a **body of evidence**, containing:
 
 * ethics complaints,  
 * affidavits,  
-* constitutional petitions,  
+* **constitutional petitions**,  
 * jurisprudential briefs,  
 * and procedural correspondence.
 
@@ -144,7 +144,9 @@ This repository asserts — with legal instruments — that:
 * administrative silence can constitute **fiduciary breach**,  
 * and failure to reason is justiciable.
 
-[Legal Constitutional, Statutory](https://github.com/dr-wojak/legal)
+[Legal, Constitutional, and Statutory Considerations](https://github.com/dr-wojak/legal)
+[EU & UK Extra Jurisdictional Abeyance](https://github.com/dr-wojak/legal?tab=readme-ov-file#07-eu--uk-extra-jurisdictional-abeyance)
+
 
 ---
 
