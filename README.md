@@ -1,4 +1,5 @@
-![Redundancy Awareness](https://github.com/dr-wojak/redundancy-awareness/blob/main/dealraitheachas-agus-riarachanachas-banner.png))
+![Redundancy Awareness](https://github.com/dr-wojak/redundancy-awareness/blob/main/dealraitheachas-agus-riarachanachas-banner.png)
+
 # **START HERE**
 
 ## ***Governmentality-2025: A Public Record of Administrative Failure and Civic Remedy***
