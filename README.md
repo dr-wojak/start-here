@@ -169,7 +169,7 @@ Each layer exists because the previous one failed to produce action.
 
 None can be dismissed without confronting the others.
 
-[Redundancy Awareness](https://github.com/redundancy-awareness)
+[Redundancy Awareness](https://github.com/dr-wojak/redundancy-awareness)
 
 ---
 
