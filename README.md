@@ -51,7 +51,7 @@ All four describe the *same failure* — from different vantage points.
 
 ## The Missing Middle
 
-The *Charter on Strategic Intelligence, Governance Risk, and Institutional Vulnerability* (the Unified Charter) and *Draft Part 4: Dealraitheachas and Other Sorts of Conflated Inaction*, which together constitute the missing middle: the conceptual and jurisprudential layer that sits between the moral topology of the Meinhardt memoranda (A-C) and the formal legal escalation of Memoranda D and E. 
+Besides the literal, documented derivation of the pre-conditions —the evidence and knowledge base— which presently form a concentrated effort to raise awareness, consider the following two important documents: the first is the *Charter on Strategic Intelligence, Governance Risk, and Institutional Vulnerability* (the Unified Charter) and the second, as a discussion of the policy deficit, is *Dealraitheachas and Other Sorts of Conflated Inaction*. Together, they constitute the missing middle: the conceptual and jurisprudential layer that sits between the moral topology of the Meinhardt memoranda (A-C) and the formal legal escalation of Memoranda D and E. 
 
 ### Dealraitheachas, the Charters, and the Architecture of Justiciable Omission
 
