@@ -122,10 +122,9 @@ This repository establishes that the failure was **institutional**, not intellec
 <details>
 
 
-<summary>**Cabinet Focused Repository**</summary>
+<summary>Cabinet Focused Repository</summary>
 
-
-**https://github.com/dr-wojak/cabinet**  
+> **https://github.com/dr-wojak/cabinet**  
 *Cabinet Focused Repository — Strategic mapping of documented systemic failures onto the current Irish Cabinet structure*  
 
 🇮🇪 Achoimre as Gaeilge: [fócas-ar-an-aireacht](https://github.com/dr-wojak/cabinet)  
