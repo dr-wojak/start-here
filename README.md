@@ -83,11 +83,11 @@ The closing principle of the Unified Charter names this with a precision that th
 
 ## **1\. Governmentality-2025**
 
-This repository serves as the Supporting Material for Memorandum E. It represents not merely an archival exercise, but an act of civic solidarity: the documentation of a long and largely solitary effort to hold institutions to account on behalf of a public that has, as yet, been given no formal opportunity to engage with the underlying analysis.
+This repository serves as the Supporting Material for Memorandum E. It represents not merely an archival exercise, but an act of civic solidarity: the documentation of a long and largely solitary effort to hold institutions to account on behalf of a public that has, as yet, been given no formal opportunity to engage with the underlying analysis. This is a fixed public evidentiary record of Ireland’s governance, preparedness, and strategic-decision failures from 2008–2025. It preserves the meticulous documentation, analytical framing, statutory filings, and technical justification that reveal how successive administrations and institutions systematically deflected, contained, and displaced critical Operations-Research-based intelligence and risk signals without substantive engagement — creating a burden-of-proof shift that exposes pervasive institutional non-responsiveness rather than merely outlining it
 
 **https://github.com/dr-wojak/governmentality-2025**
 
-**Strategic mapping of documented systemic failures onto the current Irish Cabinet structure: a public-facing landing page for Cabinet-relevant links.**  
+**A permanent, auditable record of how demonstrable governance risk was documented, formally escalated, and institutionally absorbed without decision.**
 
 🇮🇪 Achoimre as Gaeilge: [rialtasacht-2025](https://github.com/dr-wojak/governmentality-2025)  
 🇫🇷 Synopsis en Français: [gouvernementalité-2025](https://github.com/dr-wojak/governmentality-2025)  
@@ -118,6 +118,47 @@ It documents:
 This repository establishes that the failure was **institutional**, not intellectual.
 
 [Ethical and Ficuciary Breach of Conduct + Nineteen Years of Clear Evasion](https://github.com/dr-wojak/governmentality-2025)
+
+<details>
+
+
+<summary>**Cabinet Focused Repository**</summary>
+
+
+**https://github.com/dr-wojak/cabinet**  
+*Cabinet Focused Repository — Strategic mapping of documented systemic failures onto the current Irish Cabinet structure*  
+
+🇮🇪 Achoimre as Gaeilge: [fócas-ar-an-aireacht](https://github.com/dr-wojak/cabinet)  
+🇫🇷 Synopsis en Français: [focus-cabinet](https://github.com/dr-wojak/cabinet)  
+🇧🇪 Samenvatting in het Nederlands (BE): [kabinets-focus-BE](https://github.com/dr-wojak/cabinet)  
+🇱🇺 Résumé en Luxembourgeois: [Kabinetts-Fokus-LU](https://github.com/dr-wojak/cabinet)  
+🇳🇱 Samenvatting in het Nederlands (NL): [kabinets-focus-NL](https://github.com/dr-wojak/cabinet)  
+
+🇩🇪 Zusammenfassung auf Deutsch: [Kabinetts-Fokus](https://github.com/dr-wojak/cabinet)  
+🇦🇹 Zusammenfassung auf Österreichischem Deutsch: [Kabinetts-Fokus-AT](https://github.com/dr-wojak/cabinet)  
+🇵🇱 Streszczenie po polsku: [fokus-gabinetowy](https://github.com/dr-wojak/cabinet)  
+🇨🇿 Shrnutí v češtině: [kabinet-fokus](https://github.com/dr-wojak/cabinet)  
+🇸🇰 Zhrnutie v slovenčine: [kabinet-fokus-SK](https://github.com/dr-wojak/cabinet)  
+🇭🇺 Összefoglaló magyarul: [kabinet-fókusz](https://github.com/dr-wojak/cabinet)  
+
+🇬🇷 Σύνοψη στα ελληνικά: [εστίαση-κυβέρνησης](https://github.com/dr-wojak/cabinet)  
+🇨🇾 Σύνοψη στα κυπριακά ελληνικά: [εστίαση-κυβέρνησης-CY](https://github.com/dr-wojak/cabinet)  
+🇧🇬 Резюме на български: [фокус-кабинет](https://github.com/dr-wojak/cabinet)  
+🇷🇴 Rezumat în română: [focus-cabinet-RO](https://github.com/dr-wojak/cabinet)  
+🇭🇷 Sažetak na hrvatskom: [kabinet-fokus-HR](https://github.com/dr-wojak/cabinet)  
+🇸🇮 Povzetek v slovenščini: [kabinet-fokus-SI](https://github.com/dr-wojak/cabinet)  
+🇪🇪 Kokkuvõte eesti keeles: [kabineti-fookus](https://github.com/dr-wojak/cabinet)  
+🇱🇻 Kopsavilkums latviešu valodā: [kabineta-fokuss](https://github.com/dr-wojak/cabinet)  
+🇱🇹 Santrauka lietuvių kalba: [kabineto-fokusas](https://github.com/dr-wojak/cabinet)  
+
+🇮🇹 Sintesi in italiano: [focus-cabinet-IT](https://github.com/dr-wojak/cabinet)  
+🇪🇸 Resumen en español: [enfoque-gabinete](https://github.com/dr-wojak/cabinet)  
+🇵🇹 Resumo em português (PT): [foco-gabinete-PT](https://github.com/dr-wojak/cabinet)  
+🇲🇹 Sommarju bil-Malti: [fokus-kabinett](https://github.com/dr-wojak/cabinet)  
+🇫🇮 Yhteenveto suomeksi: [kabinetti-fokus](https://github.com/dr-wojak/cabinet)  
+🇸🇪 Sammanfattning på svenska: [kabinetts-fokus](https://github.com/dr-wojak/cabinet)  
+🇩🇰 Resumé på dansk: [kabinets-fokus](https://github.com/dr-wojak/cabinet)  
+</details>
 
 ---
 
