@@ -74,7 +74,13 @@ body::before{
   padding:12px 32px;
   display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;
 }
-.top-bar-title{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:var(--citron);}
+.top-bar-title{
+  font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.14em;
+  text-transform:uppercase;color:var(--citron);
+  text-decoration:none;
+  transition:opacity 0.2s;
+}
+.top-bar-title:hover{opacity:0.6;}
 .top-bar-links{display:flex;gap:18px;flex-wrap:wrap;}
 .top-bar-links a{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--parchment-dim);text-decoration:none;transition:color 0.15s;}
 .top-bar-links a:hover{color:var(--parchment);}
@@ -85,6 +91,14 @@ body::before{
   max-width:900px;margin:0 auto;
   padding:56px 32px 80px;
 }
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+.fade-up{animation:fadeUp 0.55s ease forwards;opacity:0;}
+.fade-up:nth-child(1){animation-delay:0.05s}
+.fade-up:nth-child(2){animation-delay:0.18s}
+.fade-up:nth-child(3){animation-delay:0.30s}
+.fade-up:nth-child(4){animation-delay:0.42s}
 
 /* ── MASTHEAD ── */
 .masthead{
@@ -99,17 +113,25 @@ body::before{
   display:flex;align-items:center;gap:10px;
 }
 .eyebrow::after{content:'';flex:1;height:1px;background:var(--citron);opacity:0.22;max-width:200px;}
+
+/* ── TITLE — lighter, ecosystem-register ── */
 .masthead h1{
-  font-family:'Cinzel',serif;font-weight:700;
-  font-size:clamp(38px,7vw,72px);
-  line-height:0.95;letter-spacing:0.05em;
+  font-family:'Cormorant Garamond',Georgia,serif;
+  font-weight:300;
+  font-size:clamp(32px,5.5vw,60px);
+  line-height:1.02;
+  letter-spacing:-0.01em;
   color:var(--parchment);
-  text-shadow:0 0 60px rgba(107,45,139,0.25);
-  margin-bottom:10px;
+  margin-bottom:12px;
 }
+.masthead h1 em{
+  font-style:italic;
+  color:var(--parchment-dim);
+}
+
 .masthead-sub{
   font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:300;
-  font-size:clamp(16px,2.2vw,22px);
+  font-size:clamp(15px,2vw,20px);
   color:var(--parchment-dim);
   margin-bottom:28px;
 }
@@ -174,8 +196,8 @@ body::before{
 .ac-legal .card-label{color:var(--scarlet);}
 
 .card-title{
-  font-family:'Cinzel',serif;font-weight:500;
-  font-size:clamp(17px,2.2vw,22px);
+  font-family:'Cormorant Garamond',serif;font-weight:400;
+  font-size:clamp(17px,2.2vw,21px);
   color:var(--parchment);
   margin-bottom:10px;line-height:1.15;
 }
@@ -207,7 +229,7 @@ body::before{
 }
 .deadline-left{}
 .deadline-eyebrow{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:0.16em;text-transform:uppercase;color:var(--gold-lt);margin-bottom:4px;}
-.deadline-date{font-family:'Cinzel',serif;font-size:clamp(20px,3vw,30px);font-weight:700;color:var(--parchment);line-height:1;text-shadow:0 0 20px rgba(200,168,48,0.3);}
+.deadline-date{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(22px,3vw,32px);font-weight:300;color:var(--parchment);line-height:1;text-shadow:0 0 20px rgba(200,168,48,0.3);}
 .deadline-context{font-family:'EB Garamond',serif;font-size:14px;color:var(--parchment-dim);margin-top:4px;max-width:480px;}
 .deadline-chip{font-family:'IBM Plex Mono',monospace;font-size:11px;padding:8px 16px;border-radius:3px;border:1px solid var(--gold-dim);background:var(--gold-bg);color:var(--gold-lt);white-space:nowrap;flex-shrink:0;}
 
@@ -242,7 +264,7 @@ body::before{
 <body>
 
 <div class="top-bar">
-  <div class="top-bar-title">Meinhardt Initiative · 2006–2026</div>
+  <a class="top-bar-title" href="https://dr-wojak.github.io/meinhardt-initiative-public-flyer" title="Meinhardt Initiative · Introduction">Meinhardt Initiative · 2006–2026</a>
   <div class="top-bar-links">
     <a href="https://dr-crunch.github.io/nullification-loops/">Nullification Loops</a>
     <a href="https://dr-wojak.github.io/legal/">Legal Repository</a>
@@ -254,10 +276,10 @@ body::before{
 <div class="wrap">
 
   <div class="masthead">
-    <div class="eyebrow">Press Information · For Immediate Releasen</div>
-    <h1>Start<br>Here</h1>
-    <div class="masthead-sub">A Public Record of Administrative Failure</div>
-    <p class="claim">
+    <div class="eyebrow fade-up">Press Information · For Immediate Release</div>
+    <h1 class="fade-up">Start<br><em>Here</em></h1>
+    <div class="masthead-sub fade-up">A Public Record of Administrative Failure</div>
+    <p class="claim fade-up">
       A single, verifiable claim: <strong>the Irish State repeatedly received expert, actionable intelligence on systemic governance risk — and failed to absorb or act on it.</strong> Nineteen years. Six Taoisigh. Zero determinations.
     </p>
   </div>
@@ -309,12 +331,11 @@ body::before{
     <a class="ql ql-grape" href="https://dr-crunch.github.io/nullification-loops/">⬡ Nullification Loops</a>
     <a class="ql ql-grape" href="https://dr-crunch.github.io/redundancy-awareness/semantic-map.html">⬡ Semantic Map</a>
     <a class="ql ql-dragonfly" href="https://dr-crunch.github.io/redundancy-awareness/deontological-differences.html">⬡ Deontological Differences</a>
-    <a class="ql ql-dragonfly" href="https://dr-wojak.github.io/redundancy-awareness/ontology-relations.html">⬡ Ontology Relations</a>
-    <a class="ql ql-dragonfly" href="https://dr-wojak.github.io/redundancy-awareness/failure-modes.html">⬡ Failure Modes</a>
+    <a class="ql ql-dragonfly" href="https://dr-crunch.github.io/redundancy-awareness/ontology-relations.html">⬡ Ontology Relations</a>
+    <a class="ql ql-dragonfly" href="https://dr-crunch.github.io/redundancy-awareness/failure-modes.html">⬡ Failure Modes</a>
     <a class="ql ql-sherwood" href="https://dr-wojak.github.io/legal/">⬡ Legal Repository</a>
     <a class="ql ql-citron" href="https://dr-crunch.github.io/nullification-loops/tairiscint.html">⬡ Tairiscint</a>
     <a class="ql ql-gold" href="https://drive.google.com/drive/u/0/folders/12o4-OPXJ0W5E8pxF9pN-VKUeODagy17g" target="_blank">⬡ Drive Repository</a>
-    <a class="ql ql-grape" href="https://dr-wojak.github.io/start-here/">⬡ Start Here</a>
   </div>
 
   <div class="colophon">
