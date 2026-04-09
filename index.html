@@ -1,56 +1,344 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>START HERE — Meinhardt Initiative</title>
-    <style>
-        :root { --ink: #1a1510; --paper: #f5f0e8; --accent: #8b1a1a; --gold: #9a7a2a; }
-        body { background: var(--paper); font-family: 'EB Garamond', serif; color: var(--ink); line-height: 1.6; padding: 2rem; max-width: 900px; margin: auto; }
-        .masthead { border-bottom: 3px double var(--ink); margin-bottom: 2rem; text-align: center; }
-        h1 { font-family: 'Cinzel', serif; font-size: 2.5rem; letter-spacing: 0.1rem; }
-        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 2rem; }
-        .card { border: 1px solid var(--ink); padding: 1.5rem; background: #fff; transition: transform 0.2s; text-decoration: none; color: inherit; }
-        .card:hover { transform: translateY(-5px); border-color: var(--accent); }
-        .card h3 { font-family: 'Cinzel', serif; color: var(--accent); margin-bottom: 0.5rem; }
-        .footer { margin-top: 4rem; border-top: 1px solid var(--ink); font-size: 0.9rem; opacity: 0.7; padding-top: 1rem; }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Start Here · Meinhardt Initiative</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=IBM+Plex+Mono:wght@300;400;500&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Cinzel:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink:#0a0910;
+  --surface:#141018;
+  --surface2:#1c1820;
+  --parchment:#e8e3d4;
+  --parchment-dim:#9e9887;
+  --parchment-faint:#38303e;
+  --scarlet:#c8253a;
+  --scarlet-dim:#7a1020;
+  --scarlet-bg:#1a080a;
+  --citron:#d4c06a;
+  --citron-dim:#7a6e28;
+  --citron-bg:#1c1a08;
+  --dragonfly:#5ab0c8;
+  --dragonfly-dim:#183e4a;
+  --dragonfly-bg:#0a1820;
+  --rivulet:#38c8b8;
+  --rivulet-dim:#187868;
+  --rivulet-bg:#081e1a;
+  --cosmic:#9898c8;
+  --cosmic-dim:#404068;
+  --cosmic-bg:#10101e;
+  --bordeaux:#b87898;
+  --bordeaux-dim:#4a2838;
+  --bordeaux-bg:#180d12;
+  --grape:#6b2d8b;
+  --grape-lt:#9b58c8;
+  --grape-dim:#3a1050;
+  --grape-bg:#12081a;
+  --gold:#c8a830;
+  --gold-lt:#e8c850;
+  --gold-dim:#7a6218;
+  --gold-bg:#1a1608;
+  --sherwood:#1a7a48;
+  --sherwood-lt:#38c878;
+  --sherwood-dim:#0a3820;
+  --sherwood-bg:#081a10;
+  --rule:rgba(200,180,230,0.09);
+  --rule-strong:rgba(200,180,230,0.16);
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+
+body{
+  background:var(--ink);
+  color:var(--parchment);
+  font-family:'Cormorant Garamond',Georgia,serif;
+  font-size:17px;
+  line-height:1.65;
+  min-height:100vh;
+}
+
+body::before{
+  content:'';position:fixed;inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events:none;z-index:0;opacity:0.55;
+}
+
+/* ── TOP BAR ── */
+.top-bar{
+  position:sticky;top:0;z-index:100;
+  border-bottom:1px solid var(--rule-strong);
+  background:rgba(10,9,16,0.96);
+  backdrop-filter:blur(14px);
+  padding:12px 32px;
+  display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;
+}
+.top-bar-title{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:var(--citron);}
+.top-bar-links{display:flex;gap:18px;flex-wrap:wrap;}
+.top-bar-links a{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--parchment-dim);text-decoration:none;transition:color 0.15s;}
+.top-bar-links a:hover{color:var(--parchment);}
+
+/* ── WRAPPER ── */
+.wrap{
+  position:relative;z-index:1;
+  max-width:900px;margin:0 auto;
+  padding:56px 32px 80px;
+}
+
+/* ── MASTHEAD ── */
+.masthead{
+  border-bottom:1px solid var(--rule-strong);
+  padding-bottom:40px;
+  margin-bottom:48px;
+}
+.eyebrow{
+  font-family:'IBM Plex Mono',monospace;font-size:10px;
+  letter-spacing:0.18em;text-transform:uppercase;
+  color:var(--citron);margin-bottom:16px;
+  display:flex;align-items:center;gap:10px;
+}
+.eyebrow::after{content:'';flex:1;height:1px;background:var(--citron);opacity:0.22;max-width:200px;}
+.masthead h1{
+  font-family:'Cinzel',serif;font-weight:700;
+  font-size:clamp(38px,7vw,72px);
+  line-height:0.95;letter-spacing:0.05em;
+  color:var(--parchment);
+  text-shadow:0 0 60px rgba(107,45,139,0.25);
+  margin-bottom:10px;
+}
+.masthead-sub{
+  font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:300;
+  font-size:clamp(16px,2.2vw,22px);
+  color:var(--parchment-dim);
+  margin-bottom:28px;
+}
+.claim{
+  font-family:'EB Garamond',serif;
+  font-size:clamp(15px,1.8vw,18px);
+  line-height:1.78;color:var(--parchment);
+  max-width:680px;
+  border-left:2px solid var(--scarlet);
+  padding-left:20px;
+}
+.claim strong{color:var(--parchment);font-weight:500;}
+
+/* ── SECTION LABEL ── */
+.section-label{
+  font-family:'IBM Plex Mono',monospace;font-size:10px;
+  letter-spacing:0.15em;text-transform:uppercase;
+  color:var(--parchment-dim);margin-bottom:20px;
+}
+
+/* ── AUDIENCE GRID ── */
+.audience-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:1px;
+  background:var(--rule-strong);
+  border:1px solid var(--rule-strong);
+  border-radius:6px;
+  overflow:hidden;
+  margin-bottom:48px;
+}
+@media(max-width:580px){.audience-grid{grid-template-columns:1fr;}}
+
+.audience-card{
+  background:var(--surface);
+  padding:28px 24px;
+  text-decoration:none;
+  color:inherit;
+  display:block;
+  transition:background 0.18s;
+  position:relative;
+}
+.audience-card:hover{background:var(--surface2);}
+.audience-card::before{
+  content:'';
+  position:absolute;top:0;left:0;right:0;height:2px;
+}
+
+.ac-civic::before{background:var(--grape-lt);}
+.ac-press::before{background:var(--citron);}
+.ac-expert::before{background:var(--dragonfly);}
+.ac-legal::before{background:var(--scarlet);}
+
+.card-label{
+  font-family:'IBM Plex Mono',monospace;font-size:9px;
+  letter-spacing:0.16em;text-transform:uppercase;
+  margin-bottom:8px;
+}
+.ac-civic .card-label{color:var(--grape-lt);}
+.ac-press .card-label{color:var(--citron);}
+.ac-expert .card-label{color:var(--dragonfly);}
+.ac-legal .card-label{color:var(--scarlet);}
+
+.card-title{
+  font-family:'Cinzel',serif;font-weight:500;
+  font-size:clamp(17px,2.2vw,22px);
+  color:var(--parchment);
+  margin-bottom:10px;line-height:1.15;
+}
+.card-desc{
+  font-family:'EB Garamond',serif;font-size:15px;
+  line-height:1.65;color:var(--parchment-dim);
+  margin-bottom:14px;
+}
+.card-link{
+  font-family:'IBM Plex Mono',monospace;font-size:9px;
+  letter-spacing:0.12em;text-transform:uppercase;
+  display:inline-flex;align-items:center;gap:5px;
+}
+.ac-civic .card-link{color:var(--grape-lt);}
+.ac-press .card-link{color:var(--citron);}
+.ac-expert .card-link{color:var(--dragonfly);}
+.ac-legal .card-link{color:var(--scarlet);}
+.card-link::after{content:'→';font-size:11px;}
+
+/* ── DEADLINE STRIP ── */
+.deadline-strip{
+  background:linear-gradient(90deg, rgba(200,168,48,0.12) 0%, rgba(107,45,139,0.12) 100%);
+  border:1px solid rgba(200,168,48,0.3);
+  border-left:3px solid var(--gold-lt);
+  border-radius:4px;
+  padding:18px 22px;
+  margin-bottom:48px;
+  display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;
+}
+.deadline-left{}
+.deadline-eyebrow{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:0.16em;text-transform:uppercase;color:var(--gold-lt);margin-bottom:4px;}
+.deadline-date{font-family:'Cinzel',serif;font-size:clamp(20px,3vw,30px);font-weight:700;color:var(--parchment);line-height:1;text-shadow:0 0 20px rgba(200,168,48,0.3);}
+.deadline-context{font-family:'EB Garamond',serif;font-size:14px;color:var(--parchment-dim);margin-top:4px;max-width:480px;}
+.deadline-chip{font-family:'IBM Plex Mono',monospace;font-size:11px;padding:8px 16px;border-radius:3px;border:1px solid var(--gold-dim);background:var(--gold-bg);color:var(--gold-lt);white-space:nowrap;flex-shrink:0;}
+
+/* ── QUICK LINKS ROW ── */
+.quick-links{
+  display:flex;flex-wrap:wrap;gap:8px;margin-bottom:48px;
+}
+.ql{
+  font-family:'IBM Plex Mono',monospace;font-size:10px;
+  letter-spacing:0.07em;padding:6px 14px;
+  border-radius:20px;border:1px solid;
+  text-decoration:none;transition:all 0.18s;
+}
+.ql:hover{opacity:0.75;}
+.ql-grape{color:var(--grape-lt);border-color:var(--grape-dim);background:var(--grape-bg);}
+.ql-gold{color:var(--gold-lt);border-color:var(--gold-dim);background:var(--gold-bg);}
+.ql-sherwood{color:var(--sherwood-lt);border-color:var(--sherwood-dim);background:var(--sherwood-bg);}
+.ql-dragonfly{color:var(--dragonfly);border-color:var(--dragonfly-dim);background:var(--dragonfly-bg);}
+.ql-citron{color:var(--citron);border-color:var(--citron-dim);background:var(--citron-bg);}
+
+/* ── COLOPHON ── */
+.colophon{
+  border-top:1px solid var(--rule);
+  padding-top:28px;
+  display:flex;justify-content:space-between;align-items:flex-start;
+  gap:16px;flex-wrap:wrap;
+}
+.colophon-left{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--parchment-dim);letter-spacing:0.06em;line-height:1.8;}
+.colophon-quote{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:15px;color:var(--parchment-dim);max-width:400px;line-height:1.6;text-align:right;}
+</style>
 </head>
-    <a href="introduction.html">Read the Introduction</a>
 <body>
-    <div class="masthead">
-        <p>Press Information · Restricted Distribution</p>
-        <h1>START HERE</h1>
-        <p>Governmentality-2025: A Public Record of Administrative Failure</p>
+
+<div class="top-bar">
+  <div class="top-bar-title">Meinhardt Initiative · 2006–2026</div>
+  <div class="top-bar-links">
+    <a href="https://dr-crunch.github.io/nullification-loops/">Nullification Loops</a>
+    <a href="https://dr-wojak.github.io/legal/">Legal Repository</a>
+    <a href="https://dr-crunch.github.io/redundancy-awareness/semantic-map.html">Semantic Map</a>
+    <a href="https://drive.google.com/drive/u/0/folders/12o4-OPXJ0W5E8pxF9pN-VKUeODagy17g" target="_blank">Drive →</a>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <div class="masthead">
+    <div class="eyebrow">Press Information · Public Distribution</div>
+    <h1>Start<br>Here</h1>
+    <div class="masthead-sub">Governmentality-2025 · A Public Record of Administrative Failure</div>
+    <p class="claim">
+      A single, verifiable claim: <strong>the Irish State repeatedly received expert, actionable intelligence on systemic governance risk — and failed to absorb or act on it.</strong> Nineteen years. Six Taoisigh. Zero determinations.
+    </p>
+  </div>
+
+  <div class="deadline-strip">
+    <div class="deadline-left">
+      <div class="deadline-eyebrow">Structural Deadline · EU Council Presidency</div>
+      <div class="deadline-date">1 July 2026</div>
+      <div class="deadline-context">Ireland assumes the Presidency of the Council of the European Union. Continued institutional silence becomes a European rule-of-law event.</div>
     </div>
+    <div class="deadline-chip" id="daysChip">— days remaining</div>
+  </div>
 
-    <section>
-        <h2>What This Is</h2>
-        <p>This project documents a single, verifiable claim: <strong>That the Irish State repeatedly received expert, actionable intelligence on systemic governance risk—and failed to absorb or act on it.</strong></p>
-    </section>
+  <div class="section-label">Choose your entry point</div>
+  <div class="audience-grid">
 
-    <div class="grid">
-        <a href="https://github.com/dr-wojak/public-relations" class="card">
-            <h3>Citizens & General</h3>
-            <p>Public Relations & The Civic Signal</p>
-        </a>
-        <a href="https://github.com/dr-wojak/press" class="card">
-            <h3>Journalists & Researchers</h3>
-            <p>The Press Portal & Media Disclosures</p>
-        </a>
-        <a href="https://github.com/dr-wojak/governmentality-2025" class="card">
-            <h3>Experts & Policymakers</h3>
-            <p>The core Governmentality-2025 record</p>
-        </a>
-        <a href="https://github.com/dr-wojak/legal" class="card">
-            <h3>Lawyers & Judges</h3>
-            <p>Legal, Constitutional & Statutory Considerations</p>
-        </a>
+    <a class="audience-card ac-civic" href="https://github.com/dr-wojak/public-relations">
+      <div class="card-label">Channel I · Civic</div>
+      <div class="card-title">Citizens &amp;<br>General Public</div>
+      <div class="card-desc">The civic signal in plain terms. What was ignored, who received it, and why it matters for democratic accountability in Ireland.</div>
+      <div class="card-link">Public Relations &amp; Civic Signal</div>
+    </a>
+
+    <a class="audience-card ac-press" href="https://github.com/dr-wojak/press">
+      <div class="card-label">Channel V · Media</div>
+      <div class="card-title">Journalists &amp;<br>Researchers</div>
+      <div class="card-desc">The press portal. Timestamped signal-to-silence timeline, CC0 evidentiary record, publication-ready investigation thread.</div>
+      <div class="card-link">Press Portal &amp; Media Disclosures</div>
+    </a>
+
+    <a class="audience-card ac-expert" href="https://github.com/dr-wojak/governmentality-2025">
+      <div class="card-label">Channel III · Academic</div>
+      <div class="card-title">Experts &amp;<br>Policymakers</div>
+      <div class="card-desc">The core Governmentality-2025 record. Cybernetic and operational research framing. Beer/VSM · Bateson · cohomological failure mapping.</div>
+      <div class="card-link">Governmentality-2025 Repository</div>
+    </a>
+
+    <a class="audience-card ac-legal" href="https://github.com/dr-wojak/legal">
+      <div class="card-label">Channel I · Legal</div>
+      <div class="card-title">Lawyers &amp;<br>Judges</div>
+      <div class="card-desc">Constitutional, statutory, and EU law record. Mandamus grounds, Art.41 CFR, CJEU Member State failure track. 226 pages. Pre-litigation.</div>
+      <div class="card-link">Legal &amp; Constitutional Record</div>
+    </a>
+
+  </div>
+
+  <div class="section-label">All repositories</div>
+  <div class="quick-links">
+    <a class="ql ql-grape" href="https://dr-crunch.github.io/nullification-loops/">⬡ Nullification Loops</a>
+    <a class="ql ql-grape" href="https://dr-crunch.github.io/redundancy-awareness/semantic-map.html">⬡ Semantic Map</a>
+    <a class="ql ql-dragonfly" href="https://dr-crunch.github.io/redundancy-awareness/deontological-differences.html">⬡ Deontological Differences</a>
+    <a class="ql ql-dragonfly" href="https://dr-wojak.github.io/redundancy-awareness/ontology-relations.html">⬡ Ontology Relations</a>
+    <a class="ql ql-dragonfly" href="https://dr-wojak.github.io/redundancy-awareness/failure-modes.html">⬡ Failure Modes</a>
+    <a class="ql ql-sherwood" href="https://dr-wojak.github.io/legal/">⬡ Legal Repository</a>
+    <a class="ql ql-citron" href="https://dr-crunch.github.io/nullification-loops/tairiscint.html">⬡ Tairiscint</a>
+    <a class="ql ql-gold" href="https://drive.google.com/drive/u/0/folders/12o4-OPXJ0W5E8pxF9pN-VKUeODagy17g" target="_blank">⬡ Drive Repository</a>
+    <a class="ql ql-grape" href="https://dr-wojak.github.io/start-here/">⬡ Start Here</a>
+  </div>
+
+  <div class="colophon">
+    <div class="colophon-left">
+      Research archive · 2006–2026 · Meinhardt Initiative<br>
+      CC0 1.0 Universal · Open Access · Pre-litigation public record
     </div>
+    <div class="colophon-quote">
+      "A State which receives clear, repeated, expert warnings has an obligation to reason."
+    </div>
+  </div>
 
-    <footer class="footer">
-        <p>Research archive · 2006–2026 · Meinhardt Initiative</p>
-        <p><em>"A State which receives clear, repeated, expert warnings has an obligation to reason."</em></p>
-    </footer>
+</div>
+
+<script>
+(function(){
+  const chip = document.getElementById('daysChip');
+  if(!chip) return;
+  const target = new Date('2026-07-01');
+  const now = new Date();
+  const days = Math.ceil((target - now) / (1000*60*60*24));
+  chip.textContent = days > 0 ? days + ' days remaining' : 'Presidency active';
+})();
+</script>
+
 </body>
 </html>
