@@ -114,7 +114,6 @@ body::before{
 }
 .eyebrow::after{content:'';flex:1;height:1px;background:var(--citron);opacity:0.22;max-width:200px;}
 
-/* ── TITLE — lighter, ecosystem-register ── */
 .masthead h1{
   font-family:'Cormorant Garamond',Georgia,serif;
   font-weight:300;
@@ -227,7 +226,6 @@ body::before{
   margin-bottom:48px;
   display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;
 }
-.deadline-left{}
 .deadline-eyebrow{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:0.16em;text-transform:uppercase;color:var(--gold-lt);margin-bottom:4px;}
 .deadline-date{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(22px,3vw,32px);font-weight:300;color:var(--parchment);line-height:1;text-shadow:0 0 20px rgba(200,168,48,0.3);}
 .deadline-context{font-family:'EB Garamond',serif;font-size:14px;color:var(--parchment-dim);margin-top:4px;max-width:480px;}
@@ -354,10 +352,18 @@ body::before{
 (function(){
   const chip = document.getElementById('daysChip');
   if(!chip) return;
-  const target = new Date('2026-07-01');
-  const now = new Date();
-  const days = Math.ceil((target - now) / (1000*60*60*24));
-  chip.textContent = days > 0 ? days + ' days remaining' : 'Presidency active';
+  const target = new Date('2026-07-01T08:00:00Z'); // 09:00 IST (UTC+1, summer)
+
+  function tick(){
+    const diff = target - Date.now();
+    if(diff <= 0){ chip.textContent = 'Presidency active'; return; }
+    const days = diff / 86400000;
+    const display = days >= 1 ? (Math.floor(days * 2) / 2).toFixed(1) : '< 0.5';
+    chip.textContent = display + ' days remaining';
+  }
+
+  tick();
+  setInterval(tick, 60000);
 })();
 </script>
 
