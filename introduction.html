@@ -1,228 +1,372 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Introduction — Governmentality-2025 Record</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
-
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=IBM+Plex+Mono:wght@300;400;500&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Cinzel:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
-
 :root{
---ink:#1a1510;
---paper:#f5f0e8;
---accent:#8b1a1a;
---gold:#9a7a2a;
+  --ink:#0a0910;
+  --surface:#141018;
+  --surface2:#1c1820;
+  --surface3:#221e2a;
+  --parchment:#e8e3d4;
+  --parchment-dim:#9e9887;
+  --parchment-faint:#38303e;
+  --nantucket:#7ab8d8;
+  --nantucket-dim:#2a5878;
+  --nantucket-bg:#0a1820;
+  --dragonfly:#5ab0c8;
+  --dragonfly-dim:#183e4a;
+  --dragonfly-bg:#0a1820;
+  --citron:#d4c06a;
+  --citron-dim:#7a6e28;
+  --citron-bg:#1c1a08;
+  --bordeaux:#b87898;
+  --bordeaux-dim:#4a2838;
+  --bordeaux-bg:#180d12;
+  --scarlet:#c8253a;
+  --scarlet-dim:#7a1020;
+  --scarlet-bg:#1a080a;
+  --cosmic:#9898c8;
+  --cosmic-dim:#404068;
+  --cosmic-bg:#10101e;
+  --rule:rgba(200,180,230,0.09);
+  --rule-strong:rgba(200,180,230,0.16);
 }
-
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
 body{
-background:var(--paper);
-color:var(--ink);
-font-family:'EB Garamond',serif;
-line-height:1.7;
-margin:auto;
-padding:2rem;
-max-width:820px;
+  background:var(--ink);
+  color:var(--parchment);
+  font-family:'EB Garamond',Georgia,serif;
+  font-size:17px;
+  line-height:1.72;
+  min-height:100vh;
+}
+body::before{
+  content:'';position:fixed;inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events:none;z-index:0;opacity:0.55;
 }
 
-.masthead{
-text-align:center;
-border-bottom:3px double var(--ink);
-margin-bottom:2.5rem;
-padding-bottom:1rem;
-}
+/* ── shell ── */
+.page{position:relative;z-index:1;max-width:820px;margin:0 auto;}
 
-.masthead p{
-font-size:.9rem;
-letter-spacing:.06rem;
+/* ══ HEADER ══ */
+header{padding:64px 32px 48px;border-bottom:1px solid var(--rule);}
+
+.eyebrow{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:10px;letter-spacing:0.18em;text-transform:uppercase;
+  color:var(--citron);margin-bottom:18px;
+  display:flex;align-items:center;gap:10px;
+}
+.eyebrow::after{
+  content:'';flex:1;height:1px;
+  background:var(--citron);opacity:0.22;max-width:200px;
 }
 
 h1{
-font-family:'Cinzel',serif;
-font-size:2.2rem;
-letter-spacing:.08rem;
-margin:.4rem 0;
+  font-family:'Cormorant Garamond',serif;
+  font-weight:300;
+  font-size:clamp(34px,5.5vw,62px);
+  line-height:1.05;
+  color:var(--parchment);
+  margin-bottom:6px;
+}
+h1 em{font-style:italic;color:var(--nantucket);}
+
+.header-sub{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(15px,1.9vw,20px);
+  font-weight:300;font-style:italic;
+  color:var(--parchment-dim);
+  margin-bottom:26px;
+}
+
+.header-lede{
+  font-family:'EB Garamond',serif;
+  font-size:16px;color:var(--parchment);
+  max-width:680px;line-height:1.8;
+  border-left:2px solid var(--nantucket);
+  padding-left:20px;
+}
+
+/* ══ SECTION WRAPPER ══ */
+.sw{
+  padding:40px 32px;
+  border-bottom:1px solid var(--rule);
+}
+
+.section-label{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:10px;letter-spacing:0.15em;text-transform:uppercase;
+  color:var(--parchment-dim);margin-bottom:20px;
 }
 
 h2{
-font-family:'Cinzel',serif;
-margin-top:2rem;
-color:var(--accent);
-font-size:1.35rem;
+  font-family:'Cormorant Garamond',serif;
+  font-weight:300;
+  font-size:clamp(20px,2.8vw,28px);
+  color:var(--parchment);
+  line-height:1.2;
+  margin-bottom:16px;
 }
 
 p{
-margin:.9rem 0;
+  font-family:'EB Garamond',serif;
+  font-size:16px;
+  color:var(--parchment-dim);
+  line-height:1.78;
+  max-width:640px;
+  margin-bottom:12px;
+}
+p:last-child{margin-bottom:0;}
+
+/* ── chain-narrative blockquote (from semantic-map) ── */
+.chain-narrative{
+  background:var(--surface2);
+  border-left:3px solid var(--nantucket);
+  border-radius:4px;
+  padding:24px 28px;
+  margin:24px 0 0;
+}
+.chain-narrative-label{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:9px;letter-spacing:0.18em;text-transform:uppercase;
+  color:var(--nantucket);margin-bottom:12px;opacity:0.75;
+}
+.chain-narrative blockquote{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(16px,2vw,20px);
+  font-weight:300;font-style:italic;
+  color:var(--parchment);
+  line-height:1.5;
 }
 
-.note{
-border-left:3px solid var(--gold);
-padding-left:1rem;
-margin:1.6rem 0;
-font-style:italic;
+/* ── memo-argument style (citron accent) ── */
+.memo-argument{
+  background:var(--surface);
+  border-left:3px solid var(--citron);
+  border-radius:3px;
+  padding:16px 20px;
+  margin:20px 0 0;
+}
+.memo-arg-label{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:9px;letter-spacing:0.12em;text-transform:uppercase;
+  color:var(--citron);margin-bottom:6px;
+}
+.memo-arg-body{
+  font-family:'EB Garamond',serif;
+  font-size:15px;line-height:1.72;
+  color:var(--parchment-dim);
 }
 
+/* ── list ── */
 ul{
-margin-left:1.4rem;
+  margin:12px 0 0 0;
+  padding-left:0;
+  list-style:none;
+  max-width:600px;
+}
+li{
+  display:flex;gap:10px;align-items:baseline;
+  font-family:'EB Garamond',serif;
+  font-size:15px;line-height:1.65;
+  color:var(--parchment-dim);
+  padding:5px 0;
+  border-bottom:1px solid var(--rule);
+}
+li:last-child{border-bottom:none;}
+li::before{
+  content:'·';
+  font-family:'IBM Plex Mono',monospace;
+  color:var(--citron);font-size:14px;
+  flex-shrink:0;opacity:0.7;
 }
 
-.nav{
-margin-top:2.6rem;
-display:flex;
-gap:1rem;
-flex-wrap:wrap;
+/* ══ NAV ══ */
+.sw-nav{padding:40px 32px;}
+
+.nav-label{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:9px;letter-spacing:0.18em;text-transform:uppercase;
+  color:var(--parchment-dim);margin-bottom:16px;
 }
 
+.nav{display:flex;gap:8px;flex-wrap:wrap;}
+
+/* legal-repo-link style from semantic-map */
 .button{
-border:1px solid var(--ink);
-padding:.7rem 1.2rem;
-text-decoration:none;
-color:var(--ink);
-background:#fff;
-font-family:'Cinzel',serif;
-font-size:.9rem;
-transition:all .15s ease;
+  font-family:'IBM Plex Mono',monospace;
+  font-size:10px;font-weight:400;
+  letter-spacing:0.08em;text-transform:uppercase;
+  text-decoration:none;
+  padding:7px 16px;
+  border-radius:3px;
+  border:1px solid;
+  transition:all 0.18s;
+}
+.btn-regatta{
+  color:var(--nantucket);
+  border-color:var(--nantucket-dim);
+  background:var(--nantucket-bg);
+}
+.btn-regatta:hover{
+  border-color:var(--nantucket);
+  box-shadow:0 0 10px rgba(122,184,216,0.18);
+}
+.btn-citron{
+  color:var(--citron);
+  border-color:var(--citron-dim);
+  background:var(--citron-bg);
+}
+.btn-citron:hover{
+  border-color:var(--citron);
+  box-shadow:0 0 10px rgba(212,192,106,0.16);
+}
+.btn-dim{
+  color:var(--parchment-dim);
+  border-color:var(--parchment-faint);
+  background:transparent;
+}
+.btn-dim:hover{
+  color:var(--parchment);
+  border-color:var(--parchment-dim);
 }
 
-.button:hover{
-border-color:var(--accent);
-transform:translateY(-2px);
+/* ══ FOOTER ══ */
+footer{
+  padding:28px 32px;
+  border-top:1px solid var(--rule);
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:14px;
+}
+.footer-left{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:10px;letter-spacing:0.08em;
+  color:var(--parchment-dim);line-height:1.9;
+}
+.footer-right{
+  font-family:'Cormorant Garamond',serif;
+  font-size:15px;font-style:italic;
+  color:var(--parchment-faint);
+  text-align:right;max-width:340px;
+  line-height:1.55;
 }
 
-.footer{
-margin-top:3.5rem;
-border-top:1px solid var(--ink);
-padding-top:1rem;
-font-size:.9rem;
-opacity:.75;
-text-align:center;
+@media(max-width:600px){
+  header,.sw,.sw-nav,footer{padding-left:20px;padding-right:20px;}
+  h1{font-size:32px;}
+  footer{flex-direction:column;align-items:flex-start;}
+  .footer-right{text-align:left;}
 }
-
 </style>
-
 </head>
-
 <body>
+<div class="page">
 
-<div class="masthead">
+<header>
+  <div class="eyebrow">Public Administrative Record · Governmentality-2025</div>
+  <h1><em>Introduction</em></h1>
+  <div class="header-sub">The Governmentality-2025 Archive · 2006–2026</div>
+  <p class="header-lede">
+    A sustained governance anomaly: expert warnings delivered
+    repeatedly to organs of the Irish State, followed by
+    extended institutional non-response. This archive holds
+    the documentary record in its primary form.
+  </p>
+</header>
 
-<p>Public Administrative Record</p>
+<div class="sw">
+  <div class="section-label">§ 1 · Purpose</div>
+  <h2>The anomaly and the question it raises</h2>
+  <p>
+    This archive documents the repeated delivery of credible technical
+    warnings to organs of the Irish State regarding systemic
+    administrative risk, followed by extended institutional non-response.
+  </p>
+  <p>
+    The question raised by this record is narrow but consequential.
+  </p>
 
-<h1>INTRODUCTION</h1>
-
-<p>The Governmentality-2025 Archive</p>
-
+  <div class="chain-narrative">
+    <div class="chain-narrative-label">Central question</div>
+    <blockquote>
+      When a government repeatedly receives credible technical warnings,
+      what obligations arise under the principles of administrative reason,
+      public duty, and democratic accountability?
+    </blockquote>
+  </div>
 </div>
 
-
-<section>
-
-<h2>Purpose</h2>
-
-<p>
-This archive documents a sustained governance anomaly:
-the repeated delivery of expert warnings to organs of the Irish State
-regarding systemic administrative risk,
-followed by extended institutional non-response.
-</p>
-
-<p>
-The question raised by this record is narrow but consequential.
-</p>
-
-<div class="note">
-When a government repeatedly receives credible technical warnings,
-what obligations arise under the principles of administrative reason,
-public duty, and democratic accountability?
+<div class="sw">
+  <div class="section-label">§ 2 · Nature of the record</div>
+  <h2>Documentary character</h2>
+  <p>
+    The materials assembled here are documentary in character.
+    They comprise communications, policy proposals,
+    and the subsequent administrative conduct of the institutions
+    to which those materials were delivered.
+  </p>
+  <p>
+    The chronology spans nearly two decades and involves engagement
+    with multiple governmental and policy actors.
+  </p>
 </div>
 
-</section>
+<div class="sw">
+  <div class="section-label">§ 3 · Systemic consequences</div>
+  <h2>Why this matters</h2>
+  <p>
+    Modern governance depends on the ability of institutions to receive,
+    evaluate, and respond to technical intelligence. Where that capacity
+    fails, the effects extend beyond a single administrative decision.
+  </p>
 
+  <ul>
+    <li>Informational integrity within the civil service degrades</li>
+    <li>Policy learning mechanisms weaken</li>
+    <li>Public trust in institutional competence erodes</li>
+    <li>The reputation of the State becomes externally exposed</li>
+  </ul>
 
-
-<section>
-
-<h2>Nature of the Record</h2>
-
-<p>
-The materials assembled here are documentary in character.
-They comprise communications, policy proposals,
-and the subsequent administrative conduct of the institutions
-to which those materials were delivered.
-</p>
-
-<p>
-The chronology spans nearly two decades
-and involves engagement with multiple governmental
-and policy actors.
-</p>
-
-</section>
-
-
-
-<section>
-
-<h2>Why This Matters</h2>
-
-<p>
-Modern governance depends on the ability of institutions
-to receive, evaluate, and respond to technical intelligence.
-Where that capacity fails,
-the effects extend beyond a single administrative decision.
-</p>
-
-<ul>
-
-<li>informational integrity within the civil service degrades</li>
-
-<li>policy learning mechanisms weaken</li>
-
-<li>public trust in institutional competence erodes</li>
-
-<li>the reputation of the State becomes externally exposed</li>
-
-</ul>
-
-<p>
-This archive exists so that the underlying record
-can be examined directly in its documentary form.
-</p>
-
-</section>
-
-
-
-<div class="nav">
-
-<a href="index.html" class="button">
-← Start Page
-</a>
-
-<a href="https://github.com/dr-wojak/governmentality-2025" class="button">
-Primary Archive
-</a>
-
-<a href="https://github.com/dr-wojak/legal" class="button">
-Legal Materials
-</a>
-
+  <div class="memo-argument">
+    <div class="memo-arg-label">Evidentiary basis</div>
+    <div class="memo-arg-body">
+      This archive exists so that the underlying record can be examined
+      directly in its documentary form — not as interpreted summary,
+      but as primary instrument.
+    </div>
+  </div>
 </div>
 
+<div class="sw-nav">
+  <div class="nav-label">Navigation</div>
+  <div class="nav">
+    <a href="index.html" class="button btn-dim">← Start Page</a>
+    <a href="https://github.com/dr-wojak/governmentality-2025" class="button btn-regatta">Primary Archive</a>
+    <a href="https://github.com/dr-wojak/legal" class="button btn-citron">Legal Materials</a>
+    <a href="https://dr-crunch.github.io/sitemap.html" class="button btn-dim">Site Map</a>
+  </div>
+</div>
 
-
-<footer class="footer">
-
-<p>Research record · 2006–2026</p>
-
-<p><em>"A State which receives repeated expert warnings assumes a duty to reason."</em></p>
-
+<footer>
+  <div class="footer-left">
+    Research record · 2006–2026<br>
+    Governmentality-2025 · CC0
+  </div>
+  <div class="footer-right">
+    "A State which receives repeated expert warnings assumes a duty to reason."
+  </div>
 </footer>
 
-
+</div>
 </body>
 </html>
