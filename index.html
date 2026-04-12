@@ -24,930 +24,588 @@
 
 <link rel="icon" type="image/png" href="pigeon-moon-yarn.png" sizes="any">
 <style>
+/* ═══════════════════════════════════════════════
+   DESIGN: Obsidian and Pearl
+   Dark near-black slate as ground.
+   Nacre (mother-of-pearl) as highlight system —
+   luminous white-silver used in three moments only.
+═══════════════════════════════════════════════ */
 :root {
-  /* Slate foundation */
-  --slate:        #0d1018;
-  --slate-1:      #131720;
-  --slate-2:      #1a1f2e;
-  --slate-3:      #222840;
+  /* ── Ground ── */
+  --slate:      #0c0a14;
+  --slate-2:    #131020;
+  --slate-3:    #1b1728;
+  --slate-4:    #221e30;
+  --rule:       rgba(200,180,230,0.08);
+  --rule-strong:rgba(200,180,230,0.14);
 
-  /* Nacre — iridescent pearl tones */
-  --nacre:        #dce5f2;
-  --nacre-mid:    #a0aec4;
-  --nacre-dim:    #4a5470;
-  --nacre-faint:  #262e48;
+  /* ── Text ── */
+  --text:       #cdc8b8;
+  --text-mid:   #8a8478;
+  --text-dim:   #4a4450;
 
-  /* Nacre shimmer — gradient for borders/highlights */
-  --nacre-grad:   linear-gradient(115deg, #7ba8d8 0%, #dce5f2 30%, #b8a0d0 60%, #dce5f2 80%, #6eb8c8 100%);
-  --nacre-subtle: linear-gradient(115deg, rgba(123,168,216,0.4) 0%, rgba(220,229,242,0.6) 40%, rgba(184,160,208,0.4) 70%, rgba(110,184,200,0.35) 100%);
+  /* ── Nacre / Pearl ── */
+  --nacre:        #f0ede8;
+  --nacre-bright: #ffffff;
+  --nacre-border: rgba(240,237,232,0.18);
+  --nacre-glow:   rgba(240,237,232,0.06);
 
-  /* Accents */
-  --scarlet:      #c8253a;
-  --scarlet-dim:  #7a1020;
-  --scarlet-bg:   #1a080a;
-  --citron:       #d4c06a;
-  --citron-dim:   #7a6e28;
-  --citron-bg:    #1c1a08;
-  --gold:         #c8a830;
-  --gold-dim:     #7a6218;
-  --gold-bg:      #1a1608;
-  --grape:        #9b58c8;
-  --grape-dim:    #3a1050;
-  --grape-bg:     #12081a;
-  --dragonfly:    #5ab0c8;
-  --dragonfly-dim:#183e4a;
-  --dragonfly-bg: #0a1820;
-  --sherwood:     #38c878;
-  --sherwood-dim: #0a3820;
-  --sherwood-bg:  #081a10;
+  /* ── Corpus accent colours ── */
+  --scarlet:    #c8253a; --scarlet-lt: #e84060; --scarlet-bg:rgba(200,37,58,0.07);
+  --gold:       #c8a040; --gold-lt:    #e8c850; --gold-bg:   rgba(200,160,64,0.08);
+  --grape-lt:   #9b58c8; --grape-bg:   rgba(107,45,139,0.07);
+  --sherwood-lt:#38c878; --sherwood-bg:rgba(56,200,120,0.06);
+  --dragonfly:  #5ab0c8; --dragonfly-bg:rgba(90,176,200,0.06);
 
-  /* Rules */
-  --rule:         rgba(180,195,230,0.08);
-  --rule-mid:     rgba(180,195,230,0.14);
-  --rule-strong:  rgba(180,195,230,0.22);
+  --mono:   'Source Code Pro', monospace;
+  --serif:  'EB Garamond', Georgia, serif;
+  --display:'Cinzel', serif;
 }
 
-*,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
-
+*,*::before,*::after { box-sizing:border-box; margin:0; padding:0; }
+html { font-size:16px; scroll-behavior:smooth; }
 body {
   background: var(--slate);
-  color: var(--nacre);
-  font-family: 'EB Garamond', Georgia, serif;
-  font-size: 17px;
-  line-height: 1.68;
+  color: var(--text);
+  font-family: var(--serif);
+  font-size: 1rem;
+  line-height: 1.78;
   min-height: 100vh;
 }
 
-/* subtle grain — no starfield */
+/* Subtle grain on dark */
 body::before {
-  content: '';
-  position: fixed; inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.78' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.038'/%3E%3C/svg%3E");
-  pointer-events: none; z-index: 0; opacity: 0.7;
+  content:''; position:fixed; inset:0; pointer-events:none; z-index:0;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  opacity: 0.6;
 }
+body > * { position: relative; z-index: 1; }
 
-/* ── TOP BAR ── */
-.top-bar {
-  position: sticky; top: 0; z-index: 100;
-  background: rgba(13,16,24,0.97);
-  backdrop-filter: blur(16px);
-  border-bottom: 1px solid var(--rule-mid);
-  padding: 11px 32px;
-  display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap;
-}
-.top-bar-wordmark {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 10.5px; letter-spacing: 0.2em; text-transform: uppercase;
-  color: var(--citron); text-decoration: none; font-weight: 400;
-  transition: opacity 0.2s;
-}
-.top-bar-wordmark:hover { opacity: 0.65; }
-.top-bar-nav { display: flex; gap: 22px; flex-wrap: wrap; align-items: center; }
-.top-bar-nav a {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 9.5px; letter-spacing: 0.1em; text-transform: uppercase;
-  color: var(--nacre-mid); text-decoration: none;
-  transition: color 0.15s;
-}
-.top-bar-nav a:hover { color: var(--nacre); }
-.top-bar-nav a.nav-cta {
-  color: var(--citron);
-  border: 1px solid var(--citron-dim);
-  background: var(--citron-bg);
-  padding: 4px 12px; border-radius: 2px;
-  font-size: 9px;
-}
-.top-bar-nav a.nav-cta:hover { opacity: 0.75; }
-
-/* ── WRAPPER ── */
-.wrap {
-  position: relative; z-index: 1;
-  max-width: 920px; margin: 0 auto;
-  padding: 60px 32px 90px;
-}
-
-/* ── ANIMATIONS ── */
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(12px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-.fu { animation: fadeUp 0.55s ease forwards; opacity: 0; }
-.fu:nth-child(1){ animation-delay:0.06s }
-.fu:nth-child(2){ animation-delay:0.18s }
-.fu:nth-child(3){ animation-delay:0.30s }
-.fu:nth-child(4){ animation-delay:0.42s }
-.fu:nth-child(5){ animation-delay:0.54s }
-
-/* ── MASTHEAD ── */
-.masthead {
+/* ═══ ECOSYSTEM NAV ══════════════════════════════ */
+.ecosystem-nav {
+  background: rgba(8,6,16,0.97);
   border-bottom: 1px solid var(--rule-strong);
-  padding-bottom: 42px;
-  margin-bottom: 38px;
+  backdrop-filter: blur(12px);
+  padding: 0 2rem;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 1rem; min-height: 38px; position: sticky; top: 0; z-index: 300;
 }
-.eyebrow {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 9.5px; letter-spacing: 0.2em; text-transform: uppercase;
-  color: var(--citron); margin-bottom: 18px;
-  display: flex; align-items: center; gap: 10px;
+.ecosystem-nav-label {
+  font-family: var(--mono); font-size: 0.57rem; letter-spacing: 0.22em;
+  text-transform: uppercase; color: rgba(200,160,64,0.55); white-space: nowrap; flex-shrink: 0;
 }
-.eyebrow::after {
-  content: ''; flex: 1; height: 1px;
-  background: var(--citron-dim); max-width: 180px;
+.ecosystem-links { display:flex; gap:0; overflow-x:auto; scrollbar-width:none; }
+.ecosystem-links::-webkit-scrollbar { display:none; }
+.ecosystem-link {
+  font-family: var(--mono); font-size: 0.57rem; letter-spacing: 0.1em;
+  text-transform: uppercase; color: rgba(200,190,170,0.42); text-decoration: none;
+  padding: 0 0.9rem; height: 38px; display: flex; align-items: center;
+  border-left: 1px solid rgba(255,255,255,0.05); transition: all 0.15s; white-space: nowrap;
 }
-.masthead h1 {
-  font-family: 'Cormorant Garamond', Georgia, serif;
-  font-weight: 300;
-  font-size: clamp(36px, 6vw, 66px);
-  line-height: 1.0;
-  letter-spacing: -0.015em;
-  color: var(--nacre);
-  margin-bottom: 14px;
-}
-.masthead h1 em { font-style: italic; color: var(--nacre-mid); }
-.masthead-sub {
-  font-family: 'Cormorant Garamond', serif;
-  font-style: italic; font-weight: 300;
-  font-size: clamp(15px, 2.2vw, 21px);
-  color: var(--nacre-mid);
-  margin-bottom: 26px;
-}
-.claim {
-  font-family: 'EB Garamond', serif;
-  font-size: clamp(15px, 1.8vw, 18px);
-  line-height: 1.75;
-  color: var(--nacre);
-  max-width: 680px;
-  border-left: 2px solid var(--scarlet);
-  padding-left: 20px;
-}
-.claim strong { color: var(--nacre); font-weight: 600; }
+.ecosystem-link:hover { color: var(--nacre); }
+.ecosystem-link.current { color: var(--gold-lt); border-bottom: 2px solid var(--gold-lt); }
+.el-dot { display:inline-block; width:6px; height:6px; border-radius:50%; margin-right:6px; }
+.el-dot-scarlet  { background:#c8253a; } .el-dot-grape    { background:#9b58c8; }
+.el-dot-sherwood { background:#38c878; } .el-dot-dragonfly{ background:#5ab0c8; }
+.el-dot-gold     { background:#c8a040; }
 
-/* ── STAT STRIP ── */
-.stat-strip {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1px;
-  background: var(--rule-mid);
-  border: 1px solid var(--rule-mid);
-  border-radius: 4px;
-  overflow: hidden;
-  margin-bottom: 38px;
+/* ═══ MASTHEAD ═══════════════════════════════════ */
+.masthead {
+  padding: 5rem 2rem 4.5rem;
+  border-bottom: 1px solid var(--rule-strong);
+  position: relative; overflow: hidden;
 }
-@media(max-width: 600px) { .stat-strip { grid-template-columns: repeat(2, 1fr); } }
-.stat {
-  background: var(--slate-1);
-  padding: 22px 20px 18px;
-}
-.stat-n {
-  font-family: 'Cormorant Garamond', serif;
-  font-weight: 300;
-  font-size: clamp(36px, 5vw, 54px);
-  line-height: 1;
-  color: var(--nacre);
-  letter-spacing: -0.02em;
-}
-.stat-n em { font-style: italic; font-size: 0.65em; color: var(--nacre-mid); }
-.stat-l {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 8.5px; letter-spacing: 0.13em; text-transform: uppercase;
-  color: var(--nacre-dim); margin-top: 6px;
-}
-
-/* ── DEADLINE STRIP ── */
-.deadline-strip {
-  background: linear-gradient(90deg, rgba(200,168,48,0.1) 0%, rgba(155,88,200,0.08) 100%);
-  border: 1px solid rgba(200,168,48,0.28);
-  border-left: 3px solid var(--gold);
-  border-radius: 4px;
-  padding: 18px 22px;
-  margin-bottom: 50px;
-  display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap;
-}
-.dl-left {}
-.dl-eye {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase;
-  color: var(--gold); margin-bottom: 4px;
-}
-.dl-date {
-  font-family: 'Cormorant Garamond', serif;
-  font-style: italic; font-weight: 300;
-  font-size: clamp(22px, 3.5vw, 34px);
-  line-height: 1;
-  color: var(--nacre);
-  text-shadow: 0 0 30px rgba(200,168,48,0.25);
-}
-.dl-note {
-  font-family: 'EB Garamond', serif;
-  font-size: 14px; line-height: 1.6;
-  color: var(--nacre-mid); margin-top: 5px; max-width: 440px;
-}
-.dl-chip {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 11px; letter-spacing: 0.05em;
-  color: var(--gold);
-  border: 1px solid var(--gold-dim);
-  background: var(--gold-bg);
-  padding: 8px 16px; border-radius: 3px;
-  white-space: nowrap; flex-shrink: 0;
-}
-
-/* ── SECTION LABEL ── */
-.sec-label {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase;
-  color: var(--nacre-dim); margin-bottom: 20px;
-}
-
-/* ── CHANNEL GRID ── */
-.channel-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1px;
-  background: var(--rule-mid);
-  border: 1px solid var(--rule-mid);
-  border-radius: 6px;
-  overflow: hidden;
-  margin-bottom: 54px;
-}
-@media(max-width: 600px) { .channel-grid { grid-template-columns: 1fr; } }
-
-.ch {
-  background: var(--slate-1);
-  padding: 28px 24px;
-  text-decoration: none;
-  color: inherit;
-  display: flex; flex-direction: column;
-  position: relative;
-  transition: background 0.18s;
-}
-.ch:hover { background: var(--slate-2); }
-
-/* nacre top accent bar */
-.ch::before {
-  content: '';
-  position: absolute; top: 0; left: 0; right: 0;
-  height: 2px;
-}
-.ch-civic::before  { background: var(--grape); }
-.ch-press::before  { background: var(--citron-dim); }
-.ch-expert::before { background: var(--dragonfly); }
-.ch-legal::before  { background: var(--scarlet); }
-
-.ch-tag {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 8.5px; letter-spacing: 0.18em; text-transform: uppercase;
-  margin-bottom: 10px;
-}
-.ch-civic .ch-tag  { color: var(--grape); }
-.ch-press .ch-tag  { color: var(--citron); }
-.ch-expert .ch-tag { color: var(--dragonfly); }
-.ch-legal .ch-tag  { color: var(--scarlet); }
-
-.ch-title {
-  font-family: 'Cormorant Garamond', serif;
-  font-weight: 400;
-  font-size: clamp(17px, 2.2vw, 21px);
-  line-height: 1.12;
-  color: var(--nacre);
-  margin-bottom: 10px;
-}
-.ch-desc {
-  font-family: 'EB Garamond', serif;
-  font-size: 15px; line-height: 1.65;
-  color: var(--nacre-mid);
-  flex: 1;
-  margin-bottom: 18px;
-}
-
-/* BIG BUTTON */
-.ch-btn {
-  display: inline-flex; align-items: center; gap: 7px;
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 9.5px; letter-spacing: 0.1em; text-transform: uppercase;
-  padding: 9px 16px;
-  border-radius: 3px;
-  border: 1px solid;
-  text-decoration: none;
-  transition: all 0.18s;
-  align-self: flex-start;
-  cursor: pointer;
-}
-.ch-btn::after { content: '→'; font-size: 11px; }
-.ch-civic .ch-btn  { color: var(--grape); border-color: var(--grape-dim); background: var(--grape-bg); }
-.ch-press .ch-btn  { color: var(--citron); border-color: var(--citron-dim); background: var(--citron-bg); }
-.ch-expert .ch-btn { color: var(--dragonfly); border-color: var(--dragonfly-dim); background: var(--dragonfly-bg); }
-.ch-legal .ch-btn  { color: var(--scarlet); border-color: var(--scarlet-dim); background: var(--scarlet-bg); }
-.ch-btn:hover { opacity: 0.7; }
-
-/* ── NACRE CALLOUT ── */
-.nacre-callout {
-  position: relative;
-  border-radius: 5px;
-  padding: 28px 28px 26px;
-  margin-bottom: 50px;
-  background: var(--slate-2);
-  overflow: hidden;
-}
-.nacre-callout::before {
-  content: '';
-  position: absolute; top: 0; left: 0; right: 0; bottom: 0;
-  border-radius: 5px;
-  padding: 1px;
-  background: var(--nacre-grad);
-  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-  opacity: 0.55;
+/* Ambient glow behind title */
+.masthead::before {
+  content:''; position:absolute;
+  top: -40px; left: -60px; right: -60px; height: 300px;
+  background: radial-gradient(ellipse 70% 60% at 35% 50%, rgba(200,37,58,0.07) 0%, transparent 65%);
   pointer-events: none;
 }
-/* shimmer animation */
-@keyframes nacreShift {
-  0%   { background-position: 0% 50%; }
-  50%  { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+.masthead-inner { max-width: 900px; margin: 0 auto; position: relative; }
+.masthead-kicker {
+  font-family: var(--mono); font-size: 0.58rem; letter-spacing: 0.26em;
+  text-transform: uppercase; color: var(--scarlet); opacity: 0.8;
+  margin-bottom: 1rem; display: flex; align-items: center; gap: 10px;
 }
-.nacre-callout::after {
-  content: '';
-  position: absolute; top: 0; left: 0; right: 0; height: 2px;
-  background: linear-gradient(90deg, #7ba8d8, #dce5f2, #b8a0d0, #6eb8c8, #dce5f2, #7ba8d8);
-  background-size: 300% 100%;
-  animation: nacreShift 6s ease infinite;
-  border-radius: 5px 5px 0 0;
+.masthead-kicker::after {
+  content:''; flex:1; max-width:160px; height:1px;
+  background: linear-gradient(90deg, rgba(200,37,58,0.4), transparent);
 }
-.callout-label {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase;
-  color: var(--nacre-mid); margin-bottom: 14px;
+.masthead-title {
+  font-family: var(--display); font-size: clamp(2.8rem, 7vw, 5.5rem);
+  font-weight: 700; letter-spacing: 0.05em; line-height: 0.95;
+  margin-bottom: 1.4rem;
 }
+/* Nacre moment 1 — the title split */
+.masthead-title .t-plain { color: rgba(200,190,170,0.45); }
+.masthead-title .t-nacre {
+  color: var(--nacre-bright);
+  text-shadow: 0 0 40px rgba(240,237,232,0.22), 0 0 90px rgba(240,237,232,0.1);
+}
+.masthead-sub {
+  font-family: var(--serif); font-style: italic; font-size: clamp(1rem,1.8vw,1.25rem);
+  color: var(--text-mid); margin-bottom: 1.8rem; max-width: 560px;
+}
+.masthead-lede {
+  font-family: var(--serif); font-size: 1.08rem; line-height: 1.85;
+  color: var(--text); max-width: 640px;
+  border-left: 2px solid var(--scarlet); padding-left: 1.2rem;
+}
+
+/* ═══ PAGE SHELL ═════════════════════════════════ */
+.page { max-width: 900px; margin: 0 auto; }
+
+/* ═══ SECTION ════════════════════════════════════ */
+.section { padding: 3.5rem 2rem 3rem; border-bottom: 1px solid var(--rule); }
+.section:last-of-type { border-bottom: none; }
+
+.section-kicker {
+  font-family: var(--mono); font-size: 0.58rem; letter-spacing: 0.24em;
+  text-transform: uppercase; color: var(--text-dim); margin-bottom: 0.5rem;
+  display: flex; align-items: center; gap: 10px;
+}
+.section-kicker::after { content:''; flex:1; max-width:80px; height:1px; background: var(--rule-strong); }
+.section-title {
+  font-family: var(--display); font-size: clamp(1.15rem,2.5vw,1.7rem);
+  font-weight: 500; letter-spacing: 0.05em; color: var(--nacre);
+  margin-bottom: 1.1rem; line-height: 1.15;
+}
+h3 {
+  font-family: var(--serif); font-size: 1.08rem; font-weight: 500;
+  font-style: italic; color: var(--nacre); opacity: 0.8;
+  margin: 1.8rem 0 0.55rem;
+}
+p  { max-width: 68ch; margin-bottom: 1rem; color: var(--text); }
+p:last-child { margin-bottom: 0; }
+strong { color: var(--nacre); font-weight: 400; }
+a  { color: var(--dragonfly); text-decoration: none; border-bottom: 1px solid rgba(90,176,200,0.25); transition: border-color 0.15s; }
+a:hover { border-bottom-color: var(--dragonfly); }
+
+.lead {
+  font-size: 1.1rem; color: var(--nacre); opacity: 0.85;
+  border-left: 2px solid rgba(200,37,58,0.5); padding-left: 1.2rem;
+  margin: 0 0 1.6rem; max-width: 64ch; line-height: 1.72;
+}
+
+/* ═══ NACRE CALLOUT PANEL ════════════════════════
+   The pearl-glass moment. Used sparingly.
+   Luminous border-top, glass body, pearl text.
+═══════════════════════════════════════════════ */
+.nacre-panel {
+  background: linear-gradient(150deg, rgba(255,255,255,0.065) 0%, rgba(240,237,232,0.025) 60%, transparent 100%);
+  border: 1px solid var(--nacre-border);
+  border-top: 2px solid rgba(255,255,255,0.32);
+  border-radius: 4px;
+  padding: 1.8rem 2rem;
+  margin: 1.8rem 0;
+  position: relative; overflow: hidden;
+}
+.nacre-panel::before {
+  content:''; position:absolute; inset:0;
+  background: linear-gradient(180deg, rgba(255,255,255,0.035) 0%, transparent 50%);
+  pointer-events:none; border-radius:4px;
+}
+.nacre-panel > * { position: relative; z-index: 1; }
+.nacre-panel-label {
+  font-family: var(--mono); font-size: 0.56rem; letter-spacing: 0.24em;
+  text-transform: uppercase; color: rgba(240,237,232,0.38); margin-bottom: 0.75rem;
+}
+.nacre-panel-text {
+  font-family: var(--display); font-size: clamp(1rem,2vw,1.45rem);
+  font-weight: 400; letter-spacing: 0.03em; color: var(--nacre-bright);
+  line-height: 1.45;
+  text-shadow: 0 0 32px rgba(240,237,232,0.16);
+}
+.nacre-panel-sub {
+  font-family: var(--serif); font-size: 0.95rem; font-style: italic;
+  color: rgba(200,190,170,0.55); margin-top: 0.85rem; line-height: 1.65; max-width: 560px;
+}
+
+/* ═══ PLAIN CALLOUT ══════════════════════════════ */
+.callout {
+  border: 1px solid; padding: 1.1rem 1.3rem;
+  margin: 1.4rem 0; max-width: 68ch; border-radius: 2px;
+}
+.callout.red { border-color: rgba(200,37,58,0.3); background: var(--scarlet-bg); }
+.callout.gold{ border-color: rgba(200,160,64,0.3); background: var(--gold-bg); }
 .callout-title {
-  font-family: 'Cormorant Garamond', serif;
-  font-weight: 300; font-style: italic;
-  font-size: clamp(20px, 3vw, 28px);
-  color: var(--nacre);
-  margin-bottom: 18px;
-  line-height: 1.1;
+  font-family: var(--mono); font-size: 0.57rem; letter-spacing: 0.18em;
+  text-transform: uppercase; margin-bottom: 0.5rem; display: block;
+}
+.callout.red  .callout-title { color: var(--scarlet-lt); }
+.callout.gold .callout-title { color: var(--gold-lt); }
+.callout p { max-width: none; color: var(--text-mid); }
+
+/* ═══ LOOP STEPS ═════════════════════════════════ */
+.loop-steps { display:flex; flex-direction:column; gap:1px; background:var(--rule-strong); border:1px solid var(--rule-strong); margin:1.6rem 0; border-radius:3px; overflow:hidden; }
+.loop-step { background: var(--slate-2); display:grid; grid-template-columns:52px 1fr; transition:background 0.15s; }
+.loop-step:hover { background: var(--slate-3); }
+.loop-step-n {
+  display:flex; align-items:center; justify-content:center;
+  font-family: var(--display); font-size: 1.15rem; font-weight: 400;
+  color: var(--text-dim); border-right: 1px solid var(--rule);
+  padding: 1rem 0.5rem;
+}
+.loop-step-body { padding: 0.95rem 1.1rem; }
+.loop-step-name { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.13em; text-transform: uppercase; color: var(--scarlet-lt); margin-bottom: 0.3rem; opacity: 0.85; }
+.loop-step-desc { font-size: 0.92rem; color: var(--text-mid); line-height: 1.55; }
+
+/* ═══ STAT ROW ═══════════════════════════════════ */
+.stat-row { display:grid; grid-template-columns:repeat(auto-fit,minmax(115px,1fr)); gap:1px; background:var(--rule-strong); border:1px solid var(--rule-strong); margin:1.6rem 0; border-radius:3px; overflow:hidden; }
+.stat-cell { background:var(--slate-2); padding:1.4rem 1rem; text-align:center; }
+.stat-n { font-family:var(--display); font-size:clamp(1.8rem,4vw,3rem); font-weight:400; line-height:1; display:block; margin-bottom:0.3rem; }
+.stat-label { font-family:var(--mono); font-size:0.55rem; letter-spacing:0.13em; text-transform:uppercase; color:var(--text-dim); line-height:1.4; }
+.stat-cell.red  .stat-n { color:var(--scarlet-lt); }
+.stat-cell.gold .stat-n { color:var(--gold-lt); }
+.stat-cell.pearl .stat-n { color:var(--nacre); text-shadow:0 0 24px rgba(240,237,232,0.18); }
+
+/* ═══ DEADLINE STRIP ══════════════════════════════
+   Nacre moment 2 — deadline as pearl announcement.
+═══════════════════════════════════════════════ */
+.deadline-strip {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 1.5rem; flex-wrap: wrap;
+  background: linear-gradient(120deg, rgba(200,160,64,0.1) 0%, rgba(240,237,232,0.04) 100%);
+  border: 1px solid rgba(200,160,64,0.28);
+  border-top: 2px solid rgba(240,237,232,0.25);
+  border-radius: 3px; padding: 1.4rem 1.6rem; margin: 1.8rem 0;
+  position: relative; overflow: hidden;
+}
+.deadline-strip::before {
+  content:''; position:absolute; top:0; left:0; right:0; height:1px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.18), transparent);
+  pointer-events: none;
+}
+.deadline-left {}
+.deadline-eyebrow { font-family:var(--mono); font-size:0.55rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--gold-lt); opacity:0.65; margin-bottom:0.3rem; display:block; }
+.deadline-date {
+  font-family: var(--display); font-size: clamp(1.5rem,4vw,2.4rem);
+  font-weight: 500; letter-spacing: 0.04em;
+  color: var(--nacre-bright);
+  text-shadow: 0 0 28px rgba(240,237,232,0.18);
+  line-height: 1;
+}
+.deadline-context { font-family:var(--serif); font-size:0.88rem; color:var(--text-mid); margin-top:0.35rem; max-width:440px; line-height:1.55; }
+.deadline-chip {
+  font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.08em;
+  padding: 0.55rem 1.1rem; border-radius: 2px; white-space: nowrap; flex-shrink: 0;
+  border: 1px solid rgba(200,160,64,0.35);
+  background: rgba(200,160,64,0.1);
+  color: var(--gold-lt);
 }
 
-/* Loop stages */
-.loop-stages {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 1px;
-  background: var(--rule-mid);
-  border: 1px solid var(--rule-mid);
-  border-radius: 3px;
-  overflow: hidden;
-  margin-top: 18px;
+/* ═══ LINK CARDS ══════════════════════════════════ */
+.link-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(210px,1fr)); gap:8px; margin:1.5rem 0; }
+.link-card {
+  display:block; text-decoration:none; border:none;
+  padding: 1rem 1.1rem;
+  background: var(--slate-2); border: 1px solid var(--rule-strong);
+  border-radius: 2px; transition: background 0.15s, border-color 0.15s;
+  position: relative; overflow: hidden;
 }
-@media(max-width: 680px) { .loop-stages { grid-template-columns: 1fr; } }
-.ls {
-  background: var(--slate-1);
-  padding: 16px 14px 14px;
-}
-.ls-n {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 8px; letter-spacing: 0.14em; text-transform: uppercase;
-  color: var(--nacre-dim); margin-bottom: 6px;
-}
-.ls-title {
-  font-family: 'EB Garamond', serif;
-  font-weight: 600;
-  font-size: 14.5px; line-height: 1.2;
-  color: var(--nacre); margin-bottom: 5px;
-}
-.ls-desc {
-  font-family: 'EB Garamond', serif;
-  font-size: 13.5px; line-height: 1.5;
-  color: var(--nacre-mid);
-}
+.link-card::before { content:''; position:absolute; top:0; left:0; right:0; height:2px; }
+.link-card:hover { background: var(--slate-3); }
+.link-card-label { font-family:var(--mono); font-size:0.56rem; letter-spacing:0.16em; text-transform:uppercase; margin-bottom:0.4rem; display:block; opacity:0.7; }
+.link-card-title { font-family:var(--display); font-size:0.82rem; letter-spacing:0.04em; font-weight:500; color:var(--nacre); margin-bottom:0.35rem; display:block; }
+.link-card-desc  { font-size:0.84rem; color:var(--text-dim); line-height:1.5; }
+/* Colour variants */
+.lc-scarlet::before   { background:var(--scarlet); }
+.lc-scarlet .link-card-label { color:var(--scarlet-lt); }
+.lc-gold::before     { background:var(--gold); }
+.lc-gold .link-card-label    { color:var(--gold-lt); }
+.lc-grape::before    { background:var(--grape-lt); }
+.lc-grape .link-card-label   { color:var(--grape-lt); }
+.lc-sherwood::before { background:var(--sherwood-lt); }
+.lc-sherwood .link-card-label{ color:var(--sherwood-lt); }
+.lc-dragonfly::before{ background:var(--dragonfly); }
+.lc-dragonfly .link-card-label{ color:var(--dragonfly); }
+.lc-pearl::before    { background:linear-gradient(90deg,rgba(255,255,255,0.3),rgba(255,255,255,0.1)); }
+.lc-pearl .link-card-label   { color:rgba(240,237,232,0.5); }
 
-/* ── THREE HYPOTHESES ── */
-.hyp-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1px;
-  background: var(--rule-mid);
-  border: 1px solid var(--rule-mid);
-  border-radius: 5px;
-  overflow: hidden;
-  margin-top: 22px;
-  margin-bottom: 54px;
+/* ═══ BLOCKQUOTE ═════════════════════════════════ */
+blockquote {
+  border-left: 2px solid rgba(200,160,64,0.4);
+  padding: 0.9rem 1.2rem; margin: 1.4rem 0; max-width: 64ch;
+  background: var(--gold-bg);
 }
-@media(max-width: 620px) { .hyp-grid { grid-template-columns: 1fr; } }
-.hyp {
-  background: var(--slate-1);
-  padding: 24px 20px 22px;
-  position: relative;
-}
-.hyp::after {
-  content: '';
-  position: absolute; top: 0; left: 0; right: 0; height: 1px;
-  background: var(--nacre-subtle);
-  opacity: 0.7;
-}
-.hyp-glyph {
-  font-family: 'Cormorant Garamond', serif;
-  font-style: italic; font-weight: 300;
-  font-size: 34px; line-height: 1;
-  color: var(--nacre-faint);
-  margin-bottom: 10px;
-}
-.hyp-label {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 8.5px; letter-spacing: 0.16em; text-transform: uppercase;
-  color: var(--nacre-dim); margin-bottom: 8px;
-}
-.hyp-title {
-  font-family: 'Cormorant Garamond', serif;
-  font-weight: 500;
-  font-size: 18px; line-height: 1.15;
-  color: var(--nacre); margin-bottom: 10px;
-}
-.hyp-body {
-  font-family: 'EB Garamond', serif;
-  font-size: 15px; line-height: 1.62;
-  color: var(--nacre-mid);
-}
+blockquote p { font-style:italic; color:var(--text); }
+blockquote cite { font-family:var(--mono); font-size:0.57rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--text-dim); display:block; margin-top:0.4rem; font-style:normal; }
 
-/* ── SITEMAP SECTION ── */
-.sitemap-section {
-  margin-bottom: 54px;
-}
-.sitemap-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1px;
-  background: var(--rule-mid);
-  border: 1px solid var(--rule-mid);
-  border-radius: 5px;
-  overflow: hidden;
-}
-@media(max-width: 640px) { .sitemap-grid { grid-template-columns: 1fr; } }
+/* ═══ NACRE SEPARATOR ════════════════════════════ */
+.nacre-rule { height:1px; background:linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent); margin:2rem 0; }
 
-.sm-group {
-  background: var(--slate-1);
-  padding: 22px 20px;
-}
-.sm-group-label {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 8.5px; letter-spacing: 0.18em; text-transform: uppercase;
-  color: var(--nacre-dim);
-  margin-bottom: 14px;
-  padding-bottom: 10px;
-  border-bottom: 1px solid var(--rule);
-}
-.sm-links { display: flex; flex-direction: column; gap: 3px; }
-.sm-link {
-  display: flex; align-items: baseline; gap: 8px;
-  text-decoration: none;
-  padding: 6px 8px;
-  border-radius: 3px;
-  transition: background 0.15s;
-}
-.sm-link:hover { background: var(--slate-2); }
-.sm-link-glyph {
-  font-size: 10px; color: var(--nacre-dim); flex-shrink: 0;
-}
-.sm-link-content {}
-.sm-link-title {
-  font-family: 'EB Garamond', serif;
-  font-size: 15px; line-height: 1.2;
-  color: var(--nacre);
-  display: block;
-}
-.sm-link-meta {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 9px; letter-spacing: 0.06em;
-  color: var(--nacre-dim);
-  display: block; margin-top: 1px;
-}
+/* ═══ FOOTER ══════════════════════════════════════ */
+.site-footer { background:rgba(6,4,12,0.98); border-top:1px solid var(--rule); padding:1.6rem 2rem 0; }
+.site-footer-inner { max-width:900px; margin:0 auto; display:flex; justify-content:space-between; align-items:flex-start; gap:1rem; flex-wrap:wrap; padding-bottom:1.4rem; }
+.footer-left { font-family:var(--mono); font-size:0.55rem; letter-spacing:0.06em; line-height:1.9; color:var(--text-dim); }
+.footer-left a { color:var(--text-dim); text-decoration:none; border:none; }
+.footer-left a:hover { color:var(--text-mid); }
+.footer-bar { height:3px; background:linear-gradient(90deg,#c8253a 0%,#c8a040 35%,#9b58c8 65%,#38c878 100%); }
 
-/* colour dots for sitemap groups */
-.sm-group:nth-child(1) .sm-group-label { color: var(--grape); }
-.sm-group:nth-child(2) .sm-group-label { color: var(--dragonfly); }
-.sm-group:nth-child(3) .sm-group-label { color: var(--scarlet); }
-
-/* ── QUICK LINKS ROW ── */
-.ql-row {
-  display: flex; flex-wrap: wrap; gap: 8px;
-  margin-bottom: 50px;
-}
-.ql {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 9.5px; letter-spacing: 0.07em;
-  padding: 6px 14px;
-  border-radius: 20px;
-  border: 1px solid;
-  text-decoration: none;
-  transition: opacity 0.18s;
-}
-.ql:hover { opacity: 0.65; }
-.ql-grape    { color: var(--grape);    border-color: var(--grape-dim);    background: var(--grape-bg); }
-.ql-gold     { color: var(--gold);     border-color: var(--gold-dim);     background: var(--gold-bg); }
-.ql-sherwood { color: var(--sherwood); border-color: var(--sherwood-dim); background: var(--sherwood-bg); }
-.ql-dragonfly{ color: var(--dragonfly);border-color: var(--dragonfly-dim);background: var(--dragonfly-bg); }
-.ql-citron   { color: var(--citron);   border-color: var(--citron-dim);   background: var(--citron-bg); }
-.ql-scarlet  { color: var(--scarlet);  border-color: var(--scarlet-dim);  background: var(--scarlet-bg); }
-
-/* ── COLOPHON ── */
-.colophon {
-  border-top: 1px solid var(--rule-mid);
-  padding-top: 28px;
-  display: flex; justify-content: space-between; align-items: flex-start;
-  gap: 18px; flex-wrap: wrap;
-}
-.colophon-left {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 9.5px; letter-spacing: 0.07em; line-height: 1.85;
-  color: var(--nacre-dim);
-}
-.colophon-left a { color: var(--nacre-dim); text-decoration: none; }
-.colophon-left a:hover { color: var(--nacre); }
-.colophon-quote {
-  font-family: 'Cormorant Garamond', serif;
-  font-style: italic; font-size: 15px;
-  color: var(--nacre-dim);
-  max-width: 380px; line-height: 1.6;
-  text-align: right;
-}
-
-/* ── MISC ── */
-.mb-sm { margin-bottom: 20px; }
-.mb-md { margin-bottom: 38px; }
-
-@media(max-width:520px){
-  .wrap { padding: 40px 18px 70px; }
-  .top-bar { padding: 10px 18px; }
-  .deadline-strip { flex-direction: column; }
-  .colophon { flex-direction: column; }
-  .colophon-quote { text-align: left; }
+/* ═══ RESPONSIVE ══════════════════════════════════ */
+@media(max-width:620px){
+  .masthead { padding:3.5rem 1.2rem 3rem; }
+  .section  { padding:2.4rem 1.2rem 2rem; }
+  .nacre-panel { padding:1.3rem 1.2rem; }
+  .deadline-strip { flex-direction:column; align-items:flex-start; }
+  .loop-step { grid-template-columns:38px 1fr; }
+  .ecosystem-nav { flex-wrap:nowrap; padding:0 1rem; }
 }
 </style>
 </head>
 <body>
 
-<!-- TOP BAR -->
-<div class="top-bar">
-  <a class="top-bar-wordmark" href="https://dr-crunch.github.io/">Meinhardt Initiative</a>
-  <div class="top-bar-nav">
-    <a href="https://dr-crunch.github.io/nullification-loops/">Nullification Loops</a>
-    <a href="https://dr-crunch.github.io/redundancy-awareness/semantic-map.html">Semantic Map</a>
-    <a href="https://dr-wojak.github.io/legal/">Legal</a>
-    <a class="nav-cta" href="https://drive.google.com/drive/u/0/folders/12o4-OPXJ0W5E8pxF9pN-VKUeODagy17g" target="_blank" rel="noopener">Archive →</a>
+<!-- ═══ ECOSYSTEM NAV ══════════════════════════════ -->
+<nav class="ecosystem-nav" aria-label="Meinhardt Initiative ecosystem">
+  <span class="ecosystem-nav-label">Meinhardt Initiative</span>
+  <div class="ecosystem-links">
+    <a class="ecosystem-link current" href="https://dr-crunch.github.io/start-here/"><span class="el-dot el-dot-gold"></span>Start Here</a>
+    <a class="ecosystem-link" href="https://dr-crunch.github.io/nullification-loops/dossier.html"><span class="el-dot el-dot-scarlet"></span>Dossier</a>
+    <a class="ecosystem-link" href="https://dr-wojak.github.io/redundancy-awareness/semantic-map.html"><span class="el-dot el-dot-grape"></span>Semantic Map</a>
+    <a class="ecosystem-link" href="https://dr-crunch.github.io/redundancy-awareness/deontological-differences.html"><span class="el-dot el-dot-gold"></span>Deontological</a>
+    <a class="ecosystem-link" href="https://dr-wojak.github.io/redundancy-awareness/failure-modes.html"><span class="el-dot el-dot-sherwood"></span>Failure Modes</a>
+    <a class="ecosystem-link" href="https://dr-wojak.github.io/legal/"><span class="el-dot el-dot-dragonfly"></span>Legal Repository</a>
+    <a class="ecosystem-link" href="https://dr-crunch.github.io/nullification-loops/tairiscint.html"><span class="el-dot el-dot-gold"></span>Tairiscint</a>
   </div>
-</div>
+</nav>
 
-<!-- WRAP -->
-<div class="wrap">
-
-  <!-- MASTHEAD -->
-  <div class="masthead">
-    <div class="eyebrow fu">Press Information · For Immediate Release · 2026</div>
-    <h1 class="fu">Start <em>Here</em></h1>
-    <div class="masthead-sub fu">A Public Record of Administrative Failure</div>
-    <p class="claim fu">
-      A single, verifiable claim: <strong>the Irish State repeatedly received expert, actionable intelligence on systemic governance risk — and failed to absorb or act on it.</strong> Nineteen years. Six Taoisigh. Zero determinations.
-    </p>
-  </div>
-
-  <!-- STAT STRIP -->
-  <div class="stat-strip fu">
-    <div class="stat">
-      <div class="stat-n">19</div>
-      <div class="stat-l">Years on record</div>
+<!-- ═══ MASTHEAD ═══════════════════════════════════ -->
+<header class="masthead">
+  <div class="masthead-inner">
+    <div class="masthead-kicker">Meinhardt Initiative · Plain-language introduction</div>
+    <div class="masthead-title">
+      <span class="t-plain">Start</span> <span class="t-nacre">Here</span>
     </div>
-    <div class="stat">
-      <div class="stat-n">6</div>
-      <div class="stat-l">Taoisigh in office</div>
-    </div>
-    <div class="stat">
-      <div class="stat-n">0</div>
-      <div class="stat-l">Determinations issued</div>
-    </div>
-    <div class="stat">
-      <div class="stat-n">226 <em>pages</em></div>
-      <div class="stat-l">Formal Complaint</div>
+    <div class="masthead-sub">What happened, why it matters, and where to look next</div>
+    <div class="masthead-lede">
+      A researcher submitted governance proposals to the Irish State nineteen years ago. They were acknowledged. Nothing was done. Every available oversight channel was tried. Each passed the matter on. None accepted responsibility. This site is the record of that.
     </div>
   </div>
+</header>
 
-  <!-- DEADLINE -->
+<div class="page">
+
+<!-- ═══ § 1 · WHAT IS THIS ════════════════════════ -->
+<section class="section" id="what">
+  <div class="section-kicker">§ 01</div>
+  <div class="section-title">What Is This?</div>
+
+  <p class="lead">A public record of a nineteen-year governance failure. Not a blog. Not a protest. A legal and evidential archive — presented here in plain language so that anyone can understand what happened.</p>
+
+  <h3>Operations Research — one sentence</h3>
+  <p><strong>Operations Research (O.R.)</strong> is the science of making better decisions using mathematics and systems analysis. It is used in hospital scheduling, supply chains, military logistics, emergency planning. The Irish State applies it to almost none of its public governance.</p>
+
+  <h3>What was submitted</h3>
+  <p>Beginning in November 2006, the Meinhardt Initiative formally submitted O.R. frameworks to multiple Irish government departments — Defence, Foreign Affairs, Health, Finance, Emergency Planning — as tools for better public decision-making. The submissions were grounded, documented, and lawfully made.</p>
+
+  <h3>What "nothing" means</h3>
+  <p>No evaluation. No rejection with reasons. No determination of any kind — neither yes nor no. After nineteen years, six governments, and four Taoisigh, not a single submission has been formally assessed, approved, or refused. That is not delay. It is the systematic nullification of a civic process.</p>
+
+  <div class="callout red">
+    <span class="callout-title">Why this matters beyond one person's complaint</span>
+    <p>If a state can receive formally submitted public proposals, acknowledge them, and take no action — indefinitely, without legal consequence — then civic participation is not a right. It is a ritual. This site documents that the Irish State has, in practice, treated it as the latter.</p>
+  </div>
+</section>
+
+<!-- ═══ § 2 · THE LOOP ════════════════════════════ -->
+<section class="section" id="loop">
+  <div class="section-kicker">§ 02</div>
+  <div class="section-title">How It Worked — The Nullification Loop</div>
+
+  <p>Every department and government that received the submissions made the same five moves. Together they form what this corpus calls the <strong>Nullification Loop</strong> — a sequence that produces the same output (no decision) regardless of who is operating it.</p>
+
+  <!-- Nacre panel — the loop invariant -->
+  <div class="nacre-panel">
+    <div class="nacre-panel-label">Loop invariant</div>
+    <div class="nacre-panel-text">Six Taoisigh. Four governments. Zero determinations.</div>
+    <div class="nacre-panel-sub">The output of the loop has been identical across every change of personnel, party, and parliamentary term since 2006. No individual is necessary for the loop to run. The system produces ignoring as its default output.</div>
+  </div>
+
+  <div class="loop-steps">
+    <div class="loop-step">
+      <div class="loop-step-n">1</div>
+      <div class="loop-step-body">
+        <div class="loop-step-name">Acknowledgement as Closure</div>
+        <div class="loop-step-desc">"Thank you, the matter has been noted." The acknowledgement is treated as resolution. No next step follows. Files are sometimes deleted.</div>
+      </div>
+    </div>
+    <div class="loop-step">
+      <div class="loop-step-n">2</div>
+      <div class="loop-step-body">
+        <div class="loop-step-name">Remit Displacement</div>
+        <div class="loop-step-desc">"This does not fall within our remit." The matter is redirected — but to no one in particular. No body ever identifies who does have responsibility.</div>
+      </div>
+    </div>
+    <div class="loop-step">
+      <div class="loop-step-n">3</div>
+      <div class="loop-step-body">
+        <div class="loop-step-name">Deferral Without Destination</div>
+        <div class="loop-step-desc">"This is a matter for policy." No timetable. No named responsible official. Permanent provisionality.</div>
+      </div>
+    </div>
+    <div class="loop-step">
+      <div class="loop-step-n">4</div>
+      <div class="loop-step-body">
+        <div class="loop-step-name">Sufficiency Assertion</div>
+        <div class="loop-step-desc">"Such methodologies are already in use." No evidence provided. No audit. The claim closes the conversation without opening the file.</div>
+      </div>
+    </div>
+    <div class="loop-step">
+      <div class="loop-step-n">5</div>
+      <div class="loop-step-body">
+        <div class="loop-step-name">Record Suppression</div>
+        <div class="loop-step-desc">Correspondence declined, deleted, or not minuted. Institutional memory is deliberately truncated. The record disappears. The loop resets.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ § 3 · BY THE NUMBERS ══════════════════════ -->
+<section class="section" id="numbers">
+  <div class="section-kicker">§ 03</div>
+  <div class="section-title">By the Numbers</div>
+
+  <div class="stat-row">
+    <div class="stat-cell pearl">
+      <span class="stat-n">19</span>
+      <span class="stat-label">Years Without a Single Determination</span>
+    </div>
+    <div class="stat-cell red">
+      <span class="stat-n">0</span>
+      <span class="stat-label">Formal Assessments Issued</span>
+    </div>
+    <div class="stat-cell red">
+      <span class="stat-n">0</span>
+      <span class="stat-label">Responses from the Petitions Committee — 16 communications sent</span>
+    </div>
+    <div class="stat-cell gold">
+      <span class="stat-n">7</span>
+      <span class="stat-label">Oireachtas Committees Declined Jurisdiction</span>
+    </div>
+    <div class="stat-cell gold">
+      <span class="stat-n">10</span>
+      <span class="stat-label">Irish MEPs Contacted — 0 Responses</span>
+    </div>
+    <div class="stat-cell gold">
+      <span class="stat-n">26kg</span>
+      <span class="stat-label">O.R. Research Materials — Held, Never Returned</span>
+    </div>
+  </div>
+
+  <p>The EU Commissioner who now holds the portfolio for Democracy, Justice, and Rule of Law was first notified of this governance failure in March 2020, when he was a sitting TD. Three letters were sent to his office as Commissioner. Zero acknowledgements received.</p>
+</section>
+
+<!-- ═══ § 4 · THE DEADLINE ════════════════════════ -->
+<section class="section" id="deadline">
+  <div class="section-kicker">§ 04</div>
+  <div class="section-title">Why Now</div>
+
+  <p>Ireland assumes the Presidency of the Council of the European Union on 1 July 2026. During that Presidency, Ireland will chair deliberations on democratic accountability, rule of law, and good governance across the European Union. The structural irony is documented, timestamped, and archived.</p>
+
+  <!-- Nacre moment 2 — deadline -->
   <div class="deadline-strip">
-    <div class="dl-left">
-      <div class="dl-eye">Structural Deadline · EU Council Presidency</div>
-      <div class="dl-date">July 1st, 2026</div>
-      <div class="dl-note">Ireland chairs the EU Council. Continued institutional silence becomes a European rule-of-law event — the Presidency Paradox closes.</div>
+    <div class="deadline-left">
+      <span class="deadline-eyebrow">Structural Deadline · EU Council Presidency</span>
+      <div class="deadline-date">1 July 2026</div>
+      <div class="deadline-context">Ireland cannot chair Council deliberations on rule-of-law enforcement while standing in documented breach of the right to good administration it will be charged to uphold.</div>
     </div>
-    <div class="dl-chip" id="daysChip">— days remaining</div>
+    <div class="deadline-chip" id="deadline-chip">— days remaining</div>
   </div>
 
-  
+  <blockquote>
+    <p>Can a Member State lawfully hold the Council Presidency while suppressing an ethics complaint that documents its own breach of Treaty obligations in areas within the Presidency's functional responsibilities?</p>
+    <cite>Central legal question — placed before the CJEU, March 9th, 2025. No response received.</cite>
+  </blockquote>
+</section>
 
-  <!-- NULLIFICATION LOOP CALLOUT -->
-  <div class="nacre-callout mb-md">
-    <div class="callout-label">Lúba Neamhnithe · Interregnum Nullificans</div>
-    <div class="callout-title">The Nullification Loop — five stages, zero determinations</div>
-    <div class="loop-stages">
-      <div class="ls">
-        <div class="ls-n">Stage 01</div>
-        <div class="ls-title">Acknowledgement as Closure</div>
-        <div class="ls-desc">Receipt confirmed. No pathway follows. Files sometimes deleted.</div>
-      </div>
-      <div class="ls">
-        <div class="ls-n">Stage 02</div>
-        <div class="ls-title">Remit Displacement</div>
-        <div class="ls-desc">Passed laterally. No body holds the full objective. Jurisdictional evaporation.</div>
-      </div>
-      <div class="ls">
-        <div class="ls-n">Stage 03</div>
-        <div class="ls-title">Deferral without Destination</div>
-        <div class="ls-desc">Action postponed. No timetable. No accountable actor.</div>
-      </div>
-      <div class="ls">
-        <div class="ls-n">Stage 04</div>
-        <div class="ls-title">Sufficiency without Audit</div>
-        <div class="ls-desc">Existing arrangements asserted as adequate. No evidence furnished.</div>
-      </div>
-      <div class="ls">
-        <div class="ls-n">Stage 05</div>
-        <div class="ls-title">Record Suppression</div>
-        <div class="ls-desc">Institutional memory does not persist. The loop resets. The matter resurfaces unchanged.</div>
-      </div>
-    </div>
+<!-- ═══ § 5 · WHERE TO GO NEXT ════════════════════ -->
+<section class="section" id="next">
+  <div class="section-kicker">§ 05</div>
+  <div class="section-title">Where to Go Next</div>
+
+  <p>The corpus is structured in layers — from plain overview to formal legal record. Start where the depth suits you.</p>
+
+  <!-- Nacre moment 3 — the central question as panel -->
+  <div class="nacre-panel" style="margin-bottom:1.8rem;">
+    <div class="nacre-panel-label">The question this whole corpus asks</div>
+    <div class="nacre-panel-text">Can a state acknowledge civic intelligence — formally, repeatedly, over nineteen years — and do nothing with it, without legal or institutional consequence?</div>
+    <div class="nacre-panel-sub">If the answer is yes, then acknowledgement discharges obligation. It does not. But in the absence of a determination to the contrary, it functions as if it does. Every document in this archive exists to force a determination.</div>
   </div>
 
-  <!-- THREE HYPOTHESES -->
-  <div class="sec-label mb-sm">The diagnostic frame · three non-exclusive hypotheses</div>
-  <div class="hyp-grid">
-    <div class="hyp">
-      <div class="hyp-glyph">α</div>
-      <div class="hyp-label">Hypothesis Alpha</div>
-      <div class="hyp-title">Structural Non-Governance</div>
-      <div class="hyp-body">The Irish State lacks the institutional architecture to process O.R. submissions of this character. The failure is design-failure, not agent-failure. The system produces ignoring as its default output.</div>
-    </div>
-    <div class="hyp">
-      <div class="hyp-glyph">β</div>
-      <div class="hyp-label">Hypothesis Beta</div>
-      <div class="hyp-title">Misfeasance in Public Office</div>
-      <div class="hyp-body">Individual officeholders, once formally notified, are subject to the misfeasance threshold. Knowledge + inaction + harm = tort. Several named officeholders have reached this threshold.</div>
-    </div>
-    <div class="hyp">
-      <div class="hyp-glyph">γ</div>
-      <div class="hyp-label">Hypothesis Gamma</div>
-      <div class="hyp-title">Epistemic Failure</div>
-      <div class="hyp-body">The State cannot evaluate what it cannot categorise. O.R. as methodology falls outside existing evaluation grammar. Correction requires both a writ and a curriculum change.</div>
-    </div>
+  <div class="link-grid">
+    <a class="link-card lc-scarlet" href="https://dr-crunch.github.io/nullification-loops/dossier.html">
+      <span class="link-card-label">Full Dossier · All evidence</span>
+      <span class="link-card-title">Scátháin agus Splanc</span>
+      <span class="link-card-desc">The complete evidentiary record. Overview, the loop, legal instruments, actors, documents, five scopes, all in one place.</span>
+    </a>
+    <a class="link-card lc-grape" href="https://dr-wojak.github.io/redundancy-awareness/semantic-map.html">
+      <span class="link-card-label">Causal map · How it connects</span>
+      <span class="link-card-title">Semantic Map</span>
+      <span class="link-card-desc">The directed labelled graph: how every failure mode, legal condition, and institutional actor connects. For those who want the architecture.</span>
+    </a>
+    <a class="link-card lc-dragonfly" href="https://dr-wojak.github.io/legal/">
+      <span class="link-card-label">Legal Record · High Court + EU</span>
+      <span class="link-card-title">Legal Repository</span>
+      <span class="link-card-desc">Statutory and constitutional instruments, pre-litigation notices, EU Treaty engagement, mandamus grounds.</span>
+    </a>
+    <a class="link-card lc-sherwood" href="https://dr-crunch.github.io/nullification-loops/tairiscint.html">
+      <span class="link-card-label">Constitutional Indictment</span>
+      <span class="link-card-title">Tairiscint Mheinhardt</span>
+      <span class="link-card-desc">The formal charge architecture — six grounds, from statutory failure to EU Treaty breach to misfeasance in public office.</span>
+    </a>
+    <a class="link-card lc-gold" href="https://dr-wojak.github.io/redundancy-awareness/failure-modes.html">
+      <span class="link-card-label">Five repeatable patterns</span>
+      <span class="link-card-title">Failure Modes</span>
+      <span class="link-card-desc">Each of the five loop stages documented as a concrete, repeatable institutional output with named instances.</span>
+    </a>
+    <a class="link-card lc-pearl" href="https://drive.google.com/drive/u/0/folders/12o4-OPXJ0W5E8pxF9pN-VKUeODagy17g" target="_blank">
+      <span class="link-card-label">Source material · Google Drive</span>
+      <span class="link-card-title">Full Archive</span>
+      <span class="link-card-desc">226 pages of formal complaint, five annexes, memoranda, correspondence logs, pre-litigation notices. CC0 — public domain.</span>
+    </a>
   </div>
 
-  <!-- SITEMAP -->
-  <div class="sitemap-section">
-    <div class="sec-label mb-sm">Website Overview</div>
-    <div class="sitemap-grid">
+  <div class="nacre-rule"></div>
 
-      <!-- COLUMN 1: Public Facing -->
-      <div class="sm-group">
-        <div class="sm-group-label">Public · Web</div>
-        <div class="sm-links">
-          <a class="sm-link" href="https://dr-crunch.github.io/" >
-            <span class="sm-link-glyph">⬡</span>
-            <span class="sm-link-content">
-              <span class="sm-link-title">Meinhardt Initiative</span>
-              <span class="sm-link-meta">dr-crunch.github.io</span>
-            </span>
-          </a>
-          <a class="sm-link" href="https://dr-crunch.github.io/nullification-loops/" >
-            <span class="sm-link-glyph">⬡</span>
-            <span class="sm-link-content">
-              <span class="sm-link-title">Nullification Loops</span>
-              <span class="sm-link-meta">dr-crunch.github.io/nullification-loops</span>
-            </span>
-          </a>
-          <a class="sm-link" href="https://dr-crunch.github.io/nullification-loops/dossier.html" >
-            <span class="sm-link-glyph">⬡</span>
-            <span class="sm-link-content">
-              <span class="sm-link-title">Full Dossier</span>
-              <span class="sm-link-meta">Eight sections · Scátháin agus Splanc</span>
-            </span>
-          </a>
-          <a class="sm-link" href="https://dr-crunch.github.io/nullification-loops/tairiscint.html" >
-            <span class="sm-link-glyph">⬡</span>
-            <span class="sm-link-content">
-              <span class="sm-link-title">Tairiscint</span>
-              <span class="sm-link-meta">Constitutional indictment · legal register</span>
-            </span>
-          </a>
-          <a class="sm-link" href="https://dr-crunch.github.io/redundancy-awareness/" >
-            <span class="sm-link-glyph">⬡</span>
-            <span class="sm-link-content">
-              <span class="sm-link-title">Redundancy Awareness</span>
-              <span class="sm-link-meta">dr-crunch.github.io/redundancy-awareness</span>
-            </span>
-          </a>
-          <a class="sm-link" href="https://dr-wojak.github.io/legal/" >
-            <span class="sm-link-glyph">⬡</span>
-            <span class="sm-link-content">
-              <span class="sm-link-title">Legal Repository</span>
-              <span class="sm-link-meta">dr-wojak.github.io/legal · 226 pp</span>
-            </span>
-          </a>
-          <a class="sm-link" href="https://dr-crunch.github.io/meinhardt-docket-001" >
-            <span class="sm-link-glyph">⬡</span>
-            <span class="sm-link-content">
-              <span class="sm-link-title">Meinhardt Docket 001</span>
-              <span class="sm-link-meta">Supplementary Dáil specification</span>
-            </span>
-          </a>
-        </div>
-      </div>
+  <p style="color:var(--text-dim); font-size:0.9rem;">All materials are published under <strong style="color:var(--text-mid);">CC0 — Public Domain</strong>. No permission required. The record is designed to be read, cited, and shared.</p>
+</section>
 
-      <!-- COLUMN 2: Analytical -->
-      <div class="sm-group">
-        <div class="sm-group-label">Analytical · Corpus</div>
-        <div class="sm-links">
-          <a class="sm-link" href="https://dr-crunch.github.io/redundancy-awareness/semantic-map.html" >
-            <span class="sm-link-glyph">⬡</span>
-            <span class="sm-link-content">
-              <span class="sm-link-title">Semantic Map</span>
-              <span class="sm-link-meta">Causal semantics · OWL axiom chain</span>
-            </span>
-          </a>
-          <a class="sm-link" href="https://dr-crunch.github.io/redundancy-awareness/deontological-differences.html" >
-            <span class="sm-link-glyph">⬡</span>
-            <span class="sm-link-content">
-              <span class="sm-link-title">Deontological Differences</span>
-              <span class="sm-link-meta">Five channel obligations</span>
-            </span>
-          </a>
-          <a class="sm-link" href="https://dr-crunch.github.io/redundancy-awareness/ontology-relations.html" >
-            <span class="sm-link-glyph">⬡</span>
-            <span class="sm-link-content">
-              <span class="sm-link-title">Ontology Relations</span>
-              <span class="sm-link-meta">OWL object properties · causal operators</span>
-            </span>
-          </a>
-          <a class="sm-link" href="https://dr-crunch.github.io/redundancy-awareness/failure-modes.html" >
-            <span class="sm-link-glyph">⬡</span>
-            <span class="sm-link-content">
-              <span class="sm-link-title">Failure Modes</span>
-              <span class="sm-link-meta">Five repeatable institutional outputs</span>
-            </span>
-          </a>
-          <a class="sm-link" href="https://dr-crunch.github.io/redundancy-awareness/epistemological-audit.html" >
-            <span class="sm-link-glyph">⬡</span>
-            <span class="sm-link-content">
-              <span class="sm-link-title">Epistemological Audit</span>
-              <span class="sm-link-meta">Evidentiary epistemic record 2006–2026</span>
-            </span>
-          </a>
-          <a class="sm-link" href="https://github.com/dr-wojak/governmentality-2025" >
-            <span class="sm-link-glyph">⬡</span>
-            <span class="sm-link-content">
-              <span class="sm-link-title">Governmentality-2025</span>
-              <span class="sm-link-meta">GitHub · Beer/VSM · Bateson · O.R.</span>
-            </span>
-          </a>
-          <a class="sm-link" href="https://dr-crunch.github.io/sitemap" >
-            <span class="sm-link-glyph">⬡</span>
-            <span class="sm-link-content">
-              <span class="sm-link-title">Sitemap</span>
-              <span class="sm-link-meta">Chronological ministerial audit</span>
-            </span>
-          </a>
-        </div>
-      </div>
+</div><!-- /page -->
 
-      <!-- COLUMN 3: Repositories + Drive -->
-      <div class="sm-group">
-        <div class="sm-group-label">Repositories · Archive</div>
-        <div class="sm-links">
-          <a class="sm-link" href="https://drive.google.com/drive/u/0/folders/12o4-OPXJ0W5E8pxF9pN-VKUeODagy17g" target="_blank" rel="noopener">
-            <span class="sm-link-glyph">⬡</span>
-            <span class="sm-link-content">
-              <span class="sm-link-title">Main Drive Archive</span>
-              <span class="sm-link-meta">CC0 · Open access · Master folder</span>
-            </span>
-          </a>
-          <a class="sm-link" href="https://drive.google.com/drive/u/0/folders/1FMPO1exETcpb4jxX-q5Mh2VIpYwYuATS" target="_blank" rel="noopener">
-            <span class="sm-link-glyph">⬡</span>
-            <span class="sm-link-content">
-              <span class="sm-link-title">Full Complaint Archive</span>
-              <span class="sm-link-meta">65 pp + 161 supplemental · Annexes I–V</span>
-            </span>
-          </a>
-          <a class="sm-link" href="https://github.com/dr-crunch/nullification-loops" target="_blank" rel="noopener">
-            <span class="sm-link-glyph">⬡</span>
-            <span class="sm-link-content">
-              <span class="sm-link-title">GitHub · nullification-loops</span>
-              <span class="sm-link-meta">dr-crunch/nullification-loops</span>
-            </span>
-          </a>
-          <a class="sm-link" href="https://github.com/dr-wojak/legal" target="_blank" rel="noopener">
-            <span class="sm-link-glyph">⬡</span>
-            <span class="sm-link-content">
-              <span class="sm-link-title">GitHub · legal</span>
-              <span class="sm-link-meta">dr-wojak/legal · pre-litigation</span>
-            </span>
-          </a>
-          <a class="sm-link" href="https://github.com/dr-wojak/press" target="_blank" rel="noopener">
-            <span class="sm-link-glyph">⬡</span>
-            <span class="sm-link-content">
-              <span class="sm-link-title">GitHub · press</span>
-              <span class="sm-link-meta">dr-wojak/press · CC0 · media</span>
-            </span>
-          </a>
-          <a class="sm-link" href="https://github.com/dr-wojak/public-relations" target="_blank" rel="noopener">
-            <span class="sm-link-glyph">⬡</span>
-            <span class="sm-link-content">
-              <span class="sm-link-title">GitHub · public-relations</span>
-              <span class="sm-link-meta">dr-wojak/public-relations · civic</span>
-            </span>
-          </a>
-          <a class="sm-link" href="https://github.com/dr-wojak/redundancy-awareness" target="_blank" rel="noopener">
-            <span class="sm-link-glyph">⬡</span>
-            <span class="sm-link-content">
-              <span class="sm-link-title">GitHub · redundancy-awareness</span>
-              <span class="sm-link-meta">dr-wojak/redundancy-awareness</span>
-            </span>
-          </a>
-        </div>
-      </div>
-
+<div class="footer-bar"></div>
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <div class="footer-left">
+      Meinhardt Initiative · Start Here · Plain-language introduction · April 2026<br>
+      CC0 1.0 Universal · All materials public domain · Interregnum Nullificans<br>
+      <a href="https://dr-crunch.github.io/nullification-loops">Nullification Loops</a> ·
+      <a href="https://dr-wojak.github.io/redundancy-awareness/semantic-map.html">Semantic Map</a> ·
+      <a href="https://dr-wojak.github.io/legal/">Legal Repository</a> ·
+      <a href="https://drive.google.com/drive/u/0/folders/12o4-OPXJ0W5E8pxF9pN-VKUeODagy17g" target="_blank">Drive Archive</a>
+    </div>
+    <div style="font-family:var(--mono);font-size:0.55rem;color:var(--text-dim);text-align:right;line-height:1.8;letter-spacing:0.06em;">
+      19 years · 0 determinations<br>
+      <span style="opacity:0.4;">The query is open.</span>
     </div>
   </div>
-
-<!-- CHANNELS -->
-  <div class="sec-label">Jump into the Raw Archives/div>
-  <div class="channel-grid mb-md">
-
-    <div class="ch ch-civic">
-      <div class="ch-tag">Channel · Civic</div>
-      <div class="ch-title">Citizens &amp;<br>General Public</div>
-      <div class="ch-desc">The civic signal in plain terms. What was ignored, who received it, and why it matters for democratic accountability in Ireland.</div>
-      <a class="ch-btn" href="https://github.com/dr-wojak/public-relations" target="_blank" rel="noopener">Public Relations</a>
-    </div>
-
-    <div class="ch ch-press">
-      <div class="ch-tag">Channel · Media</div>
-      <div class="ch-title">Journalists &amp;<br>Researchers</div>
-      <div class="ch-desc">Timestamped signal-to-silence timeline. CC0 evidentiary record. Publication-ready investigation thread. No restrictions on use.</div>
-      <a class="ch-btn" href="https://github.com/dr-wojak/press" target="_blank" rel="noopener">Press Portal</a>
-    </div>
-
-    <div class="ch ch-expert">
-      <div class="ch-tag">Channel · Academic</div>
-      <div class="ch-title">Experts &amp;<br>Policymakers</div>
-      <div class="ch-desc">The Governmentality-2025 core record. Beer/VSM · Bateson · cohomological failure mapping. Nineteen years of O.R. signal into a structural diagnosis.</div>
-      <a class="ch-btn" href="https://github.com/dr-wojak/governmentality-2025" target="_blank" rel="noopener">Governmentality-2025</a>
-    </div>
-
-    <div class="ch ch-legal">
-      <div class="ch-tag">Channel · Legal</div>
-      <div class="ch-title">Lawyers &amp;<br>Judges</div>
-      <div class="ch-desc">Constitutional, statutory, and EU law record. Mandamus grounds · Art.41 CFR · CJEU Member State failure track. 226 pages. Pre-litigation.</div>
-      <a class="ch-btn" href="https://dr-wojak.github.io/legal/" target="_blank" rel="noopener">Legal Repository</a>
-    </div>
-
-  </div>
-  
-  <!-- QUICK LINKS -->
-  <div class="ql-row">
-    <a class="ql ql-grape"     href="https://dr-crunch.github.io/nullification-loops/">⬡ Nullification Loops</a>
-    <a class="ql ql-grape"     href="https://dr-crunch.github.io/redundancy-awareness/semantic-map.html">⬡ Semantic Map</a>
-    <a class="ql ql-dragonfly" href="https://dr-crunch.github.io/redundancy-awareness/deontological-differences.html">⬡ Deontological Differences</a>
-    <a class="ql ql-dragonfly" href="https://dr-crunch.github.io/redundancy-awareness/ontology-relations.html">⬡ Ontology Relations</a>
-    <a class="ql ql-dragonfly" href="https://dr-crunch.github.io/redundancy-awareness/failure-modes.html">⬡ Failure Modes</a>
-    <a class="ql ql-sherwood"  href="https://dr-wojak.github.io/legal/">⬡ Legal Repository</a>
-    <a class="ql ql-citron"    href="https://dr-crunch.github.io/nullification-loops/tairiscint.html">⬡ Tairiscint</a>
-    <a class="ql ql-scarlet"   href="https://dr-crunch.github.io/nullification-loops/dossier.html">⬡ Full Dossier</a>
-    <a class="ql ql-gold"      href="https://drive.google.com/drive/u/0/folders/12o4-OPXJ0W5E8pxF9pN-VKUeODagy17g" target="_blank" rel="noopener">⬡ Drive Archive</a>
-  </div>
-
-  <!-- COLOPHON -->
-  <div class="colophon">
-    <div class="colophon-left">
-      Research archive · 2006–2026 · Meinhardt Initiative<br>
-      CC0 1.0 Universal · Open Access · Pre-litigation public record<br>
-      <a href="https://dr-crunch.github.io/">dr-crunch.github.io</a>
-    </div>
-    <div class="colophon-quote">
-      "Information Asymmetry without Fiduciary Care"
-    </div>
-  </div>
-
-</div><!-- /wrap -->
+</footer>
 
 <script>
-(function(){
-  const chip = document.getElementById('daysChip');
-  if(!chip) return;
-  const target = new Date('2026-07-01T08:00:00Z');
-  function tick(){
+// ── Live deadline counter — logic from semantic-map.html ──
+(function() {
+  const chip = document.getElementById('deadline-chip');
+  if (!chip) return;
+  const target = new Date('2026-07-01T08:00:00Z'); // 09:00 IST (UTC+1, summer)
+
+  function tick() {
     const diff = target - Date.now();
-    if(diff <= 0){ chip.textContent = 'Presidency active'; return; }
-    const days = Math.ceil(diff / 86400000);
-    chip.textContent = days + (days === 1 ? ' day' : ' days') + ' remaining';
+    if (diff <= 0) { chip.textContent = 'Presidency active'; return; }
+    const days = diff / 86400000;
+    const display = days >= 1 ? (Math.floor(days * 2) / 2).toFixed(1) : '< 0.5';
+    chip.textContent = display + ' days remaining';
   }
+
   tick();
   setInterval(tick, 60000);
 })();
