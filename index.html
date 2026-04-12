@@ -3,365 +3,950 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="The Meinhardt Initiative — a nineteen-year public record of expert warnings on Irish governance risk. Pre-litigation. CC0. Open access.">
+<meta name="keywords" content="Meinhardt Initiative, Nullification Loops, Irish governance, administrative failure, EU Council Presidency, mandamus, Séachanachas, public record">
+<meta name="author" content="Meinhardt Initiative">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Start Here · Meinhardt Initiative">
+<meta property="og:description" content="Nineteen years. Six Taoisigh. Zero determinations. A single verifiable claim — the Irish State was told.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://dr-crunch.github.io/start-here/index.html">
+<meta property="og:image" content="https://dr-crunch.github.io/start-here/og-image-compendium.jpg?raw=true">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Start Here · Meinhardt Initiative">
+<meta name="twitter:description" content="Nineteen years. Six Taoisigh. Zero determinations.">
+<meta name="twitter:image" content="https://dr-crunch.github.io/start-here/og-image-compendium.jpg?raw=true">
 <title>Start Here · Meinhardt Initiative</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=IBM+Plex+Mono:wght@300;400;500&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Cinzel:wght@400;500;700&display=swap" rel="stylesheet">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=IBM+Plex+Mono:wght@300;400;500&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Cinzel:wght@400;500&display=swap" rel="stylesheet">
+
 <style>
 :root {
-  --ink:#0a0910;
-  --surface:#141018;
-  --surface2:#1c1820;
-  --parchment:#e8e3d4;
-  --parchment-dim:#9e9887;
-  --parchment-faint:#38303e;
-  --scarlet:#c8253a;
-  --scarlet-dim:#7a1020;
-  --scarlet-bg:#1a080a;
-  --citron:#d4c06a;
-  --citron-dim:#7a6e28;
-  --citron-bg:#1c1a08;
-  --dragonfly:#5ab0c8;
+  /* Slate foundation */
+  --slate:        #0d1018;
+  --slate-1:      #131720;
+  --slate-2:      #1a1f2e;
+  --slate-3:      #222840;
+
+  /* Nacre — iridescent pearl tones */
+  --nacre:        #dce5f2;
+  --nacre-mid:    #a0aec4;
+  --nacre-dim:    #4a5470;
+  --nacre-faint:  #262e48;
+
+  /* Nacre shimmer — gradient for borders/highlights */
+  --nacre-grad:   linear-gradient(115deg, #7ba8d8 0%, #dce5f2 30%, #b8a0d0 60%, #dce5f2 80%, #6eb8c8 100%);
+  --nacre-subtle: linear-gradient(115deg, rgba(123,168,216,0.4) 0%, rgba(220,229,242,0.6) 40%, rgba(184,160,208,0.4) 70%, rgba(110,184,200,0.35) 100%);
+
+  /* Accents */
+  --scarlet:      #c8253a;
+  --scarlet-dim:  #7a1020;
+  --scarlet-bg:   #1a080a;
+  --citron:       #d4c06a;
+  --citron-dim:   #7a6e28;
+  --citron-bg:    #1c1a08;
+  --gold:         #c8a830;
+  --gold-dim:     #7a6218;
+  --gold-bg:      #1a1608;
+  --grape:        #9b58c8;
+  --grape-dim:    #3a1050;
+  --grape-bg:     #12081a;
+  --dragonfly:    #5ab0c8;
   --dragonfly-dim:#183e4a;
-  --dragonfly-bg:#0a1820;
-  --rivulet:#38c8b8;
-  --rivulet-dim:#187868;
-  --rivulet-bg:#081e1a;
-  --cosmic:#9898c8;
-  --cosmic-dim:#404068;
-  --cosmic-bg:#10101e;
-  --bordeaux:#b87898;
-  --bordeaux-dim:#4a2838;
-  --bordeaux-bg:#180d12;
-  --grape:#6b2d8b;
-  --grape-lt:#9b58c8;
-  --grape-dim:#3a1050;
-  --grape-bg:#12081a;
-  --gold:#c8a830;
-  --gold-lt:#e8c850;
-  --gold-dim:#7a6218;
-  --gold-bg:#1a1608;
-  --sherwood:#1a7a48;
-  --sherwood-lt:#38c878;
-  --sherwood-dim:#0a3820;
-  --sherwood-bg:#081a10;
-  --rule:rgba(200,180,230,0.09);
-  --rule-strong:rgba(200,180,230,0.16);
+  --dragonfly-bg: #0a1820;
+  --sherwood:     #38c878;
+  --sherwood-dim: #0a3820;
+  --sherwood-bg:  #081a10;
+
+  /* Rules */
+  --rule:         rgba(180,195,230,0.08);
+  --rule-mid:     rgba(180,195,230,0.14);
+  --rule-strong:  rgba(180,195,230,0.22);
 }
 
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-html{scroll-behavior:smooth;}
+*,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
 
-body{
-  background:var(--ink);
-  color:var(--parchment);
-  font-family:'Cormorant Garamond',Georgia,serif;
-  font-size:17px;
-  line-height:1.65;
-  min-height:100vh;
+body {
+  background: var(--slate);
+  color: var(--nacre);
+  font-family: 'EB Garamond', Georgia, serif;
+  font-size: 17px;
+  line-height: 1.68;
+  min-height: 100vh;
 }
 
-body::before{
-  content:'';position:fixed;inset:0;
-  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
-  pointer-events:none;z-index:0;opacity:0.55;
+/* subtle grain — no starfield */
+body::before {
+  content: '';
+  position: fixed; inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.78' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.038'/%3E%3C/svg%3E");
+  pointer-events: none; z-index: 0; opacity: 0.7;
 }
 
 /* ── TOP BAR ── */
-.top-bar{
-  position:sticky;top:0;z-index:100;
-  border-bottom:1px solid var(--rule-strong);
-  background:rgba(10,9,16,0.96);
-  backdrop-filter:blur(14px);
-  padding:12px 32px;
-  display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;
+.top-bar {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(13,16,24,0.97);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--rule-mid);
+  padding: 11px 32px;
+  display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap;
 }
-.top-bar-title{
-  font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.14em;
-  text-transform:uppercase;color:var(--citron);
-  text-decoration:none;
-  transition:opacity 0.2s;
+.top-bar-wordmark {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10.5px; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--citron); text-decoration: none; font-weight: 400;
+  transition: opacity 0.2s;
 }
-.top-bar-title:hover{opacity:0.6;}
-.top-bar-links{display:flex;gap:18px;flex-wrap:wrap;}
-.top-bar-links a{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--parchment-dim);text-decoration:none;transition:color 0.15s;}
-.top-bar-links a:hover{color:var(--parchment);}
+.top-bar-wordmark:hover { opacity: 0.65; }
+.top-bar-nav { display: flex; gap: 22px; flex-wrap: wrap; align-items: center; }
+.top-bar-nav a {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9.5px; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--nacre-mid); text-decoration: none;
+  transition: color 0.15s;
+}
+.top-bar-nav a:hover { color: var(--nacre); }
+.top-bar-nav a.nav-cta {
+  color: var(--citron);
+  border: 1px solid var(--citron-dim);
+  background: var(--citron-bg);
+  padding: 4px 12px; border-radius: 2px;
+  font-size: 9px;
+}
+.top-bar-nav a.nav-cta:hover { opacity: 0.75; }
 
 /* ── WRAPPER ── */
-.wrap{
-  position:relative;z-index:1;
-  max-width:900px;margin:0 auto;
-  padding:56px 32px 80px;
+.wrap {
+  position: relative; z-index: 1;
+  max-width: 920px; margin: 0 auto;
+  padding: 60px 32px 90px;
 }
 
 /* ── ANIMATIONS ── */
-@keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
-.fade-up{animation:fadeUp 0.55s ease forwards;opacity:0;}
-.fade-up:nth-child(1){animation-delay:0.05s}
-.fade-up:nth-child(2){animation-delay:0.18s}
-.fade-up:nth-child(3){animation-delay:0.30s}
-.fade-up:nth-child(4){animation-delay:0.42s}
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.fu { animation: fadeUp 0.55s ease forwards; opacity: 0; }
+.fu:nth-child(1){ animation-delay:0.06s }
+.fu:nth-child(2){ animation-delay:0.18s }
+.fu:nth-child(3){ animation-delay:0.30s }
+.fu:nth-child(4){ animation-delay:0.42s }
+.fu:nth-child(5){ animation-delay:0.54s }
 
 /* ── MASTHEAD ── */
-.masthead{
-  border-bottom:1px solid var(--rule-strong);
-  padding-bottom:40px;
-  margin-bottom:48px;
+.masthead {
+  border-bottom: 1px solid var(--rule-strong);
+  padding-bottom: 42px;
+  margin-bottom: 38px;
 }
-.eyebrow{
-  font-family:'IBM Plex Mono',monospace;font-size:10px;
-  letter-spacing:0.18em;text-transform:uppercase;
-  color:var(--citron);margin-bottom:16px;
-  display:flex;align-items:center;gap:10px;
+.eyebrow {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9.5px; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--citron); margin-bottom: 18px;
+  display: flex; align-items: center; gap: 10px;
 }
-.eyebrow::after{content:'';flex:1;height:1px;background:var(--citron);opacity:0.22;max-width:200px;}
+.eyebrow::after {
+  content: ''; flex: 1; height: 1px;
+  background: var(--citron-dim); max-width: 180px;
+}
+.masthead h1 {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-weight: 300;
+  font-size: clamp(36px, 6vw, 66px);
+  line-height: 1.0;
+  letter-spacing: -0.015em;
+  color: var(--nacre);
+  margin-bottom: 14px;
+}
+.masthead h1 em { font-style: italic; color: var(--nacre-mid); }
+.masthead-sub {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic; font-weight: 300;
+  font-size: clamp(15px, 2.2vw, 21px);
+  color: var(--nacre-mid);
+  margin-bottom: 26px;
+}
+.claim {
+  font-family: 'EB Garamond', serif;
+  font-size: clamp(15px, 1.8vw, 18px);
+  line-height: 1.75;
+  color: var(--nacre);
+  max-width: 680px;
+  border-left: 2px solid var(--scarlet);
+  padding-left: 20px;
+}
+.claim strong { color: var(--nacre); font-weight: 600; }
 
-.masthead h1{
-  font-family:'Cormorant Garamond',Georgia,serif;
-  font-weight:300;
-  font-size:clamp(32px,5.5vw,60px);
-  line-height:1.02;
-  letter-spacing:-0.01em;
-  color:var(--parchment);
-  margin-bottom:12px;
+/* ── STAT STRIP ── */
+.stat-strip {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--rule-mid);
+  border: 1px solid var(--rule-mid);
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 38px;
 }
-.masthead h1 em{
-  font-style:italic;
-  color:var(--parchment-dim);
+@media(max-width: 600px) { .stat-strip { grid-template-columns: repeat(2, 1fr); } }
+.stat {
+  background: var(--slate-1);
+  padding: 22px 20px 18px;
 }
-
-.masthead-sub{
-  font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:300;
-  font-size:clamp(15px,2vw,20px);
-  color:var(--parchment-dim);
-  margin-bottom:28px;
+.stat-n {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 300;
+  font-size: clamp(36px, 5vw, 54px);
+  line-height: 1;
+  color: var(--nacre);
+  letter-spacing: -0.02em;
 }
-.claim{
-  font-family:'EB Garamond',serif;
-  font-size:clamp(15px,1.8vw,18px);
-  line-height:1.78;color:var(--parchment);
-  max-width:680px;
-  border-left:2px solid var(--scarlet);
-  padding-left:20px;
+.stat-n em { font-style: italic; font-size: 0.65em; color: var(--nacre-mid); }
+.stat-l {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 8.5px; letter-spacing: 0.13em; text-transform: uppercase;
+  color: var(--nacre-dim); margin-top: 6px;
 }
-.claim strong{color:var(--parchment);font-weight:500;}
-
-/* ── SECTION LABEL ── */
-.section-label{
-  font-family:'IBM Plex Mono',monospace;font-size:10px;
-  letter-spacing:0.15em;text-transform:uppercase;
-  color:var(--parchment-dim);margin-bottom:20px;
-}
-
-/* ── AUDIENCE GRID ── */
-.audience-grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:1px;
-  background:var(--rule-strong);
-  border:1px solid var(--rule-strong);
-  border-radius:6px;
-  overflow:hidden;
-  margin-bottom:48px;
-}
-@media(max-width:580px){.audience-grid{grid-template-columns:1fr;}}
-
-.audience-card{
-  background:var(--surface);
-  padding:28px 24px;
-  text-decoration:none;
-  color:inherit;
-  display:block;
-  transition:background 0.18s;
-  position:relative;
-}
-.audience-card:hover{background:var(--surface2);}
-.audience-card::before{
-  content:'';
-  position:absolute;top:0;left:0;right:0;height:2px;
-}
-
-.ac-civic::before{background:var(--grape-lt);}
-.ac-press::before{background:var(--citron);}
-.ac-expert::before{background:var(--dragonfly);}
-.ac-legal::before{background:var(--scarlet);}
-
-.card-label{
-  font-family:'IBM Plex Mono',monospace;font-size:9px;
-  letter-spacing:0.16em;text-transform:uppercase;
-  margin-bottom:8px;
-}
-.ac-civic .card-label{color:var(--grape-lt);}
-.ac-press .card-label{color:var(--citron);}
-.ac-expert .card-label{color:var(--dragonfly);}
-.ac-legal .card-label{color:var(--scarlet);}
-
-.card-title{
-  font-family:'Cormorant Garamond',serif;font-weight:400;
-  font-size:clamp(17px,2.2vw,21px);
-  color:var(--parchment);
-  margin-bottom:10px;line-height:1.15;
-}
-.card-desc{
-  font-family:'EB Garamond',serif;font-size:15px;
-  line-height:1.65;color:var(--parchment-dim);
-  margin-bottom:14px;
-}
-.card-link{
-  font-family:'IBM Plex Mono',monospace;font-size:9px;
-  letter-spacing:0.12em;text-transform:uppercase;
-  display:inline-flex;align-items:center;gap:5px;
-}
-.ac-civic .card-link{color:var(--grape-lt);}
-.ac-press .card-link{color:var(--citron);}
-.ac-expert .card-link{color:var(--dragonfly);}
-.ac-legal .card-link{color:var(--scarlet);}
-.card-link::after{content:'→';font-size:11px;}
 
 /* ── DEADLINE STRIP ── */
-.deadline-strip{
-  background:linear-gradient(90deg, rgba(200,168,48,0.12) 0%, rgba(107,45,139,0.12) 100%);
-  border:1px solid rgba(200,168,48,0.3);
-  border-left:3px solid var(--gold-lt);
-  border-radius:4px;
-  padding:18px 22px;
-  margin-bottom:48px;
-  display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;
+.deadline-strip {
+  background: linear-gradient(90deg, rgba(200,168,48,0.1) 0%, rgba(155,88,200,0.08) 100%);
+  border: 1px solid rgba(200,168,48,0.28);
+  border-left: 3px solid var(--gold);
+  border-radius: 4px;
+  padding: 18px 22px;
+  margin-bottom: 50px;
+  display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap;
 }
-.deadline-eyebrow{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:0.16em;text-transform:uppercase;color:var(--gold-lt);margin-bottom:4px;}
-.deadline-date{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(22px,3vw,32px);font-weight:300;color:var(--parchment);line-height:1;text-shadow:0 0 20px rgba(200,168,48,0.3);}
-.deadline-context{font-family:'EB Garamond',serif;font-size:14px;color:var(--parchment-dim);margin-top:4px;max-width:480px;}
-.deadline-chip{font-family:'IBM Plex Mono',monospace;font-size:11px;padding:8px 16px;border-radius:3px;border:1px solid var(--gold-dim);background:var(--gold-bg);color:var(--gold-lt);white-space:nowrap;flex-shrink:0;}
+.dl-left {}
+.dl-eye {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 4px;
+}
+.dl-date {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic; font-weight: 300;
+  font-size: clamp(22px, 3.5vw, 34px);
+  line-height: 1;
+  color: var(--nacre);
+  text-shadow: 0 0 30px rgba(200,168,48,0.25);
+}
+.dl-note {
+  font-family: 'EB Garamond', serif;
+  font-size: 14px; line-height: 1.6;
+  color: var(--nacre-mid); margin-top: 5px; max-width: 440px;
+}
+.dl-chip {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px; letter-spacing: 0.05em;
+  color: var(--gold);
+  border: 1px solid var(--gold-dim);
+  background: var(--gold-bg);
+  padding: 8px 16px; border-radius: 3px;
+  white-space: nowrap; flex-shrink: 0;
+}
+
+/* ── SECTION LABEL ── */
+.sec-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--nacre-dim); margin-bottom: 20px;
+}
+
+/* ── CHANNEL GRID ── */
+.channel-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: var(--rule-mid);
+  border: 1px solid var(--rule-mid);
+  border-radius: 6px;
+  overflow: hidden;
+  margin-bottom: 54px;
+}
+@media(max-width: 600px) { .channel-grid { grid-template-columns: 1fr; } }
+
+.ch {
+  background: var(--slate-1);
+  padding: 28px 24px;
+  text-decoration: none;
+  color: inherit;
+  display: flex; flex-direction: column;
+  position: relative;
+  transition: background 0.18s;
+}
+.ch:hover { background: var(--slate-2); }
+
+/* nacre top accent bar */
+.ch::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0;
+  height: 2px;
+}
+.ch-civic::before  { background: var(--grape); }
+.ch-press::before  { background: var(--citron-dim); }
+.ch-expert::before { background: var(--dragonfly); }
+.ch-legal::before  { background: var(--scarlet); }
+
+.ch-tag {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 8.5px; letter-spacing: 0.18em; text-transform: uppercase;
+  margin-bottom: 10px;
+}
+.ch-civic .ch-tag  { color: var(--grape); }
+.ch-press .ch-tag  { color: var(--citron); }
+.ch-expert .ch-tag { color: var(--dragonfly); }
+.ch-legal .ch-tag  { color: var(--scarlet); }
+
+.ch-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 400;
+  font-size: clamp(17px, 2.2vw, 21px);
+  line-height: 1.12;
+  color: var(--nacre);
+  margin-bottom: 10px;
+}
+.ch-desc {
+  font-family: 'EB Garamond', serif;
+  font-size: 15px; line-height: 1.65;
+  color: var(--nacre-mid);
+  flex: 1;
+  margin-bottom: 18px;
+}
+
+/* BIG BUTTON */
+.ch-btn {
+  display: inline-flex; align-items: center; gap: 7px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9.5px; letter-spacing: 0.1em; text-transform: uppercase;
+  padding: 9px 16px;
+  border-radius: 3px;
+  border: 1px solid;
+  text-decoration: none;
+  transition: all 0.18s;
+  align-self: flex-start;
+  cursor: pointer;
+}
+.ch-btn::after { content: '→'; font-size: 11px; }
+.ch-civic .ch-btn  { color: var(--grape); border-color: var(--grape-dim); background: var(--grape-bg); }
+.ch-press .ch-btn  { color: var(--citron); border-color: var(--citron-dim); background: var(--citron-bg); }
+.ch-expert .ch-btn { color: var(--dragonfly); border-color: var(--dragonfly-dim); background: var(--dragonfly-bg); }
+.ch-legal .ch-btn  { color: var(--scarlet); border-color: var(--scarlet-dim); background: var(--scarlet-bg); }
+.ch-btn:hover { opacity: 0.7; }
+
+/* ── NACRE CALLOUT ── */
+.nacre-callout {
+  position: relative;
+  border-radius: 5px;
+  padding: 28px 28px 26px;
+  margin-bottom: 50px;
+  background: var(--slate-2);
+  overflow: hidden;
+}
+.nacre-callout::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+  border-radius: 5px;
+  padding: 1px;
+  background: var(--nacre-grad);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0.55;
+  pointer-events: none;
+}
+/* shimmer animation */
+@keyframes nacreShift {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+.nacre-callout::after {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg, #7ba8d8, #dce5f2, #b8a0d0, #6eb8c8, #dce5f2, #7ba8d8);
+  background-size: 300% 100%;
+  animation: nacreShift 6s ease infinite;
+  border-radius: 5px 5px 0 0;
+}
+.callout-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--nacre-mid); margin-bottom: 14px;
+}
+.callout-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 300; font-style: italic;
+  font-size: clamp(20px, 3vw, 28px);
+  color: var(--nacre);
+  margin-bottom: 18px;
+  line-height: 1.1;
+}
+
+/* Loop stages */
+.loop-stages {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1px;
+  background: var(--rule-mid);
+  border: 1px solid var(--rule-mid);
+  border-radius: 3px;
+  overflow: hidden;
+  margin-top: 18px;
+}
+@media(max-width: 680px) { .loop-stages { grid-template-columns: 1fr; } }
+.ls {
+  background: var(--slate-1);
+  padding: 16px 14px 14px;
+}
+.ls-n {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 8px; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--nacre-dim); margin-bottom: 6px;
+}
+.ls-title {
+  font-family: 'EB Garamond', serif;
+  font-weight: 600;
+  font-size: 14.5px; line-height: 1.2;
+  color: var(--nacre); margin-bottom: 5px;
+}
+.ls-desc {
+  font-family: 'EB Garamond', serif;
+  font-size: 13.5px; line-height: 1.5;
+  color: var(--nacre-mid);
+}
+
+/* ── THREE HYPOTHESES ── */
+.hyp-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--rule-mid);
+  border: 1px solid var(--rule-mid);
+  border-radius: 5px;
+  overflow: hidden;
+  margin-top: 22px;
+  margin-bottom: 54px;
+}
+@media(max-width: 620px) { .hyp-grid { grid-template-columns: 1fr; } }
+.hyp {
+  background: var(--slate-1);
+  padding: 24px 20px 22px;
+  position: relative;
+}
+.hyp::after {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 1px;
+  background: var(--nacre-subtle);
+  opacity: 0.7;
+}
+.hyp-glyph {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic; font-weight: 300;
+  font-size: 34px; line-height: 1;
+  color: var(--nacre-faint);
+  margin-bottom: 10px;
+}
+.hyp-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 8.5px; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--nacre-dim); margin-bottom: 8px;
+}
+.hyp-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 500;
+  font-size: 18px; line-height: 1.15;
+  color: var(--nacre); margin-bottom: 10px;
+}
+.hyp-body {
+  font-family: 'EB Garamond', serif;
+  font-size: 15px; line-height: 1.62;
+  color: var(--nacre-mid);
+}
+
+/* ── SITEMAP SECTION ── */
+.sitemap-section {
+  margin-bottom: 54px;
+}
+.sitemap-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--rule-mid);
+  border: 1px solid var(--rule-mid);
+  border-radius: 5px;
+  overflow: hidden;
+}
+@media(max-width: 640px) { .sitemap-grid { grid-template-columns: 1fr; } }
+
+.sm-group {
+  background: var(--slate-1);
+  padding: 22px 20px;
+}
+.sm-group-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 8.5px; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--nacre-dim);
+  margin-bottom: 14px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--rule);
+}
+.sm-links { display: flex; flex-direction: column; gap: 3px; }
+.sm-link {
+  display: flex; align-items: baseline; gap: 8px;
+  text-decoration: none;
+  padding: 6px 8px;
+  border-radius: 3px;
+  transition: background 0.15s;
+}
+.sm-link:hover { background: var(--slate-2); }
+.sm-link-glyph {
+  font-size: 10px; color: var(--nacre-dim); flex-shrink: 0;
+}
+.sm-link-content {}
+.sm-link-title {
+  font-family: 'EB Garamond', serif;
+  font-size: 15px; line-height: 1.2;
+  color: var(--nacre);
+  display: block;
+}
+.sm-link-meta {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9px; letter-spacing: 0.06em;
+  color: var(--nacre-dim);
+  display: block; margin-top: 1px;
+}
+
+/* colour dots for sitemap groups */
+.sm-group:nth-child(1) .sm-group-label { color: var(--grape); }
+.sm-group:nth-child(2) .sm-group-label { color: var(--dragonfly); }
+.sm-group:nth-child(3) .sm-group-label { color: var(--scarlet); }
 
 /* ── QUICK LINKS ROW ── */
-.quick-links{
-  display:flex;flex-wrap:wrap;gap:8px;margin-bottom:48px;
+.ql-row {
+  display: flex; flex-wrap: wrap; gap: 8px;
+  margin-bottom: 50px;
 }
-.ql{
-  font-family:'IBM Plex Mono',monospace;font-size:10px;
-  letter-spacing:0.07em;padding:6px 14px;
-  border-radius:20px;border:1px solid;
-  text-decoration:none;transition:all 0.18s;
+.ql {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9.5px; letter-spacing: 0.07em;
+  padding: 6px 14px;
+  border-radius: 20px;
+  border: 1px solid;
+  text-decoration: none;
+  transition: opacity 0.18s;
 }
-.ql:hover{opacity:0.75;}
-.ql-grape{color:var(--grape-lt);border-color:var(--grape-dim);background:var(--grape-bg);}
-.ql-gold{color:var(--gold-lt);border-color:var(--gold-dim);background:var(--gold-bg);}
-.ql-sherwood{color:var(--sherwood-lt);border-color:var(--sherwood-dim);background:var(--sherwood-bg);}
-.ql-dragonfly{color:var(--dragonfly);border-color:var(--dragonfly-dim);background:var(--dragonfly-bg);}
-.ql-citron{color:var(--citron);border-color:var(--citron-dim);background:var(--citron-bg);}
+.ql:hover { opacity: 0.65; }
+.ql-grape    { color: var(--grape);    border-color: var(--grape-dim);    background: var(--grape-bg); }
+.ql-gold     { color: var(--gold);     border-color: var(--gold-dim);     background: var(--gold-bg); }
+.ql-sherwood { color: var(--sherwood); border-color: var(--sherwood-dim); background: var(--sherwood-bg); }
+.ql-dragonfly{ color: var(--dragonfly);border-color: var(--dragonfly-dim);background: var(--dragonfly-bg); }
+.ql-citron   { color: var(--citron);   border-color: var(--citron-dim);   background: var(--citron-bg); }
+.ql-scarlet  { color: var(--scarlet);  border-color: var(--scarlet-dim);  background: var(--scarlet-bg); }
 
 /* ── COLOPHON ── */
-.colophon{
-  border-top:1px solid var(--rule);
-  padding-top:28px;
-  display:flex;justify-content:space-between;align-items:flex-start;
-  gap:16px;flex-wrap:wrap;
+.colophon {
+  border-top: 1px solid var(--rule-mid);
+  padding-top: 28px;
+  display: flex; justify-content: space-between; align-items: flex-start;
+  gap: 18px; flex-wrap: wrap;
 }
-.colophon-left{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--parchment-dim);letter-spacing:0.06em;line-height:1.8;}
-.colophon-quote{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:15px;color:var(--parchment-dim);max-width:400px;line-height:1.6;text-align:right;}
+.colophon-left {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9.5px; letter-spacing: 0.07em; line-height: 1.85;
+  color: var(--nacre-dim);
+}
+.colophon-left a { color: var(--nacre-dim); text-decoration: none; }
+.colophon-left a:hover { color: var(--nacre); }
+.colophon-quote {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic; font-size: 15px;
+  color: var(--nacre-dim);
+  max-width: 380px; line-height: 1.6;
+  text-align: right;
+}
+
+/* ── MISC ── */
+.mb-sm { margin-bottom: 20px; }
+.mb-md { margin-bottom: 38px; }
+
+@media(max-width:520px){
+  .wrap { padding: 40px 18px 70px; }
+  .top-bar { padding: 10px 18px; }
+  .deadline-strip { flex-direction: column; }
+  .colophon { flex-direction: column; }
+  .colophon-quote { text-align: left; }
+}
 </style>
 </head>
 <body>
 
+<!-- TOP BAR -->
 <div class="top-bar">
-  <a class="top-bar-title" href="https://dr-crunch.github.io/start-here/introduction.html" title="Meinhardt Initiative · Introduction">Meinhardt Initiative</a>
-  <div class="top-bar-links">
+  <a class="top-bar-wordmark" href="https://dr-crunch.github.io/">Meinhardt Initiative</a>
+  <div class="top-bar-nav">
     <a href="https://dr-crunch.github.io/nullification-loops/">Nullification Loops</a>
-    <a href="https://dr-wojak.github.io/legal/">Legal Repository</a>
     <a href="https://dr-crunch.github.io/redundancy-awareness/semantic-map.html">Semantic Map</a>
-    <a href="https://drive.google.com/drive/u/0/folders/12o4-OPXJ0W5E8pxF9pN-VKUeODagy17g" target="_blank">Drive →</a>
+    <a href="https://dr-wojak.github.io/legal/">Legal</a>
+    <a class="nav-cta" href="https://drive.google.com/drive/u/0/folders/12o4-OPXJ0W5E8pxF9pN-VKUeODagy17g" target="_blank" rel="noopener">Archive →</a>
   </div>
 </div>
 
+<!-- WRAP -->
 <div class="wrap">
 
+  <!-- MASTHEAD -->
   <div class="masthead">
-    <div class="eyebrow fade-up">Press Information · For Immediate Release</div>
-    <h1 class="fade-up">Start <em>Here</em></h1>
-    <div class="masthead-sub fade-up">A Public Record of Administrative Failure</div>
-    <p class="claim fade-up">
+    <div class="eyebrow fu">Press Information · For Immediate Release · 2026</div>
+    <h1 class="fu">Start <em>Here</em></h1>
+    <div class="masthead-sub fu">A Public Record of Administrative Failure</div>
+    <p class="claim fu">
       A single, verifiable claim: <strong>the Irish State repeatedly received expert, actionable intelligence on systemic governance risk — and failed to absorb or act on it.</strong> Nineteen years. Six Taoisigh. Zero determinations.
     </p>
   </div>
 
-  <div class="deadline-strip">
-    <div class="deadline-left">
-      <div class="deadline-eyebrow">Structural Deadline · EU Council Presidency</div>
-      <div class="deadline-date">July 1st, 2026</div>
-      <div class="deadline-context">Ireland assumes the Presidency of the Council of the European Union. Continued institutional silence becomes a European rule-of-law event.</div>
+  <!-- STAT STRIP -->
+  <div class="stat-strip fu">
+    <div class="stat">
+      <div class="stat-n">19</div>
+      <div class="stat-l">Years on record</div>
     </div>
-    <div class="deadline-chip" id="daysChip">— days remaining</div>
+    <div class="stat">
+      <div class="stat-n">6</div>
+      <div class="stat-l">Taoisigh in office</div>
+    </div>
+    <div class="stat">
+      <div class="stat-n">0</div>
+      <div class="stat-l">Determinations issued</div>
+    </div>
+    <div class="stat">
+      <div class="stat-n">226<em>pp</em></div>
+      <div class="stat-l">Legal record compiled</div>
+    </div>
   </div>
 
-  <div class="section-label">Choose your entry point</div>
-  <div class="audience-grid">
-
-    <a class="audience-card ac-civic" href="https://github.com/dr-wojak/public-relations">
-      <div class="card-label">Channel I · Civic</div>
-      <div class="card-title">Citizens &amp;<br>General Public</div>
-      <div class="card-desc">The civic signal in plain terms. What was ignored, who received it, and why it matters for democratic accountability in Ireland.</div>
-      <div class="card-link">Public Relations &amp; Civic Signal</div>
-    </a>
-
-    <a class="audience-card ac-press" href="https://github.com/dr-wojak/press">
-      <div class="card-label">Channel V · Media</div>
-      <div class="card-title">Journalists &amp;<br>Researchers</div>
-      <div class="card-desc">The press portal. Timestamped signal-to-silence timeline, CC0 evidentiary record, publication-ready investigation thread.</div>
-      <div class="card-link">Press Portal &amp; Media Disclosures</div>
-    </a>
-
-    <a class="audience-card ac-expert" href="https://github.com/dr-wojak/governmentality-2025">
-      <div class="card-label">Channel III · Academic</div>
-      <div class="card-title">Experts &amp;<br>Policymakers</div>
-      <div class="card-desc">The core Governmentality-2025 record. Cybernetic and operational research framing. Beer/VSM · Bateson · cohomological failure mapping.</div>
-      <div class="card-link">Governmentality-2025 Repository</div>
-    </a>
-
-    <a class="audience-card ac-legal" href="https://github.com/dr-wojak/legal">
-      <div class="card-label">Channel I · Legal</div>
-      <div class="card-title">Lawyers &amp;<br>Judges</div>
-      <div class="card-desc">Constitutional, statutory, and EU law record. Mandamus grounds, Art.41 CFR, CJEU Member State failure track. 226 pages. Pre-litigation.</div>
-      <div class="card-link">Legal &amp; Constitutional Record</div>
-    </a>
-
+  <!-- DEADLINE -->
+  <div class="deadline-strip">
+    <div class="dl-left">
+      <div class="dl-eye">Structural Deadline · EU Council Presidency</div>
+      <div class="dl-date">July 1st, 2026</div>
+      <div class="dl-note">Ireland chairs the EU Council. Continued institutional silence becomes a European rule-of-law event — the Presidency Paradox closes.</div>
+    </div>
+    <div class="dl-chip" id="daysChip">— days remaining</div>
   </div>
 
-  <div class="section-label">All repositories</div>
-  <div class="quick-links">
-    <a class="ql ql-grape" href="https://dr-crunch.github.io/nullification-loops/">⬡ Nullification Loops</a>
-    <a class="ql ql-grape" href="https://dr-crunch.github.io/redundancy-awareness/semantic-map.html">⬡ Semantic Map</a>
+  
+
+  <!-- NULLIFICATION LOOP CALLOUT -->
+  <div class="nacre-callout mb-md">
+    <div class="callout-label">Lúba Neamhnithe · Interregnum Nullificans</div>
+    <div class="callout-title">The Nullification Loop — five stages, zero determinations</div>
+    <div class="loop-stages">
+      <div class="ls">
+        <div class="ls-n">Stage 01</div>
+        <div class="ls-title">Acknowledgement as Closure</div>
+        <div class="ls-desc">Receipt confirmed. No pathway follows. Files sometimes deleted.</div>
+      </div>
+      <div class="ls">
+        <div class="ls-n">Stage 02</div>
+        <div class="ls-title">Remit Displacement</div>
+        <div class="ls-desc">Passed laterally. No body holds the full objective. Jurisdictional evaporation.</div>
+      </div>
+      <div class="ls">
+        <div class="ls-n">Stage 03</div>
+        <div class="ls-title">Deferral without Destination</div>
+        <div class="ls-desc">Action postponed. No timetable. No accountable actor.</div>
+      </div>
+      <div class="ls">
+        <div class="ls-n">Stage 04</div>
+        <div class="ls-title">Sufficiency without Audit</div>
+        <div class="ls-desc">Existing arrangements asserted as adequate. No evidence furnished.</div>
+      </div>
+      <div class="ls">
+        <div class="ls-n">Stage 05</div>
+        <div class="ls-title">Record Suppression</div>
+        <div class="ls-desc">Institutional memory does not persist. The loop resets. The matter resurfaces unchanged.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- THREE HYPOTHESES -->
+  <div class="sec-label mb-sm">The diagnostic frame · three non-exclusive hypotheses</div>
+  <div class="hyp-grid">
+    <div class="hyp">
+      <div class="hyp-glyph">α</div>
+      <div class="hyp-label">Hypothesis Alpha</div>
+      <div class="hyp-title">Structural Non-Governance</div>
+      <div class="hyp-body">The Irish State lacks the institutional architecture to process O.R. submissions of this character. The failure is design-failure, not agent-failure. The system produces ignoring as its default output.</div>
+    </div>
+    <div class="hyp">
+      <div class="hyp-glyph">β</div>
+      <div class="hyp-label">Hypothesis Beta</div>
+      <div class="hyp-title">Misfeasance in Public Office</div>
+      <div class="hyp-body">Individual officeholders, once formally notified, are subject to the misfeasance threshold. Knowledge + inaction + harm = tort. Several named officeholders have reached this threshold.</div>
+    </div>
+    <div class="hyp">
+      <div class="hyp-glyph">γ</div>
+      <div class="hyp-label">Hypothesis Gamma</div>
+      <div class="hyp-title">Epistemic Failure</div>
+      <div class="hyp-body">The State cannot evaluate what it cannot categorise. O.R. as methodology falls outside existing evaluation grammar. Correction requires both a writ and a curriculum change.</div>
+    </div>
+  </div>
+
+  <!-- SITEMAP -->
+  <div class="sitemap-section">
+    <div class="sec-label mb-sm">Sitemap</div>
+    <div class="sitemap-grid">
+
+      <!-- COLUMN 1: Public Facing -->
+      <div class="sm-group">
+        <div class="sm-group-label">Public · Web</div>
+        <div class="sm-links">
+          <a class="sm-link" href="https://dr-crunch.github.io/" >
+            <span class="sm-link-glyph">⬡</span>
+            <span class="sm-link-content">
+              <span class="sm-link-title">Meinhardt Initiative</span>
+              <span class="sm-link-meta">dr-crunch.github.io</span>
+            </span>
+          </a>
+          <a class="sm-link" href="https://dr-crunch.github.io/nullification-loops/" >
+            <span class="sm-link-glyph">⬡</span>
+            <span class="sm-link-content">
+              <span class="sm-link-title">Nullification Loops</span>
+              <span class="sm-link-meta">dr-crunch.github.io/nullification-loops</span>
+            </span>
+          </a>
+          <a class="sm-link" href="https://dr-crunch.github.io/nullification-loops/dossier.html" >
+            <span class="sm-link-glyph">⬡</span>
+            <span class="sm-link-content">
+              <span class="sm-link-title">Full Dossier</span>
+              <span class="sm-link-meta">Eight sections · Scátháin agus Splanc</span>
+            </span>
+          </a>
+          <a class="sm-link" href="https://dr-crunch.github.io/nullification-loops/tairiscint.html" >
+            <span class="sm-link-glyph">⬡</span>
+            <span class="sm-link-content">
+              <span class="sm-link-title">Tairiscint</span>
+              <span class="sm-link-meta">Constitutional indictment · legal register</span>
+            </span>
+          </a>
+          <a class="sm-link" href="https://dr-crunch.github.io/redundancy-awareness/" >
+            <span class="sm-link-glyph">⬡</span>
+            <span class="sm-link-content">
+              <span class="sm-link-title">Redundancy Awareness</span>
+              <span class="sm-link-meta">dr-crunch.github.io/redundancy-awareness</span>
+            </span>
+          </a>
+          <a class="sm-link" href="https://dr-wojak.github.io/legal/" >
+            <span class="sm-link-glyph">⬡</span>
+            <span class="sm-link-content">
+              <span class="sm-link-title">Legal Repository</span>
+              <span class="sm-link-meta">dr-wojak.github.io/legal · 226 pp</span>
+            </span>
+          </a>
+          <a class="sm-link" href="https://dr-crunch.github.io/meinhardt-docket-001" >
+            <span class="sm-link-glyph">⬡</span>
+            <span class="sm-link-content">
+              <span class="sm-link-title">Meinhardt Docket 001</span>
+              <span class="sm-link-meta">Supplementary Dáil specification</span>
+            </span>
+          </a>
+        </div>
+      </div>
+
+      <!-- COLUMN 2: Analytical -->
+      <div class="sm-group">
+        <div class="sm-group-label">Analytical · Corpus</div>
+        <div class="sm-links">
+          <a class="sm-link" href="https://dr-crunch.github.io/redundancy-awareness/semantic-map.html" >
+            <span class="sm-link-glyph">⬡</span>
+            <span class="sm-link-content">
+              <span class="sm-link-title">Semantic Map</span>
+              <span class="sm-link-meta">Causal semantics · OWL axiom chain</span>
+            </span>
+          </a>
+          <a class="sm-link" href="https://dr-crunch.github.io/redundancy-awareness/deontological-differences.html" >
+            <span class="sm-link-glyph">⬡</span>
+            <span class="sm-link-content">
+              <span class="sm-link-title">Deontological Differences</span>
+              <span class="sm-link-meta">Five channel obligations</span>
+            </span>
+          </a>
+          <a class="sm-link" href="https://dr-crunch.github.io/redundancy-awareness/ontology-relations.html" >
+            <span class="sm-link-glyph">⬡</span>
+            <span class="sm-link-content">
+              <span class="sm-link-title">Ontology Relations</span>
+              <span class="sm-link-meta">OWL object properties · causal operators</span>
+            </span>
+          </a>
+          <a class="sm-link" href="https://dr-crunch.github.io/redundancy-awareness/failure-modes.html" >
+            <span class="sm-link-glyph">⬡</span>
+            <span class="sm-link-content">
+              <span class="sm-link-title">Failure Modes</span>
+              <span class="sm-link-meta">Five repeatable institutional outputs</span>
+            </span>
+          </a>
+          <a class="sm-link" href="https://dr-crunch.github.io/redundancy-awareness/epistemological-audit.html" >
+            <span class="sm-link-glyph">⬡</span>
+            <span class="sm-link-content">
+              <span class="sm-link-title">Epistemological Audit</span>
+              <span class="sm-link-meta">Evidentiary epistemic record 2006–2026</span>
+            </span>
+          </a>
+          <a class="sm-link" href="https://github.com/dr-wojak/governmentality-2025" >
+            <span class="sm-link-glyph">⬡</span>
+            <span class="sm-link-content">
+              <span class="sm-link-title">Governmentality-2025</span>
+              <span class="sm-link-meta">GitHub · Beer/VSM · Bateson · O.R.</span>
+            </span>
+          </a>
+          <a class="sm-link" href="https://dr-crunch.github.io/sitemap" >
+            <span class="sm-link-glyph">⬡</span>
+            <span class="sm-link-content">
+              <span class="sm-link-title">Sitemap</span>
+              <span class="sm-link-meta">Chronological ministerial audit</span>
+            </span>
+          </a>
+        </div>
+      </div>
+
+      <!-- COLUMN 3: Repositories + Drive -->
+      <div class="sm-group">
+        <div class="sm-group-label">Repositories · Archive</div>
+        <div class="sm-links">
+          <a class="sm-link" href="https://drive.google.com/drive/u/0/folders/12o4-OPXJ0W5E8pxF9pN-VKUeODagy17g" target="_blank" rel="noopener">
+            <span class="sm-link-glyph">⬡</span>
+            <span class="sm-link-content">
+              <span class="sm-link-title">Main Drive Archive</span>
+              <span class="sm-link-meta">CC0 · Open access · Master folder</span>
+            </span>
+          </a>
+          <a class="sm-link" href="https://drive.google.com/drive/u/0/folders/1FMPO1exETcpb4jxX-q5Mh2VIpYwYuATS" target="_blank" rel="noopener">
+            <span class="sm-link-glyph">⬡</span>
+            <span class="sm-link-content">
+              <span class="sm-link-title">Full Complaint Archive</span>
+              <span class="sm-link-meta">65 pp + 161 supplemental · Annexes I–V</span>
+            </span>
+          </a>
+          <a class="sm-link" href="https://github.com/dr-crunch/nullification-loops" target="_blank" rel="noopener">
+            <span class="sm-link-glyph">⬡</span>
+            <span class="sm-link-content">
+              <span class="sm-link-title">GitHub · nullification-loops</span>
+              <span class="sm-link-meta">dr-crunch/nullification-loops</span>
+            </span>
+          </a>
+          <a class="sm-link" href="https://github.com/dr-wojak/legal" target="_blank" rel="noopener">
+            <span class="sm-link-glyph">⬡</span>
+            <span class="sm-link-content">
+              <span class="sm-link-title">GitHub · legal</span>
+              <span class="sm-link-meta">dr-wojak/legal · pre-litigation</span>
+            </span>
+          </a>
+          <a class="sm-link" href="https://github.com/dr-wojak/press" target="_blank" rel="noopener">
+            <span class="sm-link-glyph">⬡</span>
+            <span class="sm-link-content">
+              <span class="sm-link-title">GitHub · press</span>
+              <span class="sm-link-meta">dr-wojak/press · CC0 · media</span>
+            </span>
+          </a>
+          <a class="sm-link" href="https://github.com/dr-wojak/public-relations" target="_blank" rel="noopener">
+            <span class="sm-link-glyph">⬡</span>
+            <span class="sm-link-content">
+              <span class="sm-link-title">GitHub · public-relations</span>
+              <span class="sm-link-meta">dr-wojak/public-relations · civic</span>
+            </span>
+          </a>
+          <a class="sm-link" href="https://github.com/dr-wojak/redundancy-awareness" target="_blank" rel="noopener">
+            <span class="sm-link-glyph">⬡</span>
+            <span class="sm-link-content">
+              <span class="sm-link-title">GitHub · redundancy-awareness</span>
+              <span class="sm-link-meta">dr-wojak/redundancy-awareness</span>
+            </span>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+<!-- CHANNELS -->
+  <div class="sec-label">Jump into the Raw Archives/div>
+  <div class="channel-grid mb-md">
+
+    <div class="ch ch-civic">
+      <div class="ch-tag">Channel · Civic</div>
+      <div class="ch-title">Citizens &amp;<br>General Public</div>
+      <div class="ch-desc">The civic signal in plain terms. What was ignored, who received it, and why it matters for democratic accountability in Ireland.</div>
+      <a class="ch-btn" href="https://github.com/dr-wojak/public-relations" target="_blank" rel="noopener">Public Relations</a>
+    </div>
+
+    <div class="ch ch-press">
+      <div class="ch-tag">Channel · Media</div>
+      <div class="ch-title">Journalists &amp;<br>Researchers</div>
+      <div class="ch-desc">Timestamped signal-to-silence timeline. CC0 evidentiary record. Publication-ready investigation thread. No restrictions on use.</div>
+      <a class="ch-btn" href="https://github.com/dr-wojak/press" target="_blank" rel="noopener">Press Portal</a>
+    </div>
+
+    <div class="ch ch-expert">
+      <div class="ch-tag">Channel · Academic</div>
+      <div class="ch-title">Experts &amp;<br>Policymakers</div>
+      <div class="ch-desc">The Governmentality-2025 core record. Beer/VSM · Bateson · cohomological failure mapping. Nineteen years of O.R. signal into a structural diagnosis.</div>
+      <a class="ch-btn" href="https://github.com/dr-wojak/governmentality-2025" target="_blank" rel="noopener">Governmentality-2025</a>
+    </div>
+
+    <div class="ch ch-legal">
+      <div class="ch-tag">Channel · Legal</div>
+      <div class="ch-title">Lawyers &amp;<br>Judges</div>
+      <div class="ch-desc">Constitutional, statutory, and EU law record. Mandamus grounds · Art.41 CFR · CJEU Member State failure track. 226 pages. Pre-litigation.</div>
+      <a class="ch-btn" href="https://dr-wojak.github.io/legal/" target="_blank" rel="noopener">Legal Repository</a>
+    </div>
+
+  </div>
+  
+  <!-- QUICK LINKS -->
+  <div class="ql-row">
+    <a class="ql ql-grape"     href="https://dr-crunch.github.io/nullification-loops/">⬡ Nullification Loops</a>
+    <a class="ql ql-grape"     href="https://dr-crunch.github.io/redundancy-awareness/semantic-map.html">⬡ Semantic Map</a>
     <a class="ql ql-dragonfly" href="https://dr-crunch.github.io/redundancy-awareness/deontological-differences.html">⬡ Deontological Differences</a>
     <a class="ql ql-dragonfly" href="https://dr-crunch.github.io/redundancy-awareness/ontology-relations.html">⬡ Ontology Relations</a>
     <a class="ql ql-dragonfly" href="https://dr-crunch.github.io/redundancy-awareness/failure-modes.html">⬡ Failure Modes</a>
-    <a class="ql ql-sherwood" href="https://dr-wojak.github.io/legal/">⬡ Legal Repository</a>
-    <a class="ql ql-citron" href="https://dr-crunch.github.io/nullification-loops/tairiscint.html">⬡ Tairiscint</a>
-    <a class="ql ql-gold" href="https://drive.google.com/drive/u/0/folders/12o4-OPXJ0W5E8pxF9pN-VKUeODagy17g" target="_blank">⬡ Drive Repository</a>
+    <a class="ql ql-sherwood"  href="https://dr-wojak.github.io/legal/">⬡ Legal Repository</a>
+    <a class="ql ql-citron"    href="https://dr-crunch.github.io/nullification-loops/tairiscint.html">⬡ Tairiscint</a>
+    <a class="ql ql-scarlet"   href="https://dr-crunch.github.io/nullification-loops/dossier.html">⬡ Full Dossier</a>
+    <a class="ql ql-gold"      href="https://drive.google.com/drive/u/0/folders/12o4-OPXJ0W5E8pxF9pN-VKUeODagy17g" target="_blank" rel="noopener">⬡ Drive Archive</a>
   </div>
 
+  <!-- COLOPHON -->
   <div class="colophon">
     <div class="colophon-left">
       Research archive · 2006–2026 · Meinhardt Initiative<br>
-      CC0 1.0 Universal · Open Access · Pre-litigation public record
+      CC0 1.0 Universal · Open Access · Pre-litigation public record<br>
+      <a href="https://dr-crunch.github.io/">dr-crunch.github.io</a>
     </div>
     <div class="colophon-quote">
       "Information Asymmetry without Fiduciary Care"
     </div>
   </div>
 
-</div>
+</div><!-- /wrap -->
 
 <script>
 (function(){
   const chip = document.getElementById('daysChip');
   if(!chip) return;
-  const target = new Date('2026-07-01T08:00:00Z'); // 09:00 IST (UTC+1, summer)
-
+  const target = new Date('2026-07-01T08:00:00Z');
   function tick(){
     const diff = target - Date.now();
     if(diff <= 0){ chip.textContent = 'Presidency active'; return; }
-    const days = diff / 86400000;
-    const display = days >= 1 ? (Math.floor(days * 2) / 2).toFixed(1) : '< 0.5';
-    chip.textContent = display + ' days remaining';
+    const days = Math.ceil(diff / 86400000);
+    chip.textContent = days + (days === 1 ? ' day' : ' days') + ' remaining';
   }
-
   tick();
   setInterval(tick, 60000);
 })();
