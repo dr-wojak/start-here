@@ -942,8 +942,9 @@ body::before {
   function tick(){
     const diff = target - Date.now();
     if(diff <= 0){ chip.textContent = 'Presidency active'; return; }
-    const days = Math.ceil(diff / 86400000);
-    chip.textContent = days + (days === 1 ? ' day' : ' days') + ' remaining';
+    const days = diff / 86400000;
+    const display = days >= 1 ? (Math.floor(days * 2) / 2).toFixed(1) : '< 0.5';
+    chip.textContent = display + ' days remaining';
   }
   tick();
   setInterval(tick, 60000);
