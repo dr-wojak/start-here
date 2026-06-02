@@ -24,207 +24,471 @@
 <link rel="icon" type="image/png" href="pigeon-moon-yarn.png" sizes="any">
 <style>
 :root {
-  --ink:         #0a0910;
-  --surface:     #141018;
-  --surface2:    #1c1820;
-  --rule:        rgba(200,180,230,0.09);
-  --rule-s:      rgba(200,180,230,0.16);
-  --parchment:   #e8e3d4;
-  --parchment-d: #9e9887;
-  --parchment-f: #38303e;
-  --rivulet:     #38c8b8;  --rivulet-bg:   #081e1a;
-  --citron:      #d4c06a;  --citron-bg:    #1c1a08;
-  --scarlet:     #e84060;  --scarlet-bg:   #1a080a;
-  --dragonfly:   #5ab0c8;  --dragonfly-bg: #0a1820;
-  --cosmic:      #9898c8;  --cosmic-bg:    #10101e;
-  --sandstone:   #f0a050;  --sandstone-bg: #1e0c06;
-  --bordeaux:    #b87898;  --bordeaux-bg:  #180d12;
-  --regatta:     #3c5a9a;  --regatta-lt:   #6080c8; --regatta-bg: #080e20;
-  --ardent:      #72b89a;  --ardent-lt:    #a4d4bc; --ardent-bg:  #091810;
-  --abalone-lt:  #c0b8c8;  --abalone-bg:   #120e18;
-  --graphite:    #a8a040;  --graphite-bg:  #181808;
-  --coral:       #c87870;  --coral-bg:     #1c0e0c;
-  --grape-bg:    #12081a;
-  --laitance:    #fefcfe;
-  --glaze:       #edffff;
-  --mountain:    #8a7868;  --mountain-lt:  #b0a090; --mountain-bg: #181008;
+  /* Slate foundation */
+  --slate:        #0d1018;
+  --slate-1:      #131720;
+  --slate-2:      #1a1f2e;
+  --slate-3:      #222840;
+
+  /* Nacre — iridescent pearl tones */
+  --nacre:        #dce5f2;
+  --nacre-mid:    #a0aec4;
+  --nacre-dim:    #4a5470;
+  --nacre-faint:  #262e48;
+
+  /* Nacre shimmer */
+  --nacre-grad:   linear-gradient(115deg, #7ba8d8 0%, #dce5f2 30%, #b8a0d0 60%, #dce5f2 80%, #6eb8c8 100%);
+  --nacre-subtle: linear-gradient(115deg, rgba(123,168,216,0.4) 0%, rgba(220,229,242,0.6) 40%, rgba(184,160,208,0.4) 70%, rgba(110,184,200,0.35) 100%);
+
+  /* Accents */
+  --scarlet:      #c8253a;
+  --scarlet-dim:  #7a1020;
+  --scarlet-bg:   #1a080a;
+  --citron:       #d4c06a;
+  --citron-dim:   #7a6e28;
+  --citron-bg:    #1c1a08;
+  --gold:         #c8a830;
+  --gold-dim:     #7a6218;
+  --gold-bg:      #1a1608;
+  --grape:        #9b58c8;
+  --grape-dim:    #3a1050;
+  --grape-bg:     #12081a;
+  --dragonfly:    #5ab0c8;
+  --dragonfly-dim:#183e4a;
+  --dragonfly-bg: #0a1820;
+  --sherwood:     #38c878;
+  --sherwood-dim: #0a3820;
+  --sherwood-bg:  #081a10;
+  --rivulet:      #38c8b8;
+  --rivulet-bg:   #081e1a;
+  --sandstone:    #f0a050;
+  --sandstone-dim:#7a4020;
+  --sandstone-bg: #1e0c06;
+  --ardent:       #72b89a;
+  --ardent-lt:    #a4d4bc;
+  --ardent-bg:    #091810;
+  --ardent-dim:   #2a5040;
+  --abalone-lt:   #c0b8c8;
+  --abalone-bg:   #120e18;
+  --abalone-dim:  #4a3858;
+  --coral:        #c87870;
+  --coral-dim:    #784038;
+  --coral-bg:     #1c0e0c;
+  --bordeaux:     #b87898;
+  --bordeaux-bg:  #180d12;
+  --bordeaux-dim: #4a2838;
+  --mountain:     #8a7868;
+  --mountain-lt:  #b0a090;
+  --mountain-bg:  #181008;
+  --mountain-dim: #4a3828;
+  --laitance:     #fefcfe;
+
+  /* Rules */
+  --rule:         rgba(180,195,230,0.08);
+  --rule-mid:     rgba(180,195,230,0.14);
+  --rule-strong:  rgba(180,195,230,0.22);
 }
 
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-html{scroll-behavior:smooth;}
-body{
-  background:var(--ink);color:var(--parchment);
-  font-family:'EB Garamond',Georgia,serif;
-  font-size:18px;line-height:1.72;overflow-x:hidden;
+*,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--slate);
+  color: var(--nacre);
+  font-family: 'EB Garamond', Georgia, serif;
+  font-size: 17px;
+  line-height: 1.68;
+  min-height: 100vh;
+  overflow-x: hidden;
 }
-body::before{
-  content:'';position:fixed;inset:0;z-index:0;
-  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
-  pointer-events:none;opacity:0.28;
+
+/* grain overlay */
+body::before {
+  content: '';
+  position: fixed; inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.78' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.038'/%3E%3C/svg%3E");
+  pointer-events: none; z-index: 0; opacity: 0.6;
 }
-canvas#stars{position:fixed;inset:0;z-index:0;pointer-events:none;}
-.page{position:relative;z-index:2;max-width:980px;margin:0 auto;padding:0 28px 90px;}
 
-.skip-link{position:absolute;top:-100px;left:16px;background:var(--rivulet);color:var(--ink);font-family:'IBM Plex Mono',monospace;font-size:12px;padding:8px 16px;border-radius:3px;text-decoration:none;transition:top .2s;}
-.skip-link:focus{top:16px;}
+/* starfield canvas */
+canvas#stars { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
 
-/* eyebrow */
-.eyebrow{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--citron);display:flex;align-items:center;gap:12px;}
-.eyebrow::before{content:'◈';font-size:13px;}
-.eyebrow::after{content:'';flex:1;height:1px;background:var(--citron);opacity:.18;max-width:280px;}
+/* skip link */
+.skip-link { position: absolute; top: -100px; left: 16px; background: var(--rivulet); color: #0a0910; font-family: 'IBM Plex Mono', monospace; font-size: 12px; padding: 8px 16px; border-radius: 3px; text-decoration: none; transition: top .2s; }
+.skip-link:focus { top: 16px; }
 
-/* section scaffold */
-.section-label{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.26em;text-transform:uppercase;color:var(--cosmic);opacity:.65;margin-bottom:8px;display:flex;align-items:center;gap:10px;}
-.section-label::after{content:'';flex:1;height:1px;background:currentColor;opacity:.25;}
-.section-title{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(24px,3.5vw,34px);color:var(--parchment);margin-bottom:8px;line-height:1.1;}
-.section-title em{font-style:italic;color:var(--bordeaux);}
-.section-sub{font-size:16px;font-style:italic;color:var(--parchment-d);margin-bottom:36px;max-width:620px;line-height:1.7;}
-section{padding:60px 0 0;}
-section+section{border-top:1px solid var(--rule);margin-top:60px;}
+/* ── TOP BAR ── */
+.top-bar {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(13,16,24,0.97);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--rule-mid);
+  padding: 11px 32px;
+  display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap;
+}
+.top-bar-wordmark {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10.5px; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--citron); text-decoration: none; font-weight: 400;
+  transition: opacity 0.2s;
+}
+.top-bar-wordmark:hover { opacity: 0.65; }
+.top-bar-nav { display: flex; gap: 22px; flex-wrap: wrap; align-items: center; }
+.top-bar-nav a {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9.5px; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--nacre-mid); text-decoration: none;
+  transition: color 0.15s;
+}
+.top-bar-nav a:hover { color: var(--nacre); }
+.top-bar-nav a.nav-cta {
+  color: var(--citron);
+  border: 1px solid var(--citron-dim);
+  background: var(--citron-bg);
+  padding: 4px 12px; border-radius: 2px;
+  font-size: 9px;
+}
+.top-bar-nav a.nav-cta:hover { opacity: 0.75; }
 
-/* hero */
-.hero{padding:72px 0 56px;border-bottom:1px solid var(--rule-s);}
-.hero h1{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(38px,6.5vw,76px);line-height:1.02;letter-spacing:-.01em;color:var(--parchment);margin:20px 0 22px;}
-.hero h1 em{font-style:italic;color:var(--bordeaux);}
-.hero-lede{font-size:20px;line-height:1.78;color:var(--parchment-d);max-width:660px;margin-bottom:28px;}
-.hero-lede strong{color:var(--parchment);font-weight:400;}
+/* ── EARTHY STRIP ── */
+.earthy-strip {
+  background: linear-gradient(90deg, #181008 0%, #1e1610 40%, #181410 100%);
+  border-bottom: 1px solid rgba(176,160,144,0.18);
+  border-top: 1px solid rgba(176,160,144,0.1);
+  padding: 10px 32px;
+  display: flex; align-items: center; gap: 10px;
+  flex-wrap: wrap; position: relative; z-index: 99;
+}
+.earthy-strip::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg,
+    var(--mountain) 0%, var(--sandstone) 18%, var(--ardent) 36%,
+    var(--ardent-lt) 54%, var(--abalone-lt) 72%, var(--coral) 88%, var(--mountain) 100%);
+  opacity: 0.65;
+}
+.earthy-label { font-family: 'IBM Plex Mono', monospace; font-size: 8px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--mountain-lt); opacity: 0.5; margin-right: 6px; flex-shrink: 0; }
+.earthy-btn {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase;
+  padding: 5px 13px; border-radius: 2px;
+  text-decoration: none; border: 1px solid;
+  transition: opacity 0.18s; white-space: nowrap; flex-shrink: 0;
+}
+.earthy-btn:hover { opacity: 0.72; }
+.earthy-btn:focus-visible { outline: 2px solid var(--mountain-lt); outline-offset: 2px; }
+.eb-sitemap   { color: var(--mountain-lt); border-color: var(--mountain-dim);  background: var(--mountain-bg); }
+.eb-semantic  { color: var(--ardent-lt);   border-color: var(--ardent-dim);    background: var(--ardent-bg); }
+.eb-complaint { color: var(--sandstone);   border-color: var(--sandstone-dim); background: var(--sandstone-bg); }
+.eb-intro     { color: var(--abalone-lt);  border-color: var(--abalone-dim);   background: var(--abalone-bg); }
+.eb-legal     { color: var(--coral);       border-color: var(--coral-dim);     background: var(--coral-bg); }
+.earthy-sep   { width: 1px; height: 16px; background: rgba(176,160,144,0.15); flex-shrink: 0; margin: 0 2px; }
 
-/* chips */
-.chip-row{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:32px;}
-.chip{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;padding:4px 11px;border-radius:2px;border:1px solid;}
+/* ── TICKER ── */
+.ticker-wrap {
+  background: var(--slate-1); border-bottom: 1px solid var(--rule-mid);
+  overflow: hidden; white-space: nowrap; padding: .45rem 0;
+  position: relative; z-index: 98;
+}
+.ticker-inner {
+  display: inline-block;
+  animation: ticker 68s linear infinite;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: .57rem; letter-spacing: .12em; color: var(--nacre-dim);
+}
+.ticker-inner span { margin: 0 2.5rem; }
+.ticker-inner .hi  { color: #e84060; }
+.ticker-inner .go  { color: var(--citron); }
+.ticker-inner .nb  { color: var(--dragonfly); }
+.ticker-inner .ar  { color: var(--ardent-lt); }
+.ticker-inner .ab  { color: var(--abalone-lt); }
+.ticker-inner .eu  { color: #9898c8; }
+@keyframes ticker { 0%{transform:translateX(0);}100%{transform:translateX(-50%);} }
 
-.hero-cta{display:inline-flex;align-items:center;gap:8px;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;padding:11px 22px;border-radius:3px;background:var(--rivulet-bg);color:var(--rivulet);border:1px solid rgba(56,200,184,.35);text-decoration:none;transition:border-color .2s,box-shadow .2s;}
-.hero-cta:hover,.hero-cta:focus{border-color:var(--rivulet);box-shadow:0 0 16px rgba(56,200,184,.2);outline:none;}
-.hero-cta:focus-visible{outline:2px solid var(--rivulet);outline-offset:3px;}
+/* ── WRAP ── */
+.wrap {
+  position: relative; z-index: 1;
+  max-width: 960px; margin: 0 auto;
+  padding: 60px 32px 90px;
+}
 
-/* stat row */
-.stat-row{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--rule-s);border:1px solid var(--rule-s);border-radius:3px;overflow:hidden;margin:48px 0 0;}
-.stat-cell{background:var(--surface);padding:22px 16px;text-align:center;}
-.stat-n{font-family:'Cormorant Garamond',serif;font-size:50px;font-weight:300;line-height:1;margin-bottom:6px;}
-.stat-label{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;line-height:1.65;opacity:.6;}
+/* ── ANIMATIONS ── */
+@keyframes fadeUp { from{opacity:0;transform:translateY(12px);}to{opacity:1;transform:translateY(0);} }
+.fu { animation: fadeUp 0.55s ease forwards; opacity: 0; }
+.fu:nth-child(1){ animation-delay:0.06s }
+.fu:nth-child(2){ animation-delay:0.18s }
+.fu:nth-child(3){ animation-delay:0.30s }
+.fu:nth-child(4){ animation-delay:0.42s }
+.fu:nth-child(5){ animation-delay:0.54s }
 
-/* card grid */
-.card-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1px;background:var(--rule-s);border:1px solid var(--rule-s);border-radius:3px;overflow:hidden;}
-.card{background:var(--surface);padding:24px 22px 20px;position:relative;transition:background .2s;}
-.card:hover,.card:focus-within{background:var(--surface2);}
-.card-bar{position:absolute;top:0;left:0;right:0;height:2px;}
-.card-pip{display:flex;align-items:center;gap:8px;font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.18em;text-transform:uppercase;margin-bottom:12px;}
-.card-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;}
-.card-title{font-family:'Cormorant Garamond',serif;font-size:19px;font-weight:300;color:var(--parchment);margin-bottom:8px;line-height:1.25;}
-.card-body{font-size:14px;color:var(--parchment-d);line-height:1.78;}
-.card-body strong{color:var(--parchment);font-weight:400;}
-.card-foot{font-family:'IBM Plex Mono',monospace;font-size:8px;letter-spacing:.05em;border-top:1px solid var(--rule);padding-top:9px;margin-top:14px;line-height:1.7;color:var(--parchment-f);}
+/* ── MASTHEAD ── */
+.masthead { border-bottom: 1px solid var(--rule-strong); padding-bottom: 42px; margin-bottom: 38px; }
+.eyebrow {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9.5px; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--citron); margin-bottom: 18px;
+  display: flex; align-items: center; gap: 10px;
+}
+.eyebrow::after { content: ''; flex: 1; height: 1px; background: var(--citron-dim); max-width: 180px; }
+.masthead h1 {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-weight: 300; font-size: clamp(36px, 6vw, 72px);
+  line-height: 1.0; letter-spacing: -0.015em; color: var(--nacre); margin-bottom: 14px;
+}
+.masthead h1 em { font-style: italic; color: var(--bordeaux); }
+.masthead-sub {
+  font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 300;
+  font-size: clamp(15px, 2.2vw, 21px); color: var(--nacre-mid); margin-bottom: 26px;
+}
+.claim {
+  font-family: 'EB Garamond', serif; font-size: clamp(15px, 1.8vw, 18px);
+  line-height: 1.75; color: var(--nacre); max-width: 700px;
+  border-left: 2px solid var(--scarlet); padding-left: 20px;
+}
+.claim strong { color: var(--nacre); font-weight: 600; }
 
-/* axiom bar */
-.axiom-bar{display:grid;grid-template-columns:3px 1fr;gap:22px;padding:28px 0;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);margin:36px 0;}
-.axiom-rule{border-radius:2px;}
-.axiom-body{display:flex;flex-direction:column;gap:8px;}
-.axiom-tag{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.2em;text-transform:uppercase;opacity:.45;}
-.axiom-quote{font-family:'Cormorant Garamond',serif;font-size:clamp(17px,2.3vw,23px);font-weight:300;font-style:italic;color:var(--parchment);line-height:1.48;}
-.axiom-plain{font-size:15px;color:var(--parchment-d);line-height:1.78;max-width:640px;}
+/* ── COUNTDOWN BAR ── */
+.deadline-strip {
+  background: linear-gradient(90deg, rgba(200,168,48,0.1) 0%, rgba(155,88,200,0.07) 100%);
+  border: 1px solid rgba(200,168,48,0.28);
+  border-left: 3px solid var(--gold);
+  border-radius: 4px; padding: 18px 22px; margin-bottom: 38px;
+  display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap;
+}
+.dl-eye { font-family: 'IBM Plex Mono', monospace; font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 4px; }
+.dl-date { font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 300; font-size: clamp(22px, 3.5vw, 34px); line-height: 1; color: var(--nacre); text-shadow: 0 0 30px rgba(200,168,48,0.25); }
+.dl-note { font-family: 'EB Garamond', serif; font-size: 14px; line-height: 1.6; color: var(--nacre-mid); margin-top: 5px; max-width: 440px; }
+.dl-chip { font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.05em; color: var(--gold); border: 1px solid var(--gold-dim); background: var(--gold-bg); padding: 8px 16px; border-radius: 3px; white-space: nowrap; flex-shrink: 0; }
 
-/* inset */
-.inset{background:var(--surface2);border-left:2px solid;padding:14px 20px 14px 18px;margin:20px 0;border-radius:0 2px 2px 0;}
-.inset-label{font-family:'IBM Plex Mono',monospace;font-size:8.5px;letter-spacing:.2em;text-transform:uppercase;margin-bottom:5px;opacity:.75;}
-.inset-text{font-size:14px;font-style:italic;color:var(--parchment-d);line-height:1.7;}
+/* ── CHIP ROW ── */
+.chip-row { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 32px; }
+.chip {
+  font-family: 'IBM Plex Mono', monospace; font-size: 9px; letter-spacing: .12em;
+  text-transform: uppercase; padding: 4px 11px; border-radius: 2px; border: 1px solid;
+}
 
-/* loop table */
-.loop-table{width:100%;border-collapse:collapse;margin-bottom:4px;}
-.loop-table th{font-family:'IBM Plex Mono',monospace;font-size:8.5px;letter-spacing:.15em;text-transform:uppercase;padding:10px 12px;text-align:left;background:var(--surface2);border-bottom:1px solid var(--rule-s);}
-.loop-table td{font-size:14px;padding:13px 12px;vertical-align:top;border-bottom:1px solid var(--rule);line-height:1.65;}
-.loop-table tr:last-child td{border-bottom:none;}
-.loop-table tr:hover td{background:var(--surface2);}
-.loop-action{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.05em;color:var(--parchment-d);display:block;margin-bottom:4px;}
+/* ── STAT STRIP ── */
+.stat-strip {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 1px; background: var(--rule-mid); border: 1px solid var(--rule-mid);
+  border-radius: 4px; overflow: hidden; margin-bottom: 16px;
+}
+.stat { background: var(--slate-1); padding: 22px 20px 18px; }
+.stat-n {
+  font-family: 'Cormorant Garamond', serif; font-weight: 300;
+  font-size: clamp(36px, 5vw, 54px); line-height: 1; color: var(--nacre); letter-spacing: -0.02em;
+}
+.stat-n em { font-style: italic; font-size: 0.6em; color: var(--nacre-mid); }
+.stat-l { font-family: 'IBM Plex Mono', monospace; font-size: 8.5px; letter-spacing: 0.13em; text-transform: uppercase; color: var(--nacre-dim); margin-top: 6px; }
 
-/* tort chain */
-.tort-chain{display:flex;flex-direction:column;gap:0;background:var(--rule-s);border:1px solid var(--rule-s);border-radius:3px;overflow:hidden;}
-.tort-item{background:var(--surface);padding:18px 22px;display:grid;grid-template-columns:28px 1fr;gap:14px;align-items:start;border-bottom:1px solid var(--rule);transition:background .15s;}
-.tort-item:last-child{border-bottom:none;}
-.tort-item:hover{background:var(--surface2);}
-.tort-n{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:300;line-height:1;opacity:.22;padding-top:3px;}
-.tort-title{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:5px;}
-.tort-body{font-size:14px;color:var(--parchment-d);line-height:1.72;}
-.tort-body strong{color:var(--parchment);font-weight:400;}
-.tort-cite{font-family:'IBM Plex Mono',monospace;font-size:8px;letter-spacing:.05em;color:var(--parchment-f);margin-top:6px;display:block;}
+/* ── SECTION LABEL ── */
+.sec-label { font-family: 'IBM Plex Mono', monospace; font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--nacre-dim); margin-bottom: 20px; }
 
-/* named officers */
-.officer-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1px;background:var(--rule-s);border:1px solid var(--rule-s);border-radius:3px;overflow:hidden;}
-.officer-cell{background:var(--surface);padding:18px 16px;}
-.officer-name{font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:300;color:var(--parchment);margin-bottom:3px;line-height:1.2;}
-.officer-name em{font-style:italic;color:var(--parchment-d);}
-.officer-role{font-family:'IBM Plex Mono',monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;color:var(--sandstone);opacity:.75;margin-bottom:8px;}
-.officer-body{font-size:13px;color:var(--parchment-d);line-height:1.7;}
-.officer-foot{font-family:'IBM Plex Mono',monospace;font-size:8px;letter-spacing:.05em;color:var(--parchment-f);margin-top:8px;border-top:1px solid var(--rule);padding-top:7px;}
+/* ── CHANNEL GRID ── */
+.channel-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 1px;
+  background: var(--rule-mid); border: 1px solid var(--rule-mid);
+  border-radius: 6px; overflow: hidden; margin-bottom: 54px;
+}
+.ch {
+  background: var(--slate-1); padding: 28px 24px; text-decoration: none;
+  color: inherit; display: flex; flex-direction: column;
+  position: relative; transition: background 0.18s;
+}
+.ch:hover { background: var(--slate-2); }
+.ch::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; }
+.ch-civic::before  { background: var(--grape); }
+.ch-press::before  { background: var(--citron-dim); }
+.ch-expert::before { background: var(--dragonfly); }
+.ch-legal::before  { background: var(--scarlet); }
+.ch-tag { font-family: 'IBM Plex Mono', monospace; font-size: 8.5px; letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 10px; }
+.ch-civic .ch-tag  { color: var(--grape); }
+.ch-press .ch-tag  { color: var(--citron); }
+.ch-expert .ch-tag { color: var(--dragonfly); }
+.ch-legal .ch-tag  { color: var(--scarlet); }
+.ch-title { font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: clamp(17px, 2.2vw, 21px); line-height: 1.12; color: var(--nacre); margin-bottom: 10px; }
+.ch-desc { font-family: 'EB Garamond', serif; font-size: 15px; line-height: 1.65; color: var(--nacre-mid); flex: 1; margin-bottom: 18px; }
+.ch-btn {
+  display: inline-flex; align-items: center; gap: 7px;
+  font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; letter-spacing: 0.1em; text-transform: uppercase;
+  padding: 9px 16px; border-radius: 3px; border: 1px solid; text-decoration: none;
+  transition: opacity 0.18s; align-self: flex-start;
+}
+.ch-btn::after { content: '→'; font-size: 11px; }
+.ch-civic .ch-btn  { color: var(--grape); border-color: var(--grape-dim); background: var(--grape-bg); }
+.ch-press .ch-btn  { color: var(--citron); border-color: var(--citron-dim); background: var(--citron-bg); }
+.ch-expert .ch-btn { color: var(--dragonfly); border-color: var(--dragonfly-dim); background: var(--dragonfly-bg); }
+.ch-legal .ch-btn  { color: var(--scarlet); border-color: var(--scarlet-dim); background: var(--scarlet-bg); }
+.ch-btn:hover { opacity: 0.7; }
 
-/* EU escalation track */
-.eu-track{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1px;background:var(--rule-s);border:1px solid var(--rule-s);border-radius:3px;overflow:hidden;}
-.eu-cell{background:var(--cosmic-bg);padding:20px 18px;}
-.eu-cell-label{font-family:'IBM Plex Mono',monospace;font-size:8px;letter-spacing:.16em;text-transform:uppercase;color:var(--cosmic);opacity:.6;margin-bottom:8px;}
-.eu-cell-title{font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:300;color:var(--glaze);margin-bottom:5px;line-height:1.2;}
-.eu-cell-body{font-size:13px;color:rgba(184,184,220,.65);line-height:1.7;}
-.eu-cell-foot{font-family:'IBM Plex Mono',monospace;font-size:8px;letter-spacing:.05em;color:rgba(152,152,200,.35);margin-top:9px;border-top:1px solid rgba(152,152,200,.1);padding-top:7px;}
+/* ── NACRE CALLOUT ── */
+.nacre-callout {
+  position: relative; border-radius: 5px; padding: 28px 28px 26px;
+  margin-bottom: 50px; background: var(--slate-2); overflow: hidden;
+}
+.nacre-callout::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+  border-radius: 5px; padding: 1px; background: var(--nacre-grad);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor; mask-composite: exclude; opacity: 0.55; pointer-events: none;
+}
+@keyframes nacreShift { 0%{background-position:0% 50%;}50%{background-position:100% 50%;}100%{background-position:0% 50%;} }
+.nacre-callout::after {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg, #7ba8d8, #dce5f2, #b8a0d0, #6eb8c8, #dce5f2, #7ba8d8);
+  background-size: 300% 100%; animation: nacreShift 6s ease infinite;
+  border-radius: 5px 5px 0 0;
+}
+.callout-label { font-family: 'IBM Plex Mono', monospace; font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--nacre-mid); margin-bottom: 14px; }
+.callout-title { font-family: 'Cormorant Garamond', serif; font-weight: 300; font-style: italic; font-size: clamp(20px, 3vw, 28px); color: var(--nacre); margin-bottom: 18px; line-height: 1.1; }
+.loop-stages {
+  display: grid; grid-template-columns: repeat(5, 1fr); gap: 1px;
+  background: var(--rule-mid); border: 1px solid var(--rule-mid);
+  border-radius: 3px; overflow: hidden; margin-top: 18px;
+}
+.ls { background: var(--slate-1); padding: 16px 14px 14px; }
+.ls-n { font-family: 'IBM Plex Mono', monospace; font-size: 8px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--nacre-dim); margin-bottom: 6px; }
+.ls-title { font-family: 'EB Garamond', serif; font-weight: 600; font-size: 14.5px; line-height: 1.2; color: var(--nacre); margin-bottom: 5px; }
+.ls-desc { font-family: 'EB Garamond', serif; font-size: 13.5px; line-height: 1.5; color: var(--nacre-mid); }
 
-/* timeline */
-.timeline{display:flex;flex-direction:column;}
-.tl-item{display:grid;grid-template-columns:90px 2px 1fr;gap:0 20px;padding-bottom:30px;}
-.tl-item:last-child{padding-bottom:0;}
-.tl-year{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.06em;color:var(--parchment-d);padding-top:3px;text-align:right;}
-.tl-line{position:relative;display:flex;flex-direction:column;align-items:center;}
-.tl-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0;margin-top:4px;position:relative;z-index:1;}
-.tl-connector{flex:1;width:1px;background:var(--rule-s);margin-top:4px;}
-.tl-item:last-child .tl-connector{display:none;}
-.tl-title{font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:300;color:var(--parchment);margin-bottom:5px;line-height:1.3;}
-.tl-title em{font-style:italic;color:var(--parchment-d);}
-.tl-body{font-size:14px;color:var(--parchment-d);line-height:1.72;}
+/* ── THREE HYPOTHESES ── */
+.hyp-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px;
+  background: var(--rule-mid); border: 1px solid var(--rule-mid);
+  border-radius: 5px; overflow: hidden; margin-top: 22px; margin-bottom: 54px;
+}
+.hyp { background: var(--slate-1); padding: 24px 20px 22px; position: relative; }
+.hyp::after { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: var(--nacre-subtle); opacity: 0.7; }
+.hyp-glyph { font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 300; font-size: 34px; line-height: 1; color: var(--nacre-faint); margin-bottom: 10px; }
+.hyp-label { font-family: 'IBM Plex Mono', monospace; font-size: 8.5px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--nacre-dim); margin-bottom: 8px; }
+.hyp-title { font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 18px; line-height: 1.15; color: var(--nacre); margin-bottom: 10px; }
+.hyp-body { font-family: 'EB Garamond', serif; font-size: 15px; line-height: 1.62; color: var(--nacre-mid); }
 
-/* ticker */
-.ticker-wrap{background:var(--surface2);border:1px solid var(--rule-s);overflow:hidden;white-space:nowrap;border-radius:3px;margin-bottom:14px;padding:.4rem 0;}
-.ticker-inner{display:inline-block;animation:ticker 62s linear infinite;font-family:'IBM Plex Mono',monospace;font-size:.57rem;letter-spacing:.12em;color:var(--parchment-d);}
-.ticker-inner span{margin:0 2.5rem;}
-.ticker-inner .hi{color:var(--scarlet);}
-.ticker-inner .go{color:var(--citron);}
-.ticker-inner .nb{color:var(--dragonfly);}
-.ticker-inner .ar{color:var(--ardent-lt);}
-.ticker-inner .ab{color:var(--abalone-lt);}
-.ticker-inner .eu{color:var(--cosmic);}
-@keyframes ticker{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
+/* ── AXIOM BAR ── */
+.axiom-bar { display: grid; grid-template-columns: 3px 1fr; gap: 22px; padding: 28px 0; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); margin: 36px 0; }
+.axiom-rule { border-radius: 2px; }
+.axiom-tag { font-family: 'IBM Plex Mono', monospace; font-size: 9px; letter-spacing: .2em; text-transform: uppercase; opacity: .45; margin-bottom: 8px; }
+.axiom-quote { font-family: 'Cormorant Garamond', serif; font-size: clamp(17px,2.3vw,23px); font-weight: 300; font-style: italic; color: var(--nacre); line-height: 1.48; margin-bottom: 8px; }
+.axiom-plain { font-size: 15px; color: var(--nacre-mid); line-height: 1.78; max-width: 660px; }
 
-/* countdown chip */
-.countdown-bar{display:flex;align-items:center;gap:14px;padding:12px 16px;background:var(--scarlet-bg);border:1px solid rgba(232,64,96,.25);border-radius:3px;margin-bottom:32px;flex-wrap:wrap;}
-.countdown-label{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--scarlet);opacity:.8;}
-.countdown-chip{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.06em;color:var(--scarlet);font-weight:500;}
-.countdown-note{font-family:'EB Garamond',serif;font-size:14px;font-style:italic;color:rgba(232,64,96,.55);}
+/* ── TORT CHAIN ── */
+.tort-chain { display: flex; flex-direction: column; gap: 0; background: var(--rule-mid); border: 1px solid var(--rule-mid); border-radius: 3px; overflow: hidden; margin-bottom: 50px; }
+.tort-item { background: var(--slate-1); padding: 18px 22px; display: grid; grid-template-columns: 28px 1fr; gap: 14px; align-items: start; border-bottom: 1px solid var(--rule); transition: background .15s; }
+.tort-item:last-child { border-bottom: none; }
+.tort-item:hover { background: var(--slate-2); }
+.tort-n { font-family: 'Cormorant Garamond', serif; font-size: 24px; font-weight: 300; line-height: 1; opacity: .22; padding-top: 3px; }
+.tort-title { font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: .1em; text-transform: uppercase; margin-bottom: 5px; }
+.tort-body { font-size: 14px; color: var(--nacre-mid); line-height: 1.72; }
+.tort-body strong { color: var(--nacre); font-weight: 400; }
+.tort-cite { font-family: 'IBM Plex Mono', monospace; font-size: 8px; letter-spacing: .05em; color: var(--nacre-faint); margin-top: 6px; display: block; }
 
-/* CTA */
-.cta-block{background:var(--ardent-bg);border:1px solid rgba(114,184,154,.2);border-top:3px solid var(--ardent);border-radius:5px;padding:36px 32px;margin-top:56px;display:flex;align-items:flex-start;gap:28px;flex-wrap:wrap;}
-.cta-label{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--ardent-lt);opacity:.6;margin-bottom:8px;}
-.cta-heading{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:300;color:var(--laitance);margin-bottom:10px;line-height:1.15;}
-.cta-heading em{font-style:italic;color:var(--ardent-lt);}
-.cta-body{font-size:15px;color:rgba(164,212,188,.65);line-height:1.72;}
-.cta-actions{display:flex;flex-direction:column;gap:10px;align-items:flex-start;padding-top:4px;}
-.btn-primary{display:inline-flex;align-items:center;gap:8px;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;padding:12px 24px;border-radius:3px;background:var(--ardent);color:var(--ardent-bg);border:1px solid var(--ardent);text-decoration:none;transition:background .2s;}
-.btn-primary:hover,.btn-primary:focus{background:var(--ardent-lt);outline:none;}
-.btn-secondary{display:inline-flex;align-items:center;gap:8px;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;padding:10px 20px;border-radius:3px;background:transparent;color:var(--ardent-lt);border:1px solid rgba(114,184,154,.3);text-decoration:none;transition:border-color .2s;}
-.btn-secondary:hover,.btn-secondary:focus{border-color:var(--ardent-lt);outline:none;}
+/* ── NAMED OFFICERS ── */
+.officer-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(200px,1fr)); gap: 1px; background: var(--rule-mid); border: 1px solid var(--rule-mid); border-radius: 3px; overflow: hidden; margin-bottom: 14px; }
+.officer-cell { background: var(--slate-1); padding: 18px 16px; }
+.officer-name { font-family: 'Cormorant Garamond', serif; font-size: 17px; font-weight: 300; color: var(--nacre); margin-bottom: 3px; line-height: 1.2; }
+.officer-name em { font-style: italic; color: var(--nacre-mid); }
+.officer-role { font-family: 'IBM Plex Mono', monospace; font-size: 8px; letter-spacing: .1em; text-transform: uppercase; color: var(--sandstone); opacity: .75; margin-bottom: 8px; }
+.officer-body { font-size: 13px; color: var(--nacre-mid); line-height: 1.7; }
+.officer-foot { font-family: 'IBM Plex Mono', monospace; font-size: 8px; letter-spacing: .05em; color: var(--nacre-faint); margin-top: 8px; border-top: 1px solid var(--rule); padding-top: 7px; }
 
-/* footer */
-footer{margin-top:72px;padding:32px 0;border-top:1px solid var(--rule);display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:20px;}
-.footer-body{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--parchment-d);line-height:2.1;}
-.footer-body a{color:var(--dragonfly);text-decoration:none;}
-.footer-body a:hover{text-decoration:underline;}
-.footer-right{font-family:'IBM Plex Mono',monospace;font-size:9px;color:rgba(158,152,135,.35);text-align:right;line-height:2;text-transform:uppercase;letter-spacing:.1em;}
+/* ── EU TRACK ── */
+.eu-track { display: grid; grid-template-columns: repeat(auto-fit,minmax(220px,1fr)); gap: 1px; background: var(--rule-mid); border: 1px solid var(--rule-mid); border-radius: 3px; overflow: hidden; margin-bottom: 14px; }
+.eu-cell { background: #10101e; padding: 20px 18px; }
+.eu-cell-label { font-family: 'IBM Plex Mono', monospace; font-size: 8px; letter-spacing: .16em; text-transform: uppercase; color: #9898c8; opacity: .6; margin-bottom: 8px; }
+.eu-cell-title { font-family: 'Cormorant Garamond', serif; font-size: 17px; font-weight: 300; color: #edffff; margin-bottom: 5px; line-height: 1.2; }
+.eu-cell-body { font-size: 13px; color: rgba(184,184,220,.65); line-height: 1.7; }
+.eu-cell-foot { font-family: 'IBM Plex Mono', monospace; font-size: 8px; letter-spacing: .05em; color: rgba(152,152,200,.35); margin-top: 9px; border-top: 1px solid rgba(152,152,200,.1); padding-top: 7px; }
 
-@keyframes fadeUp{from{opacity:0;transform:translateY(14px);}to{opacity:1;transform:translateY(0);}}
-.fade{animation:fadeUp .6s ease forwards;opacity:0;}
-.fd2{animation-delay:.1s;}.fd3{animation-delay:.22s;}.fd4{animation-delay:.36s;}
-:focus-visible{outline:2px solid var(--rivulet);outline-offset:3px;}
+/* ── TIMELINE ── */
+.timeline { display: flex; flex-direction: column; }
+.tl-item { display: grid; grid-template-columns: 90px 2px 1fr; gap: 0 20px; padding-bottom: 30px; }
+.tl-item:last-child { padding-bottom: 0; }
+.tl-year { font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: .06em; color: var(--nacre-dim); padding-top: 3px; text-align: right; }
+.tl-line { position: relative; display: flex; flex-direction: column; align-items: center; }
+.tl-dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; margin-top: 4px; position: relative; z-index: 1; }
+.tl-connector { flex: 1; width: 1px; background: var(--rule-mid); margin-top: 4px; }
+.tl-item:last-child .tl-connector { display: none; }
+.tl-title { font-family: 'Cormorant Garamond', serif; font-size: 17px; font-weight: 300; color: var(--nacre); margin-bottom: 5px; line-height: 1.3; }
+.tl-title em { font-style: italic; color: var(--nacre-mid); }
+.tl-body { font-size: 14px; color: var(--nacre-mid); line-height: 1.72; }
 
-@media(max-width:640px){
-  .stat-row{grid-template-columns:repeat(2,1fr);}
-  .card-grid,.officer-grid,.eu-track{grid-template-columns:1fr;}
-  .tl-item{grid-template-columns:62px 2px 1fr;}
-  .cta-block{flex-direction:column;}
-  .loop-table td:nth-child(3){display:none;}
+/* ── SITEMAP ── */
+.sitemap-section { margin-bottom: 54px; }
+.sitemap-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--rule-mid); border: 1px solid var(--rule-mid); border-radius: 5px; overflow: hidden; }
+.sm-group { background: var(--slate-1); padding: 22px 20px; }
+.sm-group-label { font-family: 'IBM Plex Mono', monospace; font-size: 8.5px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--nacre-dim); margin-bottom: 14px; padding-bottom: 10px; border-bottom: 1px solid var(--rule); }
+.sm-group:nth-child(1) .sm-group-label { color: var(--grape); }
+.sm-group:nth-child(2) .sm-group-label { color: var(--dragonfly); }
+.sm-group:nth-child(3) .sm-group-label { color: var(--scarlet); }
+.sm-links { display: flex; flex-direction: column; gap: 3px; }
+.sm-link { display: flex; align-items: baseline; gap: 8px; text-decoration: none; padding: 6px 8px; border-radius: 3px; transition: background 0.15s; }
+.sm-link:hover { background: var(--slate-2); }
+.sm-link-glyph { font-size: 10px; color: var(--nacre-dim); flex-shrink: 0; }
+.sm-link-title { font-family: 'EB Garamond', serif; font-size: 15px; line-height: 1.2; color: var(--nacre); display: block; }
+.sm-link-meta { font-family: 'IBM Plex Mono', monospace; font-size: 9px; letter-spacing: 0.06em; color: var(--nacre-dim); display: block; margin-top: 1px; }
+
+/* ── QUICK LINKS ── */
+.ql-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 50px; }
+.ql { font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; letter-spacing: 0.07em; padding: 6px 14px; border-radius: 20px; border: 1px solid; text-decoration: none; transition: opacity 0.18s; }
+.ql:hover { opacity: 0.65; }
+.ql-grape    { color: var(--grape);    border-color: var(--grape-dim);    background: var(--grape-bg); }
+.ql-gold     { color: var(--gold);     border-color: var(--gold-dim);     background: var(--gold-bg); }
+.ql-sherwood { color: var(--sherwood); border-color: var(--sherwood-dim); background: var(--sherwood-bg); }
+.ql-dragonfly{ color: var(--dragonfly);border-color: var(--dragonfly-dim);background: var(--dragonfly-bg); }
+.ql-citron   { color: var(--citron);   border-color: var(--citron-dim);   background: var(--citron-bg); }
+.ql-scarlet  { color: var(--scarlet);  border-color: var(--scarlet-dim);  background: var(--scarlet-bg); }
+
+/* ── SECTION SCAFFOLD ── */
+.section-label { font-family: 'IBM Plex Mono', monospace; font-size: 9px; letter-spacing: .26em; text-transform: uppercase; color: #9898c8; opacity: .65; margin-bottom: 8px; display: flex; align-items: center; gap: 10px; }
+.section-label::after { content: ''; flex: 1; height: 1px; background: currentColor; opacity: .25; max-width: 200px; }
+.section-title { font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: clamp(24px,3.5vw,34px); color: var(--nacre); margin-bottom: 8px; line-height: 1.1; }
+.section-title em { font-style: italic; color: var(--bordeaux); }
+.section-sub { font-size: 16px; font-style: italic; color: var(--nacre-mid); margin-bottom: 36px; max-width: 620px; line-height: 1.7; }
+section { padding: 60px 0 0; }
+section+section { border-top: 1px solid var(--rule); margin-top: 60px; }
+
+/* ── INSET ── */
+.inset { background: var(--slate-2); border-left: 2px solid; padding: 14px 20px 14px 18px; margin: 20px 0; border-radius: 0 2px 2px 0; }
+.inset-label { font-family: 'IBM Plex Mono', monospace; font-size: 8.5px; letter-spacing: .2em; text-transform: uppercase; margin-bottom: 5px; opacity: .75; }
+.inset-text { font-size: 14px; font-style: italic; color: var(--nacre-mid); line-height: 1.7; }
+
+/* ── CTA ── */
+.cta-block { background: var(--ardent-bg); border: 1px solid rgba(114,184,154,.2); border-top: 3px solid var(--ardent); border-radius: 5px; padding: 36px 32px; margin-top: 56px; display: flex; align-items: flex-start; gap: 28px; flex-wrap: wrap; }
+.cta-label { font-family: 'IBM Plex Mono', monospace; font-size: 9px; letter-spacing: .2em; text-transform: uppercase; color: var(--ardent-lt); opacity: .6; margin-bottom: 8px; }
+.cta-heading { font-family: 'Cormorant Garamond', serif; font-size: 26px; font-weight: 300; color: var(--laitance); margin-bottom: 10px; line-height: 1.15; }
+.cta-heading em { font-style: italic; color: var(--ardent-lt); }
+.cta-body { font-size: 15px; color: rgba(164,212,188,.65); line-height: 1.72; }
+.cta-actions { display: flex; flex-direction: column; gap: 10px; align-items: flex-start; padding-top: 4px; }
+.btn-primary { display: inline-flex; align-items: center; gap: 8px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: .08em; text-transform: uppercase; padding: 12px 24px; border-radius: 3px; background: var(--ardent); color: var(--ardent-bg); border: 1px solid var(--ardent); text-decoration: none; transition: background .2s; }
+.btn-primary:hover { background: var(--ardent-lt); }
+.btn-secondary { display: inline-flex; align-items: center; gap: 8px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: .08em; text-transform: uppercase; padding: 10px 20px; border-radius: 3px; background: transparent; color: var(--ardent-lt); border: 1px solid rgba(114,184,154,.3); text-decoration: none; transition: border-color .2s; }
+.btn-secondary:hover { border-color: var(--ardent-lt); }
+
+/* ── COLOPHON ── */
+.colophon { border-top: 1px solid var(--rule-mid); padding-top: 28px; display: flex; justify-content: space-between; align-items: flex-start; gap: 18px; flex-wrap: wrap; }
+.colophon-left { font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; letter-spacing: 0.07em; line-height: 1.85; color: var(--nacre-dim); }
+.colophon-left a { color: var(--nacre-dim); text-decoration: none; }
+.colophon-left a:hover { color: var(--nacre); }
+.colophon-right { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 15px; color: var(--nacre-dim); max-width: 380px; line-height: 1.6; text-align: right; }
+
+/* ── MISC ── */
+.mb-sm { margin-bottom: 20px; }
+.mb-md { margin-bottom: 38px; }
+:focus-visible { outline: 2px solid var(--rivulet); outline-offset: 3px; }
+
+@media(max-width: 680px) {
+  .stat-strip { grid-template-columns: repeat(2,1fr); }
+  .channel-grid, .hyp-grid, .sitemap-grid, .eu-track, .officer-grid { grid-template-columns: 1fr; }
+  .loop-stages { grid-template-columns: 1fr; }
+  .tl-item { grid-template-columns: 62px 2px 1fr; }
+  .cta-block { flex-direction: column; }
+  .colophon { flex-direction: column; }
+  .colophon-right { text-align: left; }
+  .deadline-strip { flex-direction: column; }
+  .wrap { padding: 40px 18px 70px; }
+  .top-bar { padding: 10px 18px; }
+  .earthy-strip { padding: 10px 18px; }
 }
 </style>
 </head>
@@ -233,44 +497,30 @@ footer{margin-top:72px;padding:32px 0;border-top:1px solid var(--rule);display:f
 <a href="#main" class="skip-link">Skip to main content</a>
 <canvas id="stars" aria-hidden="true"></canvas>
 
-<div class="page">
-
-<!-- ══ HERO ══════════════════════════════════════════ -->
-<header class="hero fade" role="banner">
-  <div class="eyebrow">Meinhardt Initiative · A Public Interest Record · 2006–2026</div>
-  <h1>Once you see it,<br><em>you see it everywhere.</em></h1>
-  <p class="hero-lede">
-    Every failure traced in this record — nineteen years of it — has the same root cause. <strong>The State declined to recognise what was placed before it.</strong> Not evaluate it, not reject it, not engage with it on its merits — simply not to see it. Once you understand how non-recognition works as a procedural technique, the pattern becomes legible across every department, every committee, every parliamentary channel, every EU obligation.
-  </p>
-
-  <!-- Countdown bar -->
-  <div class="countdown-bar" role="status" aria-live="polite">
-    <span class="countdown-label">EU Presidency opens</span>
-    <span class="countdown-chip" id="daysChip">calculating…</span>
-    <span class="countdown-note">Ireland chairs rule-of-law enforcement while holding a nineteen-year competent authority vacancy on the primary dual-use instrument it will administer.</span>
+<!-- TOP BAR -->
+<div class="top-bar" role="banner">
+  <a class="top-bar-wordmark" href="https://dr-crunch.github.io/">Meinhardt Initiative</a>
+  <div class="top-bar-nav">
+    <a href="https://dr-crunch.github.io/nullification-loops/">Nullification Loops</a>
+    <a href="https://dr-crunch.github.io/redundancy-awareness/semantic-map.html">Semantic Map</a>
+    <a href="https://dr-wojak.github.io/legal/">Legal</a>
+    <a class="nav-cta" href="https://drive.google.com/drive/u/0/folders/12o4-OPXJ0W5E8pxF9pN-VKUeODagy17g" target="_blank" rel="noopener">Archive →</a>
   </div>
+</div>
 
-  <div class="chip-row" role="list" aria-label="Case status">
-    <span class="chip" style="color:var(--rivulet);border-color:rgba(56,200,184,.3);background:var(--rivulet-bg);" role="listitem">✓ Record independently reviewable</span>
-    <span class="chip" style="color:var(--sandstone);border-color:rgba(240,160,80,.3);background:var(--sandstone-bg);" role="listitem">△ No appraisal mechanism — 19 years</span>
-    <span class="chip" style="color:var(--scarlet);border-color:rgba(232,64,96,.3);background:var(--scarlet-bg);" role="listitem">⚠ Misfeasance → malfeasance</span>
-    <span class="chip" style="color:var(--dragonfly);border-color:rgba(90,176,200,.3);background:var(--dragonfly-bg);" role="listitem">§ EU Reg 2021/821 · Art. 41 CFR</span>
-    <span class="chip" style="color:var(--cosmic);border-color:rgba(152,152,200,.25);background:var(--cosmic-bg);" role="listitem">◇ Council Secretariat seized</span>
-    <span class="chip" style="color:var(--abalone-lt);border-color:rgba(192,184,200,.2);background:var(--abalone-bg);" role="listitem">◌ Presidency Paradox · 1 Jul 2026</span>
-  </div>
+<!-- EARTHY STRIP -->
+<nav class="earthy-strip" aria-label="Quick navigation">
+  <span class="earthy-label" aria-hidden="true">Quick links</span>
+  <a class="earthy-btn eb-intro" href="https://dr-crunch.github.io/" target="_blank" rel="noopener" aria-label="What is this? — plain-language overview">What is this?</a>
+  <a class="earthy-btn eb-sitemap" href="https://dr-crunch.github.io/terminal.html" target="_blank" rel="noopener" aria-label="Read the story — interactive timeline">Read the story</a>
+  <div class="earthy-sep" aria-hidden="true"></div>
+  <a class="earthy-btn eb-complaint" href="https://drive.google.com/drive/u/0/folders/1FMPO1exETcpb4jxX-q5Mh2VIpYwYuATS" target="_blank" rel="noopener" aria-label="Read the formal complaint — 65 pages">Read the complaint</a>
+  <a class="earthy-btn eb-legal" href="https://dr-wojak.github.io/legal/" target="_blank" rel="noopener" aria-label="See the legal record — 226 pages">See the legal record</a>
+  <div class="earthy-sep" aria-hidden="true"></div>
+  <a class="earthy-btn eb-semantic" href="https://twitter.com/BroekMeinhardt" target="_blank" rel="noopener noreferrer" aria-label="Follow @BroekMeinhardt on X">Follow updates</a>
+</nav>
 
-  <a href="https://dr-wojak.github.io/legal/" class="hero-cta" rel="noopener noreferrer">→ View the legal record</a>
-
-  <div class="stat-row" role="region" aria-label="Case statistics">
-    <div class="stat-cell"><div class="stat-n" style="color:var(--scarlet);">19</div><div class="stat-label" style="color:rgba(232,64,96,.55);">years · zero<br>determinations</div></div>
-    <div class="stat-cell"><div class="stat-n" style="color:var(--citron);">26<em style="font-size:28px;">kg</em></div><div class="stat-label" style="color:rgba(212,192,106,.55);">O.R. materials in<br>State custody</div></div>
-    <div class="stat-cell"><div class="stat-n" style="color:var(--dragonfly);">7</div><div class="stat-label" style="color:rgba(90,176,200,.55);">Oireachtas committees<br>declined jurisdiction</div></div>
-    <div class="stat-cell"><div class="stat-n" style="color:var(--rivulet);">0</div><div class="stat-label" style="color:rgba(56,200,184,.55);">statutory appraisal<br>mechanism exists</div></div>
-  </div>
-</header>
-
-<main id="main">
-
+<!-- TICKER -->
 <div class="ticker-wrap" aria-hidden="true">
   <div class="ticker-inner">
     <span class="hi">MEINHARDT INITIATIVE · ONCE YOU SEE IT</span><span class="go">19 YEARS · ZERO DETERMINATIONS</span><span class="nb">EU REG 2021/821 · COMPETENT AUTHORITY VACANCY · 18 YEARS</span><span class="eu">COUNCIL SECRETARIAT SEIZED · MAY 27 2026</span><span class="ar">SÉJOURNÉ NOTIFIED · COMPET HANDOVER · CYPRUS → IRELAND</span><span class="hi">STORM ÉOWYN · A LIVE CONSEQUENCE</span><span class="ab">EU PRESIDENCY PARADOX · 1 JULY 2026</span><span class="eu">COMMISSION EVALUATION OPENS · 10 SEPT 2026</span><span class="go">MISFEASANCE IN PUBLIC OFFICE · MALFEASANCE IN PROSPECT</span><span class="nb">TORT OF CONVERSION · 26KG · CIVIL LIABILITY ACT 1961</span><span class="hi">JOINT AND SEVERAL LIABILITY · NAMED TORTFEASORS</span><span class="ar">THE RECORD IS AN INSTRUMENT · NOT A GRIEVANCE</span>
@@ -278,424 +528,441 @@ footer{margin-top:72px;padding:32px 0;border-top:1px solid var(--rule);display:f
   </div>
 </div>
 
-<!-- ══ §01 THE ROOT CAUSE ════════════════════════════ -->
-<section aria-labelledby="s01" class="fade fd2">
-  <div class="section-label">§ 01 — The root cause</div>
-  <h2 class="section-title" id="s01">Non-recognition as<br><em>a procedural technique</em></h2>
-  <p class="section-sub">Once you understand what it is, you can see it operating across every institution that has touched this matter.</p>
+<!-- MAIN WRAP -->
+<div class="wrap" id="main">
 
-  <div class="card-grid" role="list">
-    <article class="card" role="listitem">
-      <div class="card-bar" style="background:var(--rivulet);"></div>
-      <div class="card-pip"><div class="card-dot" style="background:var(--rivulet);box-shadow:0 0 6px rgba(56,200,184,.5);"></div><span style="color:var(--rivulet);">What was submitted</span></div>
-      <h3 class="card-title">Twenty-six kilograms of Operations Research methodology</h3>
-      <p class="card-body">From November 2006, a corpus of O.R. materials — the mathematical science behind emergency logistics, resource allocation, crisis management — was formally presented to Irish authorities. <strong>Twenty-six kilograms of proprietary research. Formally received. Never evaluated. Never returned. Never licensed. Still in State custody.</strong> That is the foundation of the tort of conversion.</p>
-      <div class="card-foot">First presented: Nov 2006 · Dept of Foreign Affairs CA designation held 2009–2024 · Now DETE · Zero determinations across four transposition cycles</div>
-    </article>
-
-    <article class="card" role="listitem">
-      <div class="card-bar" style="background:var(--sandstone);"></div>
-      <div class="card-pip"><div class="card-dot" style="background:var(--sandstone);box-shadow:0 0 5px rgba(240,160,80,.5);"></div><span style="color:var(--sandstone);">What non-recognition does</span></div>
-      <h3 class="card-title">The technique that makes evaluation permanently unnecessary</h3>
-      <p class="card-body">Non-recognition is not a decision to reject. It is a decision to not-see. A submission that is not recognised need not be evaluated, and without evaluation there is no determination, and without determination there is no reviewable act, and without a reviewable act there is no basis for judicial challenge. <strong>Every stage of the Nullification Loop follows logically from the first move: decline to formally see what is placed before you.</strong></p>
-      <div class="card-foot">Nullification Loop · five moves · acknowledgement without recognition · no closing condition</div>
-    </article>
-
-    <article class="card" role="listitem">
-      <div class="card-bar" style="background:var(--scarlet);"></div>
-      <div class="card-pip"><div class="card-dot" style="background:var(--scarlet);box-shadow:0 0 5px rgba(232,64,96,.5);"></div><span style="color:var(--scarlet);">Why it matters to everyone</span></div>
-      <h3 class="card-title">The damage is not personal — it is to the entirety of the citizenry</h3>
-      <p class="card-body">O.R. methodology improves how every emergency is managed, how every scarce resource is allocated, how every crisis is coordinated. When the State declines to recognise a life-preserving methodology, it does not merely wrong the researcher. <strong>It withholds that capability from every citizen who would have benefited from better-planned emergency responses, better-allocated public resources, better-coordinated crisis management.</strong> Storm Éowyn is one named example.</p>
-      <div class="card-foot">Storm Éowyn · Feb 2025 · O.R. corpus in State custody, unprocessed, since 2006 · avoidable systemic risk</div>
-    </article>
+  <!-- MASTHEAD -->
+  <div class="masthead">
+    <div class="eyebrow fu">Meinhardt Initiative · A Public Interest Record · 2006–2026</div>
+    <h1 class="fu">Once you see it,<br><em>you see it everywhere.</em></h1>
+    <div class="masthead-sub fu">A Public Record of Administrative Failure · Pre-litigation · CC0</div>
+    <p class="claim fu">
+      A single, verifiable claim: <strong>the Irish State repeatedly received expert, actionable intelligence on systemic governance risk — and failed to absorb or act on it.</strong> Nineteen years. Six Taoisigh. Zero determinations.
+    </p>
   </div>
 
-  <div class="axiom-bar">
-    <div class="axiom-rule" style="background:linear-gradient(to bottom,var(--bordeaux),rgba(184,120,152,.03));"></div>
-    <div class="axiom-body">
-      <div class="axiom-tag" style="color:rgba(184,120,152,.5);">The Nullification Loop · the same mechanism, every time</div>
-      <p class="axiom-quote">"Acknowledge, defer, displace, assert sufficiency, reset — the same output regardless of who operates the mechanism, regardless of which government is in office, regardless of how many channels are engaged."</p>
-      <p class="axiom-plain">The Loop has five moves. Each move produces the same output: no determination. The first move is non-recognition. Once you see that move, you see it at every stage: the acknowledgement that closes instead of opens; the referral that names no body; the deferral that specifies no date; the sufficiency assertion backed by no audit; the reset that leaves no trace for the next administration. Every failure in this record is a variation on the same technique.</p>
+  <!-- STAT STRIP -->
+  <div class="stat-strip fu" role="region" aria-label="Case statistics">
+    <div class="stat"><div class="stat-n" style="color:#e84060;">19</div><div class="stat-l">Years · zero determinations</div></div>
+    <div class="stat"><div class="stat-n" style="color:var(--citron);">26<em>kg</em></div><div class="stat-l">O.R. materials in State custody</div></div>
+    <div class="stat"><div class="stat-n" style="color:var(--dragonfly);">7</div><div class="stat-l">Oireachtas committees declined jurisdiction</div></div>
+    <div class="stat"><div class="stat-n" style="color:var(--rivulet);">226<em>pp</em></div><div class="stat-l">Legal record compiled</div></div>
+  </div>
+
+  <!-- CHIP ROW -->
+  <div class="chip-row fu" role="list" aria-label="Case status">
+    <span class="chip" style="color:var(--rivulet);border-color:rgba(56,200,184,.3);background:var(--rivulet-bg);" role="listitem">✓ Record independently reviewable</span>
+    <span class="chip" style="color:var(--sandstone);border-color:rgba(240,160,80,.3);background:var(--sandstone-bg);" role="listitem">△ No appraisal mechanism — 19 years</span>
+    <span class="chip" style="color:#e84060;border-color:rgba(232,64,96,.3);background:var(--scarlet-bg);" role="listitem">⚠ Misfeasance → malfeasance</span>
+    <span class="chip" style="color:var(--dragonfly);border-color:rgba(90,176,200,.3);background:var(--dragonfly-bg);" role="listitem">§ EU Reg 2021/821 · Art. 41 CFR</span>
+    <span class="chip" style="color:#9898c8;border-color:rgba(152,152,200,.25);background:#10101e;" role="listitem">◇ Council Secretariat seized</span>
+    <span class="chip" style="color:var(--abalone-lt);border-color:rgba(192,184,200,.2);background:var(--abalone-bg);" role="listitem">◌ Presidency Paradox · 1 Jul 2026</span>
+  </div>
+
+  <!-- DEADLINE -->
+  <div class="deadline-strip">
+    <div>
+      <div class="dl-eye">Structural Deadline · EU Council Presidency</div>
+      <div class="dl-date">July 1st, 2026</div>
+      <div class="dl-note">Ireland chairs the EU Council. Continued institutional silence becomes a European rule-of-law event — the Presidency Paradox closes.</div>
+    </div>
+    <div class="dl-chip" id="daysChip">calculating…</div>
+  </div>
+
+  <!-- CHANNELS -->
+  <div class="sec-label">Choose your entry point</div>
+  <div class="channel-grid mb-md">
+    <div class="ch ch-civic">
+      <div class="ch-tag">Channel · Civic</div>
+      <div class="ch-title">Citizens &amp;<br>General Public</div>
+      <div class="ch-desc">The civic signal in plain terms. What was ignored, who received it, and why it matters for democratic accountability in Ireland.</div>
+      <a class="ch-btn" href="https://github.com/dr-wojak/public-relations" target="_blank" rel="noopener">Public Relations</a>
+    </div>
+    <div class="ch ch-press">
+      <div class="ch-tag">Channel · Media</div>
+      <div class="ch-title">Journalists &amp;<br>Researchers</div>
+      <div class="ch-desc">Timestamped signal-to-silence timeline. CC0 evidentiary record. Publication-ready investigation thread. No restrictions on use.</div>
+      <a class="ch-btn" href="https://github.com/dr-wojak/press" target="_blank" rel="noopener">Press Portal</a>
+    </div>
+    <div class="ch ch-expert">
+      <div class="ch-tag">Channel · Academic</div>
+      <div class="ch-title">Experts &amp;<br>Policymakers</div>
+      <div class="ch-desc">The Governmentality-2025 core record. Beer/VSM · Bateson · cohomological failure mapping. Nineteen years of O.R. signal into a structural diagnosis.</div>
+      <a class="ch-btn" href="https://github.com/dr-wojak/governmentality-2025" target="_blank" rel="noopener">Governmentality-2025</a>
+    </div>
+    <div class="ch ch-legal">
+      <div class="ch-tag">Channel · Legal</div>
+      <div class="ch-title">Lawyers &amp;<br>Judges</div>
+      <div class="ch-desc">Constitutional, statutory, and EU law record. Mandamus grounds · Art.41 CFR · CJEU Member State failure track. 226 pages. Pre-litigation.</div>
+      <a class="ch-btn" href="https://dr-wojak.github.io/legal/" target="_blank" rel="noopener">Legal Repository</a>
     </div>
   </div>
-</section>
 
-<!-- ══ §02 MISFEASANCE → MALFEASANCE ════════════════ -->
-<section aria-labelledby="s02" class="fade fd2">
-  <div class="section-label">§ 02 — Misfeasance and malfeasance</div>
-  <h2 class="section-title" id="s02">When "no good action"<br><em>becomes deliberate harm</em></h2>
-  <p class="section-sub">The distinction matters. It defines what kind of wrong this is, and what remedies are available.</p>
-
-  <div class="inset" style="border-color:var(--sandstone);" role="note">
-    <div class="inset-label" style="color:var(--sandstone);">Plain-language definition · misfeasance in public office</div>
-    <p class="inset-text">Misfeasance in public office occurs when a public officer — a minister, a clerk, a civil servant — fails to discharge a duty they hold by virtue of their office, and that failure causes harm. It does not require bad faith. A minister who receives a statutory submission and does nothing with it — not out of malice but out of comfort, convenience, or indifference — has committed misfeasance. The harm to the public is the same regardless of motive.</p>
-  </div>
-
-  <div class="card-grid" role="list">
-    <article class="card" role="listitem">
-      <div class="card-bar" style="background:var(--sandstone);"></div>
-      <div class="card-pip"><div class="card-dot" style="background:var(--sandstone);"></div><span style="color:var(--sandstone);">Misfeasance</span></div>
-      <h3 class="card-title">Nineteen years of no good action</h3>
-      <p class="card-body">Every government from 2006 to 2026 received this material. <strong>Not one produced a determination.</strong> Not a yes, not a no, not a reasoned refusal, not a statement of inapplicability. Six governments. Six opportunities to discharge a statutory duty. Zero discharges. That is the very definition of misfeasance: the failure to perform a public duty, producing harm to those who depended on its performance.</p>
-      <div class="card-foot">Six governments · Art. 40.3.1 Bunreacht · Art. 28.4.1 collective responsibility · positive duty to vindicate personal rights</div>
-    </article>
-
-    <article class="card" role="listitem">
-      <div class="card-bar" style="background:var(--scarlet);"></div>
-      <div class="card-pip"><div class="card-dot" style="background:var(--scarlet);box-shadow:0 0 5px rgba(232,64,96,.5);"></div><span style="color:var(--scarlet);">Malfeasance in prospect</span></div>
-      <h3 class="card-title">When the corpus becomes a state secret</h3>
-      <p class="card-body">Misfeasance can transmute into malfeasance — active wrongdoing — when the motives for non-recognition become institutionalised. <strong>When a corpus of proprietary research is converted into what functions as a state secret by the very hands that absorbed it without licence, evaluation, compensation, or return, the question of motive becomes unavoidable.</strong> At that point, the failure is no longer merely passive. It is the exercise of institutional power to conceal what was received.</p>
-      <div class="card-foot">Tort of conversion · proprietary O.R. materials held without licence · without evaluation · without return · since 2006</div>
-    </article>
-
-    <article class="card" role="listitem">
-      <div class="card-bar" style="background:var(--cosmic);"></div>
-      <div class="card-pip"><div class="card-dot" style="background:var(--cosmic);"></div><span style="color:var(--cosmic);">The three hypotheses</span></div>
-      <h3 class="card-title">Architectural, deliberate, or negligent — on every reading the duty was not discharged</h3>
-      <p class="card-body">The Tairiscint Mheinhardt identifies three possible characterisations of the breach: <strong>architectural dysfunction</strong> (the system has no closing condition by design), <strong>misfeasance</strong> (public officers failed to perform duties they held), or <strong>negligence so severe it constitutes its own category of failure</strong>. On every reading, the harm is established. On every reading, the remedy is available. The variable is only motive — and motive defines the scale of liability.</p>
-      <div class="card-foot">Tairiscint Mheinhardt v17 · three hypotheses · stakeholder liability · defined by motive</div>
-    </article>
-  </div>
-
-  <div class="axiom-bar">
-    <div class="axiom-rule" style="background:linear-gradient(to bottom,var(--scarlet),rgba(232,64,96,.03));"></div>
-    <div class="axiom-body">
-      <div class="axiom-tag" style="color:rgba(232,64,96,.45);">Collective responsibility · Art. 28.4.1</div>
-      <p class="axiom-quote">"Six departments simultaneously acknowledging a statutory submission and producing no determination is collective executive responsibility performed rather than discharged. The distinction is constitutional, not rhetorical."</p>
-      <p class="axiom-plain">The Irish Constitution requires the Government to be collectively responsible to the Dáil for all executive action. Collective responsibility requires collective reason. A submission that passes through six departments and produces no reasoned output from any of them is not a sequence of individual oversights. It is a collective constitutional failure — and that failure is now documented, publicly accessible, and anchored to a live regulatory deadline.</p>
+  <!-- NULLIFICATION LOOP CALLOUT -->
+  <div class="nacre-callout mb-md" role="region" aria-label="The Nullification Loop">
+    <div class="callout-label">Lúba Neamhnithe · Interregnum Nullificans</div>
+    <div class="callout-title">The Nullification Loop — five stages, zero determinations</div>
+    <p style="font-family:'EB Garamond',serif;font-size:15px;color:var(--nacre-mid);line-height:1.7;max-width:680px;margin-bottom:4px;">Every failure traced in this record has the same root cause. The State declined to recognise what was placed before it — not to evaluate, not to reject, not to engage on its merits — simply not to see it. Once you understand how non-recognition works as a procedural technique, the pattern becomes legible across every department, every committee, every parliamentary channel, every EU obligation.</p>
+    <div class="loop-stages">
+      <div class="ls"><div class="ls-n">Stage 01</div><div class="ls-title">Acknowledgement as Closure</div><div class="ls-desc">Receipt confirmed. No pathway follows. Files sometimes deleted.</div></div>
+      <div class="ls"><div class="ls-n">Stage 02</div><div class="ls-title">Remit Displacement</div><div class="ls-desc">Passed laterally. No body holds the full objective. Jurisdictional evaporation.</div></div>
+      <div class="ls"><div class="ls-n">Stage 03</div><div class="ls-title">Deferral without Destination</div><div class="ls-desc">Action postponed. No timetable. No accountable actor.</div></div>
+      <div class="ls"><div class="ls-n">Stage 04</div><div class="ls-title">Sufficiency without Audit</div><div class="ls-desc">Existing arrangements asserted as adequate. No evidence furnished.</div></div>
+      <div class="ls"><div class="ls-n">Stage 05</div><div class="ls-title">Record Suppression</div><div class="ls-desc">Institutional memory does not persist. The loop resets. The matter resurfaces unchanged.</div></div>
     </div>
   </div>
-</section>
 
-<!-- ══ §03 THE TORT RAMIFICATIONS ════════════════════ -->
-<section aria-labelledby="s03" class="fade fd3">
-  <div class="section-label">§ 03 — What the law says about this</div>
-  <h2 class="section-title" id="s03">The tort chain —<br><em>joint and several liability</em></h2>
-  <p class="section-sub">Plain-language guide to what remedies exist and who bears responsibility. From the FLAC strategic litigation brief.</p>
-
-  <div class="inset" style="border-color:var(--dragonfly);" role="note">
-    <div class="inset-label" style="color:var(--dragonfly);">Definition · tort of conversion (plain language)</div>
-    <p class="inset-text">Conversion is the wrongful taking, retention, or disposal of another person's property. If you hand your materials to an institution for evaluation, and that institution keeps them for nineteen years without evaluating them, returning them, compensating you, or obtaining a licence to hold them — that is conversion. The Civil Liability Act 1961 makes multiple wrongdoers jointly and severally liable: each is fully responsible for the whole harm, not just their individual share.</p>
+  <!-- THREE HYPOTHESES -->
+  <div class="sec-label mb-sm">The diagnostic frame · three non-exclusive hypotheses</div>
+  <div class="hyp-grid" role="list">
+    <div class="hyp" role="listitem">
+      <div class="hyp-glyph">α</div>
+      <div class="hyp-label">Hypothesis Alpha</div>
+      <div class="hyp-title">Structural Non-Governance</div>
+      <div class="hyp-body">The Irish State lacks the institutional architecture to process O.R. submissions of this character. The failure is design-failure, not agent-failure. The system produces ignoring as its default output.</div>
+    </div>
+    <div class="hyp" role="listitem">
+      <div class="hyp-glyph">β</div>
+      <div class="hyp-label">Hypothesis Beta</div>
+      <div class="hyp-title">Misfeasance in Public Office</div>
+      <div class="hyp-body">Individual officeholders, once formally notified, are subject to the misfeasance threshold. Knowledge + inaction + harm = tort. Several named officeholders have reached this threshold.</div>
+    </div>
+    <div class="hyp" role="listitem">
+      <div class="hyp-glyph">γ</div>
+      <div class="hyp-label">Hypothesis Gamma</div>
+      <div class="hyp-title">Epistemic Failure</div>
+      <div class="hyp-body">The State cannot evaluate what it cannot categorise. O.R. as methodology falls outside existing evaluation grammar. Correction requires both a writ and a curriculum change.</div>
+    </div>
   </div>
 
-  <div class="tort-chain" role="list">
-    <div class="tort-item" role="listitem">
-      <div class="tort-n" style="color:var(--rivulet);">I</div>
+  <!-- §01 TORT CHAIN -->
+  <section aria-labelledby="s-torts">
+    <div class="section-label">§ 01 — What the law says about this</div>
+    <h2 class="section-title" id="s-torts">The tort chain —<br><em>joint and several liability</em></h2>
+    <p class="section-sub">Plain-language guide to what remedies exist and who bears responsibility. From the FLAC strategic litigation brief.</p>
+
+    <div class="inset" style="border-color:var(--dragonfly);" role="note">
+      <div class="inset-label" style="color:var(--dragonfly);">Definition · tort of conversion</div>
+      <p class="inset-text">Conversion is the wrongful taking, retention, or disposal of another person's property. If you hand your materials to an institution for evaluation, and that institution keeps them for nineteen years without evaluating them, returning them, compensating you, or obtaining a licence to hold them — that is conversion. The Civil Liability Act 1961 makes multiple wrongdoers jointly and severally liable: each is fully responsible for the whole harm, not just their individual share.</p>
+    </div>
+
+    <div class="tort-chain" role="list">
+      <div class="tort-item" role="listitem">
+        <div class="tort-n" style="color:var(--rivulet);">I</div>
+        <div>
+          <div class="tort-title" style="color:var(--rivulet);">Mandamus — compel the State to do what it was always required to do</div>
+          <p class="tort-body">The court can issue an order of <strong>mandamus</strong> requiring the competent authority to discharge its function under EU Regulation 2021/821 — to actually evaluate the submitted corpus and produce a determination. This is not punitive. It is the most basic of remedies: an instruction to do the job required nineteen years ago.</p>
+          <span class="tort-cite">Order 84 RSC · mandamus · competent authority function · Regulation 2021/821 Art. 2(1)</span>
+        </div>
+      </div>
+      <div class="tort-item" role="listitem">
+        <div class="tort-n" style="color:var(--citron);">II</div>
+        <div>
+          <div class="tort-title" style="color:var(--citron);">Certiorari — quash the two decisions that tried to close the door</div>
+          <p class="tort-body">Two specific decisions exist within the reviewable twelve-month window. <strong>The McEntee Foreclosure</strong> (February 4th, 2026): the Department of Defence closed the file using an authority that holds no function under Regulation 2021/821. <strong>The Gunn Letter</strong> (February 24th, 2026): the new Clerk of Dáil Éireann ratified a determination she had not made or reviewed, offered no procedural pathway, and failed to address constitutional objections on the record. Certiorari quashes both.</p>
+          <span class="tort-cite">McEntee Foreclosure DOD-MO-01201-2025 · Gunn Letter Feb 24 2026 · O'Keeffe v An Bord Pleanála [1993] · Re Haughey [1971]</span>
+        </div>
+      </div>
+      <div class="tort-item" role="listitem">
+        <div class="tort-n" style="color:var(--dragonfly);">III</div>
+        <div>
+          <div class="tort-title" style="color:var(--dragonfly);">Declaratory relief — establish what the State is constitutionally required to do</div>
+          <p class="tort-body">Declarations that bind the State permanently: that the competent authority function must be operationally discharged; that ministerial discretion cannot be indefinitely suspended in the face of a statutory obligation; that the structural foreclosure of every domestic review channel makes access to justice illusory under Article 47 of the EU Charter. <strong>Once declared, these bind the State for every future citizen who submits material to a public body under a statutory framework.</strong></p>
+          <span class="tort-cite">Art. 47 CFR · effective remedy · Art. 40.3.1 Bunreacht · Art. 228 TFEU · EU principle of effectiveness</span>
+        </div>
+      </div>
+      <div class="tort-item" role="listitem">
+        <div class="tort-n" style="color:var(--sandstone);">IV</div>
+        <div>
+          <div class="tort-title" style="color:var(--sandstone);">Damages — compensation for what was taken and what was withheld</div>
+          <p class="tort-body">Multiple heads of damage. <strong>Conversion</strong>: nineteen years of retention of 26 kilograms of proprietary O.R. materials without evaluation, compensation, or lawful basis. <strong>Loss of opportunity</strong>: the compounding opportunity cost of non-deployment of a turnkey O.R. corpus across nineteen years. <strong>Personal consequence</strong>: documented measurable impact on the applicant. The tortfeasor chain is joint and several under the Civil Liability Act 1961.</p>
+          <span class="tort-cite">Civil Liability Act 1961 · joint and several liability · tort of conversion · opportunity cost · FLAC Strategic Litigation Brief 2026</span>
+        </div>
+      </div>
+      <div class="tort-item" role="listitem">
+        <div class="tort-n" style="color:var(--bordeaux);">V</div>
+        <div>
+          <div class="tort-title" style="color:var(--bordeaux);">Protective Costs Order — so that money cannot be used to silence a public interest claim</div>
+          <p class="tort-body">An application for a Protective Costs Order at the leave stage. If the case is lost, the applicant is not required to pay the State's legal costs — otherwise the threat of those costs would deter any citizen from challenging a nineteen-year governance failure. <strong>The EU principle of effectiveness provides an independent basis: enforcement of rights derived from EU law must not be excessively difficult or costly.</strong></p>
+          <span class="tort-cite">Dunne v Minister for the Environment [2007] IESC 60 · EU principle of effectiveness · Art. 47 CFR</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- §02 NAMED TORTFEASORS -->
+  <section aria-labelledby="s-officers">
+    <div class="section-label">§ 02 — The tortfeasor chain</div>
+    <h2 class="section-title" id="s-officers">Named officers.<br><em>Documented knowledge. Undischarged duties.</em></h2>
+    <p class="section-sub">The FLAC brief documents a continuous chain of informed non-discharge across named constitutional officers. Each link is dated. Each is traceable to the record.</p>
+
+    <div class="officer-grid" role="list">
+      <div class="officer-cell" role="listitem">
+        <div class="officer-role">Taoiseach 2006</div>
+        <div class="officer-name">Bertie Ahern</div>
+        <p class="officer-body">Acknowledged the security implications of the corpus in May–July 2006 and verbally committed to follow-up. The corpus entered State custody without evaluation, without licence, and without return.</p>
+        <div class="officer-foot">May–Jul 2006 · verbal commitment · no follow-up documented</div>
+      </div>
+      <div class="officer-cell" role="listitem">
+        <div class="officer-role">Minister for Foreign Affairs 2009 → Taoiseach 2020–22 → Taoiseach 2025–present</div>
+        <div class="officer-name">Micheál Martin <em>— apex officer</em></div>
+        <p class="officer-body">In February 2009, a 4.5-hour technical presentation was made through his office. Both his Deputy Director and his private secretary confirmed a formal ministerial report would be produced. That report was never produced. On September 25th, 2009, Martin gave a further verbal commitment in person. His office maintained complete silence from 2010 to 2024 — fourteen years. He is currently the apex constitutional officer.</p>
+        <div class="officer-foot">Feb 2009 · Sep 2009 · 14-year embargo · currently Taoiseach</div>
+      </div>
+      <div class="officer-cell" role="listitem">
+        <div class="officer-role">Taoiseach 2024 → Minister for Finance 2025–present</div>
+        <div class="officer-name">Simon Harris</div>
+        <p class="officer-body">Formally notified through the all-Oireachtas submission of March 2020. Briefed again as incoming Taoiseach in 2024. Named as joint recipient of the formal ministerial letter of September 12th, 2024. Currently holds Finance — one of the three departments forming the structural axis of the tortfeasor chain.</p>
+        <div class="officer-foot">Mar 2020 · Sep 2024 joint letter · Finance · fax broke 14-year embargo</div>
+      </div>
+      <div class="officer-cell" role="listitem" style="border-top: 2px solid var(--scarlet);">
+        <div class="officer-role">The structural axis</div>
+        <div class="officer-name">Three departments, <em>joint and several</em></div>
+        <p class="officer-body">Foreign Affairs (held CA designation 2009–2024 — eighteen years without a single evaluation), Defence (McEntee Foreclosure, February 2026), and Finance (awareness established through the fax; non-determination carried). Under the Civil Liability Act 1961, each is jointly and severally liable for the whole of the harm.</p>
+        <div class="officer-foot">Civil Liability Act 1961 · Foreign Affairs · Defence · Finance</div>
+      </div>
+    </div>
+
+    <div class="axiom-bar">
+      <div class="axiom-rule" style="background:linear-gradient(to bottom,var(--sandstone),rgba(240,160,80,.03));"></div>
       <div>
-        <div class="tort-title" style="color:var(--rivulet);">Mandamus — compel the State to do what it was always required to do</div>
-        <p class="tort-body">The court can issue an order of <strong>mandamus</strong> requiring the competent authority to discharge its function under EU Regulation 2021/821 — to actually evaluate the submitted corpus and produce a determination. This is not punitive. It is the most basic of remedies: an instruction to do the job that was required nineteen years ago.</p>
-        <span class="tort-cite">Order 84 RSC · mandamus · competent authority function · Regulation 2021/821 Art. 2(1)</span>
+        <div class="axiom-tag" style="color:rgba(240,160,80,.45);">Comparison to Mahon · public cost · public record</div>
+        <p class="axiom-quote">"The Mahon Tribunal documented a chain of informed non-action retrospectively, at an estimated public cost of between €250 million and €300 million, with limited prosecutorial consequence. This record exists now, is complete, is publicly accessible, and is anchored to a live regulatory obligation with a defined institutional deadline."</p>
+        <p class="axiom-plain">A court that resolves this matter within the Presidency period corrects a structural governance failure while it is still live, before it becomes a permanent feature of Ireland's compliance record in the Commission's evaluation.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- §03 EU DIMENSION -->
+  <section aria-labelledby="s-eu">
+    <div class="section-label">§ 03 — The European dimension</div>
+    <h2 class="section-title" id="s-eu">The matter has now reached<br><em>every level of the EU architecture</em></h2>
+    <p class="section-sub">On 27 May 2026, the Council Secretariat was formally saisi. The clock is running at EU level regardless of domestic resolution.</p>
+
+    <div class="inset" style="border-color:#9898c8;" role="note">
+      <div class="inset-label" style="color:#9898c8;">EU Regulation 2021/821 · what it requires · what Ireland failed to do</div>
+      <p class="inset-text">Regulation 2021/821 is the EU's primary instrument governing the control of exports, transfer, brokering, and transit of dual-use items. Article 2(1) requires each Member State to designate a competent authority and ensure it functions. Ireland's designated CA (Dept of Foreign Affairs, 2009–2024) never conducted a single technical evaluation of the submitted O.R. corpus across eighteen years and four transposition cycles. The designation was then transferred to DETE in August 2024 without audit of the accumulated obligation. The Commission's mandatory evaluation opens no later than September 10th, 2026.</p>
+    </div>
+
+    <div class="eu-track" role="list">
+      <div class="eu-cell" role="listitem">
+        <div class="eu-cell-label">Council Secretariat</div>
+        <div class="eu-cell-title">Formal Saisine — Thérèse Blanchet</div>
+        <p class="eu-cell-body">May 27th, 2026. The General Secretariat of the Council of the EU was formally saisi of Ireland's competent authority vacancy under Reg. 2021/821. Once saisi, the Secretariat is obligated to record the matter and ensure the relevant Council formations are on notice before the Presidency opens.</p>
+        <div class="eu-cell-foot">May 27 2026 · Blanchet · Isabel Riaño CC · COMPET · GAC</div>
+      </div>
+      <div class="eu-cell" role="listitem">
+        <div class="eu-cell-label">COMPET Handover Notice</div>
+        <div class="eu-cell-title">Minister Damianos, Cyprus → Minister Burke, Ireland</div>
+        <p class="eu-cell-body">The outgoing COMPET Chair (Cyprus) was formally notified of Ireland's eighteen-year CA vacancy on the instrument his configuration has been administering, before the handover to Ireland. MEP Dolors Montserrat (PETI President) and Minister Thomas Byrne (incoming GAC Chair) were copied.</p>
+        <div class="eu-cell-foot">May 27 2026 · Damianos · Burke · Byrne · Montserrat PETI</div>
+      </div>
+      <div class="eu-cell" role="listitem">
+        <div class="eu-cell-label">Commission — EVP Séjourné</div>
+        <div class="eu-cell-title">Industrial strategy &amp; dual-use architecture</div>
+        <p class="eu-cell-body">Executive Vice-President Séjourné was notified of the compliance record in his capacity as the Commission officer responsible for industrial strategy and the competitiveness architecture within which the January 2024 White Paper on Export Controls sits. Both sides of the EU institutional interface were simultaneously placed on notice.</p>
+        <div class="eu-cell-foot">May 27 2026 · EVP Séjourné · White Paper Jan 2024 · dual-use architecture</div>
+      </div>
+      <div class="eu-cell" role="listitem">
+        <div class="eu-cell-label">European Parliament</div>
+        <div class="eu-cell-title">PETI · Art. 227 TFEU</div>
+        <p class="eu-cell-body">The Committee on Petitions is formally engaged under Article 227 TFEU. The matter is also before the European Ombudsman under Article 228 TFEU, and before Commissioner offices including McGrath, Šefčovič, and Lahbib. The CJEU registry has been notified; infringement proceedings are in preparation.</p>
+        <div class="eu-cell-foot">PETI Art. 227 · European Ombudsman Art. 228 · CJEU registry · infringement proceedings</div>
       </div>
     </div>
 
-    <div class="tort-item" role="listitem">
-      <div class="tort-n" style="color:var(--citron);">II</div>
+    <div class="axiom-bar">
+      <div class="axiom-rule" style="background:linear-gradient(to bottom,#9898c8,rgba(152,152,200,.03));"></div>
       <div>
-        <div class="tort-title" style="color:var(--citron);">Certiorari — quash the two decisions that tried to close the door</div>
-        <p class="tort-body">Two specific decisions exist within the reviewable twelve-month window. <strong>The McEntee Foreclosure</strong> (February 4th, 2026): the Department of Defence closed the file using an authority — the Office of Emergency Planning — that holds no function under Regulation 2021/821. That is action without proper authority, reviewable on four independent irrationality grounds. <strong>The Gunn Letter</strong> (February 24th, 2026): the new Clerk of Dáil Éireann ratified a determination she had not made and had not reviewed, offered no procedural pathway, and failed to address constitutional objections on the record. Certiorari quashes both.</p>
-        <span class="tort-cite">McEntee Foreclosure DOD-MO-01201-2025 · Gunn Letter Feb 24 2026 · O'Keeffe v An Bord Pleanála [1993] 1 IR 39 · Re Haughey [1971] IR 217</span>
+        <div class="axiom-tag" style="color:rgba(152,152,200,.45);">The Presidency Paradox · structural, not rhetorical</div>
+        <p class="axiom-quote">"The Member State chairing the Council workstreams governing Regulation 2021/821 during its mandatory evaluation is the Member State whose competent authority architecture is the most structurally deficient in the Union."</p>
+        <p class="axiom-plain">Ireland assumes the COMPET chair on July 1st, 2026. The Commission's evaluation of Regulation 2021/821 opens on or before September 10th, 2026 — seventy-one days into the Irish Presidency. Ireland will chair the Council workstreams on that instrument at precisely the moment when its own eighteen-year non-performance under it is assessed. Domestic resolution before July 1st is the only outcome that prevents this from becoming a permanent feature of Ireland's compliance record.</p>
       </div>
     </div>
+  </section>
 
-    <div class="tort-item" role="listitem">
-      <div class="tort-n" style="color:var(--dragonfly);">III</div>
-      <div>
-        <div class="tort-title" style="color:var(--dragonfly);">Declaratory relief — establish what the State is constitutionally required to do</div>
-        <p class="tort-body">Declarations that bind the State permanently: that the competent authority function must be operationally discharged, not merely formally designated; that ministerial discretion cannot be indefinitely suspended in the face of a statutory obligation; that the structural foreclosure of every domestic review channel makes access to justice illusory under Article 47 of the EU Charter. <strong>Once declared, these bind the State for every future citizen who submits material to a public body under a statutory framework.</strong></p>
-        <span class="tort-cite">Art. 47 CFR · effective remedy · Art. 40.3.1 Bunreacht · Art. 228 TFEU · EU principle of effectiveness</span>
+  <!-- §04 CHRONOLOGY -->
+  <section aria-labelledby="s-timeline">
+    <div class="section-label">§ 04 — The chronological record</div>
+    <h2 class="section-title" id="s-timeline">Not a grievance.<br><em>A directed instrument.</em></h2>
+    <p class="section-sub">Each entry is dated and independently reviewable. The record now extends to the EU institutional level.</p>
+
+    <div class="timeline" role="list">
+      <div class="tl-item" role="listitem">
+        <div class="tl-year">Nov 2006</div>
+        <div class="tl-line" aria-hidden="true"><div class="tl-dot" style="background:var(--rivulet);box-shadow:0 0 6px rgba(56,200,184,.5);"></div><div class="tl-connector"></div></div>
+        <div>
+          <h3 class="tl-title">First formal submission <em>· 26 kilograms of O.R. materials enter State custody</em></h3>
+          <p class="tl-body">The corpus is formally presented to Irish authorities. Acknowledged. Not evaluated. Not returned. Not licensed. The Department of Foreign Affairs holds the CA designation from 2009 — eighteen years of non-performance begin here.</p>
+        </div>
+      </div>
+      <div class="tl-item" role="listitem">
+        <div class="tl-year">Feb–Sep 2009</div>
+        <div class="tl-line" aria-hidden="true"><div class="tl-dot" style="background:var(--citron);"></div><div class="tl-connector"></div></div>
+        <div>
+          <h3 class="tl-title">Minister Martin · 4.5-hour technical presentation <em>· verbal commitments made and broken</em></h3>
+          <p class="tl-body">In February, a 4.5-hour technical presentation through Minister Martin's office. Both his Deputy Director and his private secretary confirmed a ministerial report would follow. On September 25th, Martin gave a further verbal commitment in person. The promised report was never produced. The embargo held for fourteen years. He is now Taoiseach.</p>
+        </div>
+      </div>
+      <div class="tl-item" role="listitem">
+        <div class="tl-year">2006–2024</div>
+        <div class="tl-line" aria-hidden="true"><div class="tl-dot" style="background:#e84060;box-shadow:0 0 4px rgba(232,64,96,.4);"></div><div class="tl-connector"></div></div>
+        <div>
+          <h3 class="tl-title">Six governments. Seven Oireachtas committees. <em>Zero determinations.</em></h3>
+          <p class="tl-body">Every parliamentary channel available to a citizen operating in good faith was engaged. The JCPP received eighteen formal communications and produced zero outputs. The JCEUA deleted formally received correspondence. Both Clerks issued simultaneous Section 8(3) determinations applying a standard absent from the statute. The Loop ran on every contact.</p>
+        </div>
+      </div>
+      <div class="tl-item" role="listitem">
+        <div class="tl-year">Aug 2024</div>
+        <div class="tl-line" aria-hidden="true"><div class="tl-dot" style="background:var(--sandstone);"></div><div class="tl-connector"></div></div>
+        <div>
+          <h3 class="tl-title">CA designation transferred to DETE <em>· without audit of accumulated obligation</em></h3>
+          <p class="tl-body">The Control of Exports Act 2023 commenced, transferring the CA designation from Foreign Affairs to DETE. The transfer occurred without audit of eighteen years of non-performance, without transmission of institutional memory, without any mechanism requiring the receiving department to assess unprocessed material. The accumulated obligation was structurally abandoned at the moment of handover.</p>
+        </div>
+      </div>
+      <div class="tl-item" role="listitem">
+        <div class="tl-year">Feb 2025</div>
+        <div class="tl-line" aria-hidden="true"><div class="tl-dot" style="background:var(--ardent);box-shadow:0 0 6px rgba(114,184,154,.4);"></div><div class="tl-connector"></div></div>
+        <div>
+          <h3 class="tl-title">Storm Éowyn <em>· O.R. corpus in State custody, unused, since 2006</em></h3>
+          <p class="tl-body">Ireland's emergency response to Storm Éowyn exposed coordination failures that O.R. methodology is specifically designed to prevent. The OEP, in its June 2025 adequacy conclusion, stated it was "swamped" with severe weather response. The technology designed to prevent precisely that class of failure had been in State custody, unprocessed, for eighteen years at that point.</p>
+        </div>
+      </div>
+      <div class="tl-item" role="listitem">
+        <div class="tl-year">Feb 2026</div>
+        <div class="tl-line" aria-hidden="true"><div class="tl-dot" style="background:#e84060;box-shadow:0 0 5px rgba(232,64,96,.4);"></div><div class="tl-connector"></div></div>
+        <div>
+          <h3 class="tl-title">Two reviewable determinations <em>· McEntee Foreclosure · Gunn Letter</em></h3>
+          <p class="tl-body">February 4th: the Department of Defence closed the file using the Office of Emergency Planning — a body with no function under Regulation 2021/821. February 24th: the new Clerk of Dáil Éireann ratified a determination she had not reviewed, offered no pathway, and ignored constitutional objections on the record. Both acts are independently reviewable within the twelve-month window.</p>
+        </div>
+      </div>
+      <div class="tl-item" role="listitem">
+        <div class="tl-year">May 2026</div>
+        <div class="tl-line" aria-hidden="true"><div class="tl-dot" style="background:#9898c8;box-shadow:0 0 5px rgba(152,152,200,.4);"></div><div class="tl-connector"></div></div>
+        <div>
+          <h3 class="tl-title">Council Secretariat formally saisi <em>· COMPET handover notice · Séjourné notified</em></h3>
+          <p class="tl-body">May 27th, 2026: three simultaneous transmissions. The General Secretariat (Secretary General Blanchet) is formally saisi of the CA vacancy. The outgoing COMPET Chair (Cyprus) is placed on formal notice before the handover. EVP Séjourné's cabinet is notified. MEP Dolors Montserrat (PETI President), Minister Thomas Byrne (incoming GAC Chair), and Minister Peter Burke (incoming COMPET Chair) are all copied. The matter is now visible at every level of the EU institutional architecture simultaneously.</p>
+        </div>
+      </div>
+      <div class="tl-item" role="listitem">
+        <div class="tl-year">1 Jul 2026</div>
+        <div class="tl-line" aria-hidden="true"><div class="tl-dot" style="background:var(--abalone-lt);box-shadow:0 0 6px rgba(192,184,200,.35);"></div><div class="tl-connector"></div></div>
+        <div>
+          <h3 class="tl-title">Irish Presidency opens <em>· the Presidency Paradox becomes live</em></h3>
+          <p class="tl-body">Ireland assumes the rotating Presidency of the Council of the European Union and takes the chair of COMPET — the configuration that administers Regulation 2021/821 — while holding an eighteen-year CA vacancy on that instrument. Thirty-five days into the Presidency, the Commission's mandatory evaluation window opens (September 10th, 2026).</p>
+        </div>
+      </div>
+      <div class="tl-item" role="listitem">
+        <div class="tl-year">10 Sep 2026</div>
+        <div class="tl-line" aria-hidden="true"><div class="tl-dot" style="background:#6080c8;"></div><div class="tl-connector" style="opacity:0;"></div></div>
+        <div>
+          <h3 class="tl-title">Commission evaluation of Reg. 2021/821 opens <em>· Ireland's compliance record enters the institutional record</em></h3>
+          <p class="tl-body">The Commission's mandatory evaluation opens no later than September 10th, 2026. Ireland's competent authority architecture — fragmented across three departments with no statutory coordination mechanism, and carrying eighteen years of zero-determination — enters that evaluation as an environmental fact. The Council Secretariat's saisine of May 27th, 2026 is already in the institutional file.</p>
+        </div>
       </div>
     </div>
+  </section>
 
-    <div class="tort-item" role="listitem">
-      <div class="tort-n" style="color:var(--sandstone);">IV</div>
-      <div>
-        <div class="tort-title" style="color:var(--sandstone);">Damages — compensation for what was taken and what was withheld</div>
-        <p class="tort-body">Multiple heads of damage. <strong>Conversion</strong>: nineteen years of retention of 26 kilograms of proprietary O.R. materials without evaluation, compensation, or lawful basis. <strong>Loss of opportunity</strong>: the compounding opportunity cost of non-deployment of a turnkey O.R. corpus across nineteen years — benchmarked against actual public expenditure decisions that did not use it. <strong>Personal consequence</strong>: documented measurable impact on the applicant across the period. The tortfeasor chain is joint and several under the Civil Liability Act 1961.</p>
-        <span class="tort-cite">Civil Liability Act 1961 · joint and several liability · tort of conversion · opportunity cost · FLAC Strategic Litigation Brief 2026</span>
+  <!-- SITEMAP -->
+  <section aria-labelledby="s-sitemap" style="padding-top:60px;">
+    <div class="section-label">§ 05 — Sitemap · all repositories</div>
+    <h2 class="section-title" id="s-sitemap" style="margin-bottom:30px;">Five document clusters.<br><em>226 pages. Publicly accessible.</em></h2>
+    <div class="sitemap-grid">
+      <div class="sm-group">
+        <div class="sm-group-label">Public · Web</div>
+        <div class="sm-links">
+          <a class="sm-link" href="https://dr-crunch.github.io/" target="_blank" rel="noopener"><span class="sm-link-glyph">⬡</span><span class="sm-link-content"><span class="sm-link-title">Meinhardt Initiative</span><span class="sm-link-meta">dr-crunch.github.io</span></span></a>
+          <a class="sm-link" href="https://dr-crunch.github.io/nullification-loops/" target="_blank" rel="noopener"><span class="sm-link-glyph">⬡</span><span class="sm-link-content"><span class="sm-link-title">Nullification Loops</span><span class="sm-link-meta">dr-crunch.github.io/nullification-loops</span></span></a>
+          <a class="sm-link" href="https://dr-crunch.github.io/nullification-loops/dossier.html" target="_blank" rel="noopener"><span class="sm-link-glyph">⬡</span><span class="sm-link-content"><span class="sm-link-title">Full Dossier</span><span class="sm-link-meta">Eight sections · Scátháin agus Splanc</span></span></a>
+          <a class="sm-link" href="https://dr-crunch.github.io/nullification-loops/tairiscint.html" target="_blank" rel="noopener"><span class="sm-link-glyph">⬡</span><span class="sm-link-content"><span class="sm-link-title">Tairiscint</span><span class="sm-link-meta">Constitutional indictment · legal register</span></span></a>
+          <a class="sm-link" href="https://dr-wojak.github.io/legal/" target="_blank" rel="noopener"><span class="sm-link-glyph">⬡</span><span class="sm-link-content"><span class="sm-link-title">Legal Repository</span><span class="sm-link-meta">dr-wojak.github.io/legal · 226 pages</span></span></a>
+          <a class="sm-link" href="https://dr-crunch.github.io/terminal.html" target="_blank" rel="noopener"><span class="sm-link-glyph">⬡</span><span class="sm-link-content"><span class="sm-link-title">Terminal · Saisine Logique</span><span class="sm-link-meta">Interactive corpus overview</span></span></a>
+          <a class="sm-link" href="https://dr-crunch.github.io/meinhardt-docket-001" target="_blank" rel="noopener"><span class="sm-link-glyph">⬡</span><span class="sm-link-content"><span class="sm-link-title">Meinhardt Docket 001</span><span class="sm-link-meta">Supplementary Dáil specification</span></span></a>
+        </div>
+      </div>
+      <div class="sm-group">
+        <div class="sm-group-label">Analytical · Corpus</div>
+        <div class="sm-links">
+          <a class="sm-link" href="https://dr-crunch.github.io/redundancy-awareness/semantic-map.html" target="_blank" rel="noopener"><span class="sm-link-glyph">⬡</span><span class="sm-link-content"><span class="sm-link-title">Semantic Map</span><span class="sm-link-meta">Causal semantics · OWL axiom chain</span></span></a>
+          <a class="sm-link" href="https://dr-crunch.github.io/redundancy-awareness/deontological-differences.html" target="_blank" rel="noopener"><span class="sm-link-glyph">⬡</span><span class="sm-link-content"><span class="sm-link-title">Deontological Differences</span><span class="sm-link-meta">Five channel obligations</span></span></a>
+          <a class="sm-link" href="https://dr-crunch.github.io/redundancy-awareness/ontology-relations.html" target="_blank" rel="noopener"><span class="sm-link-glyph">⬡</span><span class="sm-link-content"><span class="sm-link-title">Ontology Relations</span><span class="sm-link-meta">OWL object properties · causal operators</span></span></a>
+          <a class="sm-link" href="https://dr-crunch.github.io/redundancy-awareness/failure-modes.html" target="_blank" rel="noopener"><span class="sm-link-glyph">⬡</span><span class="sm-link-content"><span class="sm-link-title">Failure Modes</span><span class="sm-link-meta">Five repeatable institutional outputs</span></span></a>
+          <a class="sm-link" href="https://dr-crunch.github.io/redundancy-awareness/epistemological-audit.html" target="_blank" rel="noopener"><span class="sm-link-glyph">⬡</span><span class="sm-link-content"><span class="sm-link-title">Epistemological Audit</span><span class="sm-link-meta">Evidentiary epistemic record 2006–2026</span></span></a>
+          <a class="sm-link" href="https://github.com/dr-wojak/governmentality-2025" target="_blank" rel="noopener"><span class="sm-link-glyph">⬡</span><span class="sm-link-content"><span class="sm-link-title">Governmentality-2025</span><span class="sm-link-meta">GitHub · Beer/VSM · Bateson · O.R.</span></span></a>
+          <a class="sm-link" href="https://dr-crunch.github.io/sitemap" target="_blank" rel="noopener"><span class="sm-link-glyph">⬡</span><span class="sm-link-content"><span class="sm-link-title">Sitemap</span><span class="sm-link-meta">Chronological ministerial audit</span></span></a>
+        </div>
+      </div>
+      <div class="sm-group">
+        <div class="sm-group-label">Repositories · Archive</div>
+        <div class="sm-links">
+          <a class="sm-link" href="https://drive.google.com/drive/u/0/folders/12o4-OPXJ0W5E8pxF9pN-VKUeODagy17g" target="_blank" rel="noopener"><span class="sm-link-glyph">⬡</span><span class="sm-link-content"><span class="sm-link-title">Main Drive Archive</span><span class="sm-link-meta">CC0 · Open access · Master folder</span></span></a>
+          <a class="sm-link" href="https://drive.google.com/drive/u/0/folders/1FMPO1exETcpb4jxX-q5Mh2VIpYwYuATS" target="_blank" rel="noopener"><span class="sm-link-glyph">⬡</span><span class="sm-link-content"><span class="sm-link-title">Full Complaint Archive</span><span class="sm-link-meta">65 pp + 161 supplemental · Annexes I–V</span></span></a>
+          <a class="sm-link" href="https://github.com/dr-crunch/nullification-loops" target="_blank" rel="noopener"><span class="sm-link-glyph">⬡</span><span class="sm-link-content"><span class="sm-link-title">GitHub · nullification-loops</span><span class="sm-link-meta">dr-crunch/nullification-loops</span></span></a>
+          <a class="sm-link" href="https://github.com/dr-wojak/legal" target="_blank" rel="noopener"><span class="sm-link-glyph">⬡</span><span class="sm-link-content"><span class="sm-link-title">GitHub · legal</span><span class="sm-link-meta">dr-wojak/legal · pre-litigation</span></span></a>
+          <a class="sm-link" href="https://github.com/dr-wojak/press" target="_blank" rel="noopener"><span class="sm-link-glyph">⬡</span><span class="sm-link-content"><span class="sm-link-title">GitHub · press</span><span class="sm-link-meta">dr-wojak/press · CC0 · media</span></span></a>
+          <a class="sm-link" href="https://github.com/dr-wojak/public-relations" target="_blank" rel="noopener"><span class="sm-link-glyph">⬡</span><span class="sm-link-content"><span class="sm-link-title">GitHub · public-relations</span><span class="sm-link-meta">dr-wojak/public-relations · civic</span></span></a>
+          <a class="sm-link" href="https://github.com/dr-wojak/supporting-material" target="_blank" rel="noopener"><span class="sm-link-glyph">⬡</span><span class="sm-link-content"><span class="sm-link-title">Supporting Material Index</span><span class="sm-link-meta">dr-wojak/supporting-material</span></span></a>
+        </div>
       </div>
     </div>
+  </section>
 
-    <div class="tort-item" role="listitem">
-      <div class="tort-n" style="color:var(--bordeaux);">V</div>
-      <div>
-        <div class="tort-title" style="color:var(--bordeaux);">Protective Costs Order — so that money cannot be used to silence a public interest claim</div>
-        <p class="tort-body">An application for a Protective Costs Order will be made at the leave stage. This means that if the case is lost, the applicant is not required to pay the State's legal costs — otherwise the threat of those costs would deter any citizen from challenging a nineteen-year governance failure. <strong>The EU principle of effectiveness provides an independent basis: enforcement of rights derived from EU law must not be made excessively difficult or costly.</strong></p>
-        <span class="tort-cite">Dunne v Minister for the Environment [2007] IESC 60 · EU principle of effectiveness · Art. 47 CFR · public interest litigation</span>
-      </div>
+  <!-- QUICK LINKS -->
+  <div class="ql-row" style="margin-top:32px;">
+    <a class="ql ql-grape"     href="https://dr-crunch.github.io/nullification-loops/">⬡ Nullification Loops</a>
+    <a class="ql ql-grape"     href="https://dr-crunch.github.io/redundancy-awareness/semantic-map.html">⬡ Semantic Map</a>
+    <a class="ql ql-dragonfly" href="https://dr-crunch.github.io/redundancy-awareness/deontological-differences.html">⬡ Deontological Differences</a>
+    <a class="ql ql-dragonfly" href="https://dr-crunch.github.io/redundancy-awareness/ontology-relations.html">⬡ Ontology Relations</a>
+    <a class="ql ql-dragonfly" href="https://dr-crunch.github.io/redundancy-awareness/failure-modes.html">⬡ Failure Modes</a>
+    <a class="ql ql-sherwood"  href="https://dr-wojak.github.io/legal/">⬡ Legal Repository</a>
+    <a class="ql ql-citron"    href="https://dr-crunch.github.io/nullification-loops/tairiscint.html">⬡ Tairiscint</a>
+    <a class="ql ql-scarlet"   href="https://dr-crunch.github.io/nullification-loops/dossier.html">⬡ Full Dossier</a>
+    <a class="ql ql-gold"      href="https://drive.google.com/drive/u/0/folders/12o4-OPXJ0W5E8pxF9pN-VKUeODagy17g" target="_blank" rel="noopener">⬡ Drive Archive</a>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-block" role="complementary" aria-labelledby="cta-heading">
+    <div style="flex:1;min-width:240px;">
+      <div class="cta-label">The record is public · CC0 · Public Domain</div>
+      <h2 class="cta-heading" id="cta-heading">Five document clusters.<br><em>226 pages. Publicly accessible.</em></h2>
+      <p class="cta-body">Submissions, correspondence, formal complaints, ministerial briefings, legal instruments, EU transmissions — every claim in this record is sourced, dated, and independently reviewable. The record is an instrument now, not a grievance. The Ombudsman complaint is active (OMB-260331-CSD014). The Council Secretariat is seized. The clock is running.</p>
+    </div>
+    <div class="cta-actions">
+      <a href="https://dr-wojak.github.io/legal/" class="btn-primary" rel="noopener noreferrer">→ View legal record</a>
+      <a href="https://dr-crunch.github.io/nullification-loops/" class="btn-secondary" rel="noopener noreferrer">◌ Nullification Loops dossier</a>
+      <a href="https://drive.google.com/drive/u/0/folders/12o4-OPXJ0W5E8pxF9pN-VKUeODagy17g" class="btn-secondary" rel="noopener noreferrer" target="_blank">◈ Full archive</a>
     </div>
   </div>
-</section>
 
-<!-- ══ §04 NAMED TORTFEASORS ═════════════════════════ -->
-<section aria-labelledby="s04" class="fade fd3">
-  <div class="section-label">§ 04 — The tortfeasor chain</div>
-  <h2 class="section-title" id="s04">Named officers.<br><em>Documented knowledge. Undischarged duties.</em></h2>
-  <p class="section-sub">The FLAC brief documents a continuous chain of informed non-discharge across named constitutional officers. Each link is dated. Each is traceable to the record.</p>
-
-  <div class="officer-grid" role="list">
-    <div class="officer-cell" role="listitem">
-      <div class="officer-role">Taoiseach 2006</div>
-      <div class="officer-name">Bertie Ahern</div>
-      <p class="officer-body">Acknowledged the security implications of the corpus in May–July 2006 and verbally committed to follow-up. The corpus entered State custody without evaluation, without licence, and without return.</p>
-      <div class="officer-foot">May–Jul 2006 · verbal commitment · no follow-up documented</div>
+  <!-- COLOPHON -->
+  <div class="colophon" style="margin-top:60px;">
+    <div class="colophon-left">
+      Research archive · 2006–2026 · Meinhardt Initiative<br>
+      CC0 1.0 Universal · Open Access · Pre-litigation public record<br>
+      <a href="https://dr-crunch.github.io/">dr-crunch.github.io</a> ·
+      <a href="https://dr-wojak.github.io/legal/" target="_blank" rel="noopener">dr-wojak.github.io/legal</a> ·
+      <a href="https://twitter.com/BroekMeinhardt" target="_blank" rel="noopener noreferrer">𝕏 @BroekMeinhardt</a><br>
+      Ombudsman complaint: OMB-260331-CSD014 · Council Saisine: May 27 2026 · FLAC Strategic Litigation Brief: May 30 2026
     </div>
-
-    <div class="officer-cell" role="listitem">
-      <div class="officer-role">Minister for Foreign Affairs 2009 → Taoiseach 2020–22 → Tánaiste → Taoiseach 2025–present</div>
-      <div class="officer-name">Micheál Martin <em>— apex officer</em></div>
-      <p class="officer-body">In February 2009, a 4.5-hour technical presentation was made through his office. Both his Deputy Director and his private secretary confirmed a formal ministerial report would be produced. That report was never produced. On September 25th, 2009, Martin gave a further verbal commitment in person. His office maintained complete silence from 2010 to 2024 — fourteen years — broken not through his office but through correspondence routed to Finance. He has carried the undischarged obligation through every office he has held. He is currently the apex constitutional officer.</p>
-      <div class="officer-foot">Feb 2009 · Sep 2009 · 14-year embargo · obligation carried through every subsequent office · currently Taoiseach</div>
-    </div>
-
-    <div class="officer-cell" role="listitem">
-      <div class="officer-role">Taoiseach 2024 → Minister for Finance 2025–present</div>
-      <div class="officer-name">Simon Harris</div>
-      <p class="officer-body">Formally notified through the all-Oireachtas submission of March 2020. Briefed again as incoming Taoiseach in 2024. Named as joint recipient of the formal ministerial letter of September 12th, 2024. Currently holds Finance — one of the three departments forming the structural axis of the tortfeasor chain.</p>
-      <div class="officer-foot">Mar 2020 · Sep 2024 joint letter · Finance carries non-determination record · fax broke 14-year embargo</div>
-    </div>
-
-    <div class="officer-cell" role="listitem">
-      <div class="officer-role">Minister for Finance 2024–2025</div>
-      <div class="officer-name">Jack Chambers</div>
-      <p class="officer-body">Received the September 12th, 2024 joint ministerial letter as Minister for Finance. Finance carries its own non-determination record: the fax that broke the fourteen-year Martin embargo was routed through Finance, establishing that department's awareness and non-action.</p>
-      <div class="officer-foot">Sep 2024 joint letter · Finance awareness established · Civil Liability Act 1961</div>
-    </div>
-
-    <div class="officer-cell" role="listitem" style="border-top:2px solid var(--scarlet);">
-      <div class="officer-role">The structural axis</div>
-      <div class="officer-name">Three departments, <em>joint and several</em></div>
-      <p class="officer-body">Foreign Affairs (held CA designation 2009–2024 — eighteen years without a single evaluation), Defence (McEntee Foreclosure, February 2026), and Finance (awareness established through the fax; non-determination carried). Under the Civil Liability Act 1961, each is jointly and severally liable for the whole of the harm — not merely their individual share.</p>
-      <div class="officer-foot">Civil Liability Act 1961 · joint and several liability · Foreign Affairs · Defence · Finance</div>
+    <div class="colophon-right">
+      "Information Asymmetry without Fiduciary Care"<br>
+      <span style="font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;opacity:.4;">Tairiscint Mheinhardt v17 · Interregnum Nullificans</span>
     </div>
   </div>
 
-  <div class="axiom-bar">
-    <div class="axiom-rule" style="background:linear-gradient(to bottom,var(--sandstone),rgba(240,160,80,.03));"></div>
-    <div class="axiom-body">
-      <div class="axiom-tag" style="color:rgba(240,160,80,.45);">Comparison to Mahon · public cost · public record</div>
-      <p class="axiom-quote">"The Mahon Tribunal documented a chain of informed non-action retrospectively, at an estimated public cost of between €250 million and €300 million, with limited prosecutorial consequence. This record exists now, is complete, is publicly accessible, and is anchored to a live regulatory obligation with a defined institutional deadline."</p>
-      <p class="axiom-plain">A court that resolves this matter within the Presidency period corrects a structural governance failure while it is still live, before it becomes a permanent feature of Ireland's compliance record in the Commission's evaluation. That is the public interest dimension in its most concentrated form.</p>
-    </div>
-  </div>
-</section>
-
-<!-- ══ §05 THE EU DIMENSION ══════════════════════════ -->
-<section aria-labelledby="s05" class="fade fd3">
-  <div class="section-label">§ 05 — The European dimension</div>
-  <h2 class="section-title" id="s05">The matter has now reached<br><em>every level of the EU architecture</em></h2>
-  <p class="section-sub">On 27 May 2026, the Council Secretariat was formally saisi. The clock is running at EU level regardless of domestic resolution.</p>
-
-  <div class="inset" style="border-color:var(--cosmic);" role="note">
-    <div class="inset-label" style="color:var(--cosmic);">EU Regulation 2021/821 · what it requires · what Ireland failed to do</div>
-    <p class="inset-text">Regulation 2021/821 is the EU's primary instrument governing the control of exports, transfer, brokering, and transit of dual-use items — technologies with both civilian and military applications. Article 2(1) requires each Member State to designate a competent authority and ensure it functions. Ireland's designated CA (Dept of Foreign Affairs, 2009–2024) never conducted a single technical evaluation of the submitted O.R. corpus across eighteen years and four transposition cycles. The designation was then transferred to DETE in August 2024 without audit of the accumulated obligation — so the new CA inherited the function without institutional memory of what it had not done. The Commission's mandatory evaluation of the Regulation opens no later than September 10th, 2026.</p>
-  </div>
-
-  <div class="eu-track" role="list">
-    <div class="eu-cell" role="listitem">
-      <div class="eu-cell-label">Council Secretariat</div>
-      <div class="eu-cell-title">Formal Saisine — Thérèse Blanchet</div>
-      <p class="eu-cell-body">May 27th, 2026. The General Secretariat of the Council of the EU was formally saisi — legally seized — of Ireland's competent authority vacancy under Reg. 2021/821. Once saisi, the Secretariat is obligated to record the matter and ensure the relevant Council formations are on notice before the Presidency opens. The COMPET and GAC configurations were simultaneously copied.</p>
-      <div class="eu-cell-foot">May 27 2026 · Blanchet · Isabel Riaño CC · COMPET · GAC</div>
-    </div>
-
-    <div class="eu-cell" role="listitem">
-      <div class="eu-cell-label">COMPET Handover Notice</div>
-      <div class="eu-cell-title">Minister Damianos, Cyprus → Minister Burke, Ireland</div>
-      <p class="eu-cell-body">The outgoing COMPET Chair (Cyprus) was formally notified of Ireland's eighteen-year CA vacancy on the instrument his configuration has been administering, before the handover to Ireland. The moment of handover was the last point at which the outgoing chair held institutional capacity to act on it. MEP Dolors Montserrat (PETI President) and Minister Thomas Byrne (incoming GAC Chair) were copied.</p>
-      <div class="eu-cell-foot">May 27 2026 · Damianos · Burke · Byrne · Montserrat PETI · Funchion CONT</div>
-    </div>
-
-    <div class="eu-cell" role="listitem">
-      <div class="eu-cell-label">Commission — EVP Séjourné</div>
-      <div class="eu-cell-title">Industrial strategy & dual-use architecture</div>
-      <p class="eu-cell-body">Executive Vice-President Séjourné was notified of the same compliance record in his capacity as the Commission officer responsible for industrial strategy and the competitiveness architecture within which the January 2024 White Paper on Export Controls sits. The Council and Commission sides of the EU institutional interface were simultaneously placed on notice before the Presidency opens.</p>
-      <div class="eu-cell-foot">May 27 2026 · cab-sejourne-contact@ec.europa.eu · White Paper Jan 2024 · dual-use architecture</div>
-    </div>
-
-    <div class="eu-cell" role="listitem">
-      <div class="eu-cell-label">European Parliament</div>
-      <div class="eu-cell-title">PETI · Art. 227 TFEU</div>
-      <p class="eu-cell-body">The Committee on Petitions of the European Parliament is formally engaged under Article 227 TFEU. The matter is also before the European Ombudsman under Article 228 TFEU, and before Commissioner offices including McGrath, Šefčovič, and Lahbib. The CJEU registry has been notified informally; infringement proceedings are in preparation.</p>
-      <div class="eu-cell-foot">PETI Art. 227 · European Ombudsman Art. 228 · CJEU registry · infringement proceedings in preparation</div>
-    </div>
-  </div>
-
-  <div class="axiom-bar">
-    <div class="axiom-rule" style="background:linear-gradient(to bottom,var(--cosmic),rgba(152,152,200,.03));"></div>
-    <div class="axiom-body">
-      <div class="axiom-tag" style="color:rgba(152,152,200,.45);">The Presidency Paradox · structural, not rhetorical</div>
-      <p class="axiom-quote">"The Member State chairing the Council workstreams governing Regulation 2021/821 during its mandatory evaluation is the Member State whose competent authority architecture is the most structurally deficient in the Union."</p>
-      <p class="axiom-plain">Ireland assumes the COMPET chair on July 1st, 2026. The Commission's evaluation of Regulation 2021/821 opens on or before September 10th, 2026 — seventy-one days into the Irish Presidency. Ireland will chair the Council workstreams on that instrument at precisely the moment when its own eighteen-year non-performance under it is assessed. This is not a rhetorical point. It is already visible at every level of the EU institutional architecture simultaneously. Domestic resolution before July 1st is the only outcome that prevents this from becoming a permanent feature of Ireland's compliance record.</p>
-    </div>
-  </div>
-</section>
-
-<!-- ══ §06 CHRONOLOGY ════════════════════════════════ -->
-<section aria-labelledby="s06" class="fade fd3">
-  <div class="section-label">§ 06 — The chronological record</div>
-  <h2 class="section-title" id="s06">Not a grievance.<br><em>A directed instrument.</em></h2>
-  <p class="section-sub">Each entry is dated and independently reviewable. The record now extends to the EU institutional level.</p>
-
-  <div class="timeline" role="list">
-    <div class="tl-item" role="listitem">
-      <div class="tl-year">Nov 2006</div>
-      <div class="tl-line" aria-hidden="true"><div class="tl-dot" style="background:var(--rivulet);box-shadow:0 0 6px rgba(56,200,184,.5);"></div><div class="tl-connector"></div></div>
-      <div class="tl-content">
-        <h3 class="tl-title">First formal submission <em>· 26 kilograms of O.R. materials enter State custody</em></h3>
-        <p class="tl-body">The corpus is formally presented to Irish authorities. Acknowledged. Not evaluated. Not returned. Not licensed. The Department of Foreign Affairs holds the CA designation from 2009 — eighteen years of non-performance begin here.</p>
-      </div>
-    </div>
-
-    <div class="tl-item" role="listitem">
-      <div class="tl-year">Feb–Sep 2009</div>
-      <div class="tl-line" aria-hidden="true"><div class="tl-dot" style="background:var(--citron);"></div><div class="tl-connector"></div></div>
-      <div class="tl-content">
-        <h3 class="tl-title">Minister Martin · 4.5-hour technical presentation <em>· verbal commitments made and broken</em></h3>
-        <p class="tl-body">In February, a 4.5-hour technical presentation through Minister Martin's office. Both his Deputy Director and his private secretary confirmed a ministerial report would follow. On September 25th, Martin gave a further verbal commitment in person. The promised report was never produced. The embargo held for fourteen years. He is now Taoiseach.</p>
-      </div>
-    </div>
-
-    <div class="tl-item" role="listitem">
-      <div class="tl-year">2006–2024</div>
-      <div class="tl-line" aria-hidden="true"><div class="tl-dot" style="background:var(--scarlet);box-shadow:0 0 4px rgba(232,64,96,.4);"></div><div class="tl-connector"></div></div>
-      <div class="tl-content">
-        <h3 class="tl-title">Six governments. Seven Oireachtas committees. <em>Zero determinations.</em></h3>
-        <p class="tl-body">Every parliamentary channel available to a citizen operating in good faith was engaged. The JCPP received eighteen formal communications and produced zero outputs. The JCEUA deleted formally received correspondence. Both Clerks issued simultaneous Section 8(3) determinations applying a standard absent from the statute, without hearing. Committees defied their own remits. The Loop ran on every contact.</p>
-      </div>
-    </div>
-
-    <div class="tl-item" role="listitem">
-      <div class="tl-year">Aug 2024</div>
-      <div class="tl-line" aria-hidden="true"><div class="tl-dot" style="background:var(--sandstone);"></div><div class="tl-connector"></div></div>
-      <div class="tl-content">
-        <h3 class="tl-title">CA designation transferred to DETE <em>· without audit of accumulated obligation</em></h3>
-        <p class="tl-body">The Control of Exports Act 2023 commenced, transferring the CA designation from Foreign Affairs to DETE. The transfer occurred without audit of eighteen years of non-performance, without transmission of institutional memory, without any mechanism requiring the receiving department to assess unprocessed material. The accumulated obligation was structurally abandoned at the moment of handover.</p>
-      </div>
-    </div>
-
-    <div class="tl-item" role="listitem">
-      <div class="tl-year">Feb 2025</div>
-      <div class="tl-line" aria-hidden="true"><div class="tl-dot" style="background:var(--ardent);box-shadow:0 0 6px rgba(114,184,154,.4);"></div><div class="tl-connector"></div></div>
-      <div class="tl-content">
-        <h3 class="tl-title">Storm Éowyn <em>· O.R. corpus in State custody, unused, since 2006</em></h3>
-        <p class="tl-body">Ireland's emergency response to Storm Éowyn exposed coordination failures that O.R. methodology is specifically designed to prevent — failures of resource allocation, logistics coordination, and contingency planning. The OEP, in its June 2025 adequacy conclusion, stated it was "swamped" with severe weather response. The technology designed to prevent precisely that class of failure had been in State custody, unprocessed, for eighteen years at that point.</p>
-      </div>
-    </div>
-
-    <div class="tl-item" role="listitem">
-      <div class="tl-year">Feb 2026</div>
-      <div class="tl-line" aria-hidden="true"><div class="tl-dot" style="background:var(--scarlet);box-shadow:0 0 5px rgba(232,64,96,.4);"></div><div class="tl-connector"></div></div>
-      <div class="tl-content">
-        <h3 class="tl-title">Two reviewable determinations <em>· McEntee Foreclosure · Gunn Letter</em></h3>
-        <p class="tl-body">February 4th: the Department of Defence closed the file using the Office of Emergency Planning — a body with no function under Regulation 2021/821. Four independent irrationality grounds. February 10th: pre-litigation notice issued to the Clerk of Dáil Éireann. February 24th: the new Clerk ratified a determination she had not reviewed, offered no pathway, and ignored constitutional objections on the record. Both acts are independently reviewable within the twelve-month window.</p>
-      </div>
-    </div>
-
-    <div class="tl-item" role="listitem">
-      <div class="tl-year">May 2026</div>
-      <div class="tl-line" aria-hidden="true"><div class="tl-dot" style="background:var(--cosmic);box-shadow:0 0 5px rgba(152,152,200,.4);"></div><div class="tl-connector"></div></div>
-      <div class="tl-content">
-        <h3 class="tl-title">Council Secretariat formally saisi <em>· COMPET handover notice · Séjourné notified</em></h3>
-        <p class="tl-body">May 27th, 2026: three simultaneous transmissions. The General Secretariat (Secretary General Blanchet) is formally saisi of the CA vacancy under Reg. 2021/821. The outgoing COMPET Chair (Cyprus) is placed on formal notice before the handover. EVP Séjourné's cabinet is notified on the industrial strategy dimension. MEP Dolors Montserrat (PETI President), Minister Thomas Byrne (incoming GAC Chair), and Minister Peter Burke (incoming COMPET Chair) are all copied. The matter is now visible at every level of the EU institutional architecture simultaneously.</p>
-      </div>
-    </div>
-
-    <div class="tl-item" role="listitem">
-      <div class="tl-year">1 Jul 2026</div>
-      <div class="tl-line" aria-hidden="true"><div class="tl-dot" style="background:var(--abalone-lt);box-shadow:0 0 6px rgba(192,184,200,.35);"></div><div class="tl-connector"></div></div>
-      <div class="tl-content">
-        <h3 class="tl-title">Irish Presidency opens <em>· the Presidency Paradox becomes live</em></h3>
-        <p class="tl-body">Ireland assumes the rotating Presidency of the Council of the European Union. It takes the chair of COMPET — the configuration that administers Regulation 2021/821 — while holding an eighteen-year CA vacancy on that instrument. Thirty-five days into the Presidency, the Commission's mandatory evaluation window opens (September 10th, 2026). The structural contradiction is now institutional, not rhetorical.</p>
-      </div>
-    </div>
-
-    <div class="tl-item" role="listitem">
-      <div class="tl-year">10 Sep 2026</div>
-      <div class="tl-line" aria-hidden="true"><div class="tl-dot" style="background:var(--regatta-lt);"></div><div class="tl-connector" style="opacity:0;"></div></div>
-      <div class="tl-content">
-        <h3 class="tl-title">Commission evaluation of Reg. 2021/821 opens <em>· Ireland's compliance record enters the institutional record</em></h3>
-        <p class="tl-body">The Commission's mandatory evaluation of Regulation 2021/821 opens no later than September 10th, 2026. Ireland's competent authority architecture — fragmented across three departments with no statutory coordination mechanism, and carrying eighteen years of zero-determination — enters that evaluation as an environmental fact. The Council Secretariat's saisine of May 27th, 2026 is already in the institutional file. Domestic judicial resolution before this date is the outcome that prevents the compliance failure from becoming a permanent feature of Ireland's Union record.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ══ §07 WHAT IS BEING ASKED ════════════════════════ -->
-<section aria-labelledby="s07" class="fade fd4">
-  <div class="section-label">§ 07 — What is being asked</div>
-  <h2 class="section-title" id="s07">Three asks.<br><em>Each proportionate, each grounded.</em></h2>
-  <p class="section-sub">Not vindication. Accountability, mechanism, and public comprehension — on evidence that is complete and publicly accessible.</p>
-
-  <div class="card-grid" role="list">
-    <article class="card" role="listitem">
-      <div class="card-bar" style="background:var(--dragonfly);"></div>
-      <div class="card-pip"><div class="card-dot" style="background:var(--dragonfly);"></div><span style="color:var(--dragonfly);">Legal</span></div>
-      <h3 class="card-title">A reasoned determination — with reasons, within a reasonable time</h3>
-      <p class="card-body">A formal appraisal of the submitted corpus by the designated competent authority, with stated reasons. Article 41 of the EU Charter makes this an enforceable right. Order 84 RSC provides the domestic mechanism. <strong>Nineteen years is not a reasonable time.</strong> The two reviewable determinations provide the immediate legal entry point.</p>
-      <div class="card-foot">Art. 41 CFR · Order 84 RSC · mandamus · certiorari · McEntee + Gunn reviewable acts</div>
-    </article>
-
-    <article class="card" role="listitem">
-      <div class="card-bar" style="background:var(--citron);"></div>
-      <div class="card-pip"><div class="card-dot" style="background:var(--citron);"></div><span style="color:var(--citron);">Structural</span></div>
-      <h3 class="card-title">A statutory appraisal mechanism — so this cannot happen to the next citizen</h3>
-      <p class="card-body">The Administrative Determination (Operations Research and Technology Submissions) Bill 2026 provides the statutory architecture. Without a closing condition — a mechanism that requires a determination — the Loop resets with every change of government and every future citizen who submits material of strategic public value faces the same nineteen-year non-answer. <strong>The structural fix is already drafted.</strong></p>
-      <div class="card-foot">Administrative Determination Bill 2026 · submitted to Seanad · closing condition · statutory mechanism</div>
-    </article>
-
-    <article class="card" role="listitem">
-      <div class="card-bar" style="background:var(--rivulet);"></div>
-      <div class="card-pip"><div class="card-dot" style="background:var(--rivulet);box-shadow:0 0 5px rgba(56,200,184,.5);"></div><span style="color:var(--rivulet);">Civic</span></div>
-      <h3 class="card-title">Public comprehension — so it can be named, recognised, and not repeated</h3>
-      <p class="card-body">The pattern documented here is not unique to this corpus. Non-recognition as a procedural technique can be applied to any citizen's submission on any matter of strategic public value. <strong>Once the public understands what it looks like, they can identify it when they see it.</strong> That is the civic purpose of publishing this record.</p>
-      <div class="card-foot">CC0 · Public Domain · publicly accessible · dr-crunch.github.io · dr-wojak.github.io/legal</div>
-    </article>
-  </div>
-</section>
-
-<!-- ══ CTA ════════════════════════════════════════════ -->
-<div class="cta-block fade fd4" role="complementary" aria-labelledby="cta-heading">
-  <div style="flex:1;min-width:240px;">
-    <div class="cta-label">The record is public · CC0 · Public Domain</div>
-    <h2 class="cta-heading" id="cta-heading">Five document clusters.<br><em>226 pages. Publicly accessible.</em></h2>
-    <p class="cta-body">Submissions, correspondence, formal complaints, ministerial briefings, legal instruments, EU transmissions — every claim in this record is sourced, dated, and independently reviewable. The record is an instrument now, not a grievance. The Ombudsman complaint is active (OMB-260331-CSD014). The Council Secretariat is seized. The clock is running.</p>
-  </div>
-  <div class="cta-actions">
-    <a href="https://dr-wojak.github.io/legal/" class="btn-primary" rel="noopener noreferrer" aria-label="View the full legal record">→ View legal record</a>
-    <a href="https://dr-crunch.github.io/nullification-loops/" class="btn-secondary" rel="noopener noreferrer" aria-label="Read the full dossier">◌ Nullification Loops dossier</a>
-    <a href="https://drive.google.com/drive/u/0/folders/12o4-OPXJ0W5E8pxF9pN-VKUeODagy17g" class="btn-secondary" rel="noopener noreferrer" target="_blank" aria-label="Full archive on Google Drive">◈ Full archive</a>
-  </div>
-</div>
-
-</main>
-
-<footer role="contentinfo">
-  <div class="footer-body">
-    Meinhardt Initiative · Research archive 2006–2026 · CC0 1.0 Universal · Open Access<br>
-    <a href="https://dr-crunch.github.io/">dr-crunch.github.io</a> ·
-    <a href="https://dr-wojak.github.io/legal/" target="_blank" rel="noopener">dr-wojak.github.io/legal</a> ·
-    <a href="https://twitter.com/BroekMeinhardt" target="_blank" rel="noopener noreferrer">𝕏 @BroekMeinhardt</a><br>
-    Ombudsman complaint: OMB-260331-CSD014 · Council Saisine: May 27 2026 · FLAC Strategic Litigation Brief: May 30 2026
-  </div>
-  <div class="footer-right">
-    Tairiscint Mheinhardt v17<br>
-    Interregnum Nullificans<br>
-    2006–2026
-  </div>
-</footer>
-
-</div>
+</div><!-- /wrap -->
 
 <script>
+// Starfield
 (function(){
   var c=document.getElementById('stars'),ctx=c.getContext('2d'),stars=[],W,H;
   function resize(){W=c.width=window.innerWidth;H=c.height=document.body.scrollHeight;}
   function seed(){
     stars=[];
-    var n=Math.floor((W*H)/3600);
+    var n=Math.floor((W*H)/4200);
     for(var i=0;i<n;i++){
       var r=Math.random();
-      stars.push({x:Math.random()*W,y:Math.random()*H,r:r<.6?.5:r<.88?.9:r<.97?1.3:1.8,a:.16+Math.random()*.5,fl:Math.random()*Math.PI*2,sp:.004+Math.random()*.012});
+      stars.push({x:Math.random()*W,y:Math.random()*H,r:r<.6?.5:r<.88?.85:r<.97?1.2:1.7,a:.12+Math.random()*.45,fl:Math.random()*Math.PI*2,sp:.004+Math.random()*.011});
     }
   }
   function draw(t){
@@ -703,15 +970,16 @@ footer{margin-top:72px;padding:32px 0;border-top:1px solid var(--rule);display:f
     for(var i=0;i<stars.length;i++){
       var s=stars[i],a=s.a*(.7+.3*Math.sin(t*s.sp+s.fl));
       ctx.beginPath();ctx.arc(s.x,s.y,s.r,0,Math.PI*2);
-      ctx.fillStyle='rgba(220,210,240,'+a.toFixed(3)+')';ctx.fill();
+      ctx.fillStyle='rgba(200,210,240,'+a.toFixed(3)+')';ctx.fill();
     }
     requestAnimationFrame(draw);
   }
   resize();seed();requestAnimationFrame(draw);
-  var rto;window.addEventListener('resize',function(){clearTimeout(rto);rto=setTimeout(function(){resize();seed();},180);});
+  var rto;
+  window.addEventListener('resize',function(){clearTimeout(rto);rto=setTimeout(function(){resize();seed();},200);});
 })();
 
-// Countdown to EU Presidency
+// Countdown
 (function(){
   var chip=document.getElementById('daysChip');
   if(!chip)return;
