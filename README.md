@@ -75,7 +75,7 @@ The Meinhardt Charter's prohibition on procedural weaponisation aligns exactly w
 
 The [OR Governance / Ethical Review](https://drive.google.com/file/d/1_eHvOD7jFTJ60L_SQbZTP31TgZ93KEHe/view) document, synthesising [*On the Absence of an Operational Framework in Government*](https://drive.google.com/file/d/11SQXeiOCc_Su1Fw-X9WxnZpRJRFR2Zg2/view) and [*Cybernetics for Good*](https://drive.google.com/file/d/14NnAQS3s9loM9TGxTSyf5e6X8AJUBmWc/view), provides the epistemological bridge. Its diagnosis is that the State is procedurally active but operationally blind. It performs, but does not adapt. Drawing on Wiener's cybernetic principle that feedback is foundational to institutional legitimacy, it argues that governance systems which refuse to learn enact a quiet form of structural injustice — not through hostility but through systematic avoidance. The ethical question it poses is the one the entire corpus circles: what is the cost of knowing what to do, and choosing never to do it?
 
-The missing middle is therefore the moment at which the corpus shifts register — from moral critique to justiciable doctrine, from observed pattern to named vulnerability, from complaint to Charter. It is the layer that makes the High Court mandamus proceedings not merely plausible but architecturally inevitable: because once the design itself is named as the breach, the remedy must address the design. Mandamus compels an act. What is now being prepared compels something more fundamental — the correction of an institutional architecture that has been, for nineteen years, reliably converting knowledge into inaction while preserving the appearance of care.
+The missing middle is therefore the moment at which the corpus shifts register — from moral critique to justiciable doctrine, from observed pattern to named vulnerability, from complaint to Charter. It is the layer that makes the High Court mandamus proceedings not merely plausible but architecturally inevitable: because once the design itself is named as the breach, the remedy must address the design. Mandamus compels an act. What is now being prepared compels something more fundamental — the correction of an institutional architecture that has been, for twenty years, reliably converting knowledge into inaction while preserving the appearance of care.
 
 The closing principle of the Unified Charter names this with a precision that the entire corpus has been building toward: governance need not be malicious to be unlawful. Where institutional design predictably converts knowledge into inaction, law must treat the design itself as accountable.
 
@@ -117,7 +117,7 @@ It documents:
 
 This repository establishes that the failure was **institutional**, not intellectual.
 
-[Ethical and Ficuciary Breach of Conduct + Nineteen Years of Clear Evasion](https://github.com/dr-wojak/governmentality-2025)
+[Ethical and Ficuciary Breach of Conduct + Twenty Years of Clear Evasion](https://github.com/dr-wojak/governmentality-2025)
 
 <details>
 
